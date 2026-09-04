@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -231,8 +230,10 @@
       align-items: center;
       perspective: 1000px;
 
-      margin-top: 65px;
-      margin-bottom: 45px;
+      margin-top: 90px;
+      margin-bottom: 70px;
+
+      transform: translateY(25px);
     }
 
     .sobre {
@@ -245,6 +246,12 @@
       filter: drop-shadow(0 20px 30px rgba(0,0,0,.3));
 
       transition: transform .3s ease;
+
+      border: 2px dashed rgba(255,193,216,.35);
+      border-radius: 16px;
+      padding: 5px;
+
+      overflow: visible;
     }
 
     .sobre:hover {
@@ -294,6 +301,8 @@
       box-shadow:
         inset 0 0 0 2px rgba(255,255,255,.12),
         0 0 0 2px rgba(255,193,216,.15);
+
+      z-index: 0;
     }
 
     .sobre-base::before {
@@ -324,15 +333,86 @@
       border-bottom: 130px solid rgba(255,255,255,.10);
     }
 
-    /* Marco decorativo */
+    /* =========================
+       CARTA QUE SALE DEL SOBRE
+    ========================= */
 
-    .sobre {
-      border: 2px dashed rgba(255,193,216,.35);
-      border-radius: 16px;
-      padding: 5px;
+    .carta-sobre {
+      position: absolute;
+
+      left: 50%;
+      top: 25px;
+
+      width: 78%;
+      height: 165px;
+
+      transform:
+        translateX(-50%)
+        translateY(25px);
+
+      z-index: 4;
+
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+
+      padding-top: 22px;
+
+      border-radius: 8px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #fff9fb,
+          #ffeaf1
+        );
+
+      border: 1px solid rgba(184,59,109,.15);
+
+      box-shadow:
+        0 8px 18px rgba(90,20,50,.18),
+        inset 0 0 15px rgba(255,193,216,.3);
+
+      color: var(--rosa-oscuro);
+
+      font-family: 'Cormorant Garamond',serif;
+      font-size: 24px;
+      font-weight: 700;
+
+      transition:
+        transform .9s cubic-bezier(.68,-.55,.27,1.55),
+        z-index 0s .25s;
     }
 
-    /* Tapa */
+    .carta-sobre::before {
+      content: "♡";
+      position: absolute;
+      top: 8px;
+      left: 12px;
+      color: var(--rosa-claro);
+      font-size: 16px;
+    }
+
+    .carta-sobre::after {
+      content: "✦";
+      position: absolute;
+      bottom: 8px;
+      right: 12px;
+      color: var(--dorado);
+      font-size: 15px;
+    }
+
+    .sobre.abierto .carta-sobre {
+      transform:
+        translateX(-50%)
+        translateY(-105px);
+
+      z-index: 6;
+    }
+
+    /* =========================
+       TAPA
+    ========================= */
 
     .sobre-tapa {
       position: absolute;
@@ -342,7 +422,7 @@
       width: 100%;
       height: 100px;
 
-      z-index: 5;
+      z-index: 8;
 
       transform-origin: top center;
 
@@ -372,20 +452,23 @@
 
       transform: translateX(-50%);
 
-      width: 32px;
+      width: 44px;
       height: 100%;
 
-      z-index: 7;
+      z-index: 9;
 
       background:
         linear-gradient(
           90deg,
-          rgba(255,193,216,.35),
-          rgba(255,232,240,.65),
-          rgba(255,193,216,.35)
+          rgba(232,93,145,.75),
+          rgba(255,240,246,.9),
+          rgba(232,93,145,.75)
         );
 
-      opacity: .8;
+      box-shadow:
+        0 0 8px rgba(184,59,109,.18);
+
+      opacity: .95;
 
       pointer-events: none;
     }
@@ -396,38 +479,101 @@
       top: 48%;
 
       width: 100%;
-      height: 25px;
+      height: 32px;
 
-      z-index: 7;
+      z-index: 9;
 
       background:
         linear-gradient(
           90deg,
-          rgba(255,193,216,.3),
-          rgba(255,232,240,.6),
-          rgba(255,193,216,.3)
+          rgba(232,93,145,.7),
+          rgba(255,240,246,.9),
+          rgba(232,93,145,.7)
         );
 
-      opacity: .7;
+      box-shadow:
+        0 0 8px rgba(184,59,109,.18);
+
+      opacity: .95;
 
       pointer-events: none;
     }
 
     /* =========================
-       CORAZÓN / SELLO
+       LAZO
     ========================= */
 
-    .corazon-sobre {
+    .lazo {
       position: absolute;
+
       left: 50%;
       top: 48%;
 
-      transform: translate(-50%,-50%);
+      transform:
+        translate(-50%,-50%);
 
-      z-index: 10;
+      z-index: 14;
 
-      width: 62px;
-      height: 62px;
+      width: 145px;
+      height: 80px;
+
+      pointer-events: none;
+
+      transition:
+        transform .45s ease,
+        opacity .45s ease;
+    }
+
+    .lazo-izq,
+    .lazo-der {
+      position: absolute;
+
+      top: 10px;
+
+      width: 65px;
+      height: 55px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #ffb1ca,
+          #e85d91
+        );
+
+      border: 2px solid rgba(255,248,251,.65);
+
+      box-shadow:
+        0 6px 12px rgba(90,20,50,.2);
+    }
+
+    .lazo-izq {
+      left: 2px;
+
+      border-radius:
+        65% 35% 55% 45%;
+
+      transform: rotate(-18deg);
+    }
+
+    .lazo-der {
+      right: 2px;
+
+      border-radius:
+        35% 65% 45% 55%;
+
+      transform: rotate(18deg);
+    }
+
+    .lazo-centro {
+      position: absolute;
+
+      left: 50%;
+      top: 19px;
+
+      transform: translateX(-50%);
+
+      width: 46px;
+      height: 46px;
 
       display: flex;
       align-items: center;
@@ -443,26 +589,86 @@
           #ff9fc2 100%
         );
 
-      border: 3px solid rgba(255,248,251,.65);
+      border: 3px solid rgba(255,248,251,.8);
 
       box-shadow:
-        0 0 0 8px rgba(255,193,216,.35),
-        0 0 25px rgba(255,82,140,.7);
+        0 0 0 7px rgba(255,193,216,.35),
+        0 0 22px rgba(255,82,140,.65);
 
-      font-size: 30px;
-
-      transition:
-        transform .4s ease,
-        opacity .4s ease;
+      font-size: 23px;
     }
 
-    .sobre:hover .corazon-sobre {
-      transform: translate(-50%,-50%) scale(1.08);
-    }
-
-    .sobre.abierto .corazon-sobre {
+    .sobre.abierto .lazo {
       opacity: 0;
-      transform: translate(-50%,-50%) scale(.5);
+      transform:
+        translate(-50%,-50%)
+        scale(.5);
+    }
+
+    /* =========================
+       DECORACIONES DEL SOBRE
+    ========================= */
+
+    .decoracion-sobre {
+      position: absolute;
+
+      z-index: 12;
+
+      pointer-events: none;
+
+      color: var(--dorado);
+
+      text-shadow:
+        0 0 8px rgba(247,214,163,.55);
+
+      animation:
+        decorarSobre 1.8s infinite alternate ease-in-out;
+    }
+
+    .decoracion-1 {
+      left: -22px;
+      top: 15px;
+      font-size: 20px;
+    }
+
+    .decoracion-2 {
+      right: -22px;
+      top: 25px;
+      font-size: 18px;
+      animation-delay: .4s;
+    }
+
+    .decoracion-3 {
+      left: -18px;
+      bottom: 20px;
+      color: var(--rosa-claro);
+      font-size: 24px;
+      animation-delay: .8s;
+    }
+
+    .decoracion-4 {
+      right: -18px;
+      bottom: 15px;
+      font-size: 21px;
+      animation-delay: 1.2s;
+    }
+
+    @keyframes decorarSobre {
+      from {
+        transform: scale(.8) rotate(-8deg);
+        opacity: .55;
+      }
+
+      to {
+        transform: scale(1.15) rotate(8deg);
+        opacity: 1;
+      }
+    }
+
+    /* Corazón / sello original */
+
+    .corazon-sobre {
+      display: none;
     }
 
     /* Mensaje */
@@ -494,7 +700,7 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    /* Brillos del sobre */
+    /* Brillo del sobre */
 
     .sobre::after {
       content: "✦";
@@ -1017,6 +1223,22 @@
       .titulo-inicial::after {
         display: none;
       }
+
+      .lazo {
+        transform:
+          translate(-50%,-50%)
+          scale(.82);
+      }
+
+      .sobre.abierto .lazo {
+        transform:
+          translate(-50%,-50%)
+          scale(.4);
+      }
+
+      .carta-sobre {
+        width: 76%;
+      }
     }
 
     @media(max-width:430px) {
@@ -1035,6 +1257,24 @@
 
       .sobre {
         height: 205px;
+      }
+
+      .lazo {
+        transform:
+          translate(-50%,-50%)
+          scale(.72);
+      }
+
+      .sobre.abierto .lazo {
+        transform:
+          translate(-50%,-50%)
+          scale(.35);
+      }
+
+      .carta-sobre {
+        height: 145px;
+        padding-top: 18px;
+        font-size: 21px;
       }
     }
   </style>
@@ -1078,10 +1318,25 @@
 
       <div class="sobre-base"></div>
 
+      <div class="carta-sobre">
+        <span>Para ti 💗</span>
+      </div>
+
       <div class="cinta-vertical"></div>
       <div class="cinta-horizontal"></div>
 
       <div class="sobre-tapa"></div>
+
+      <div class="lazo">
+        <span class="lazo-izq"></span>
+        <span class="lazo-der"></span>
+        <span class="lazo-centro">💗</span>
+      </div>
+
+      <span class="decoracion-sobre decoracion-1">✦</span>
+      <span class="decoracion-sobre decoracion-2">✦</span>
+      <span class="decoracion-sobre decoracion-3">♡</span>
+      <span class="decoracion-sobre decoracion-4">✦</span>
 
       <div class="corazon-sobre">
         💗
@@ -1157,7 +1412,7 @@
       class="contador"
       id="contador"
     >
-      1 / 3
+      1 / 6
     </span>
 
     <button
@@ -1202,7 +1457,7 @@
   </p>
 
   <h2>
-    ¿Quieres ser mi novia? 💗
+    ¿Puedo ser tu novio? 💗
   </h2>
 
   <div class="botones-final">
@@ -1340,6 +1595,30 @@
       "Porque me haces sonreír incluso cuando no estoy teniendo precisamente el mejor día.",
       "Porque siento que todavía nos quedan muchísimas cosas por vivir y descubrir juntos.",
       "Porque entre tantas personas, de alguna manera terminaste siendo tú la persona que quiero tener cerca. 💗"
+    ],
+
+    [
+      "Porque admiro la forma en que ves y entiendes las cosas, incluso cuando tu manera de pensarlas es diferente a la mía.",
+      "Porque hay pequeños detalles tuyos que quizás tú ni siquiera notas, pero que para mí tienen algo especial.",
+      "Porque tienes la capacidad de sorprenderme sin siquiera intentarlo.",
+      "Porque confío en ti lo suficiente como para contarte cosas que no le contaría fácilmente a cualquiera.",
+      "Porque muchas conversaciones que empiezan como una tontería terminan convirtiéndose en recuerdos que me acompañan durante todo el día."
+    ],
+
+    [
+      "Porque tu manera de expresarte consigue que hasta las palabras más simples se sientan especiales.",
+      "Porque poco a poco te fuiste convirtiendo en una parte importante de mis pensamientos sin que siquiera me diera cuenta.",
+      "Porque hay cosas que antes parecían insignificantes y ahora significan algo simplemente porque me recuerdan a ti.",
+      "Porque tenemos pequeñas cosas que solo nosotros entendemos y que terminan siendo como un pequeño secreto entre los dos.",
+      "Porque no necesito que pase algo extraordinario para sentir que estar contigo hizo que el momento valiera la pena."
+    ],
+
+    [
+      "Porque me inspiras a querer mejorar como persona, no porque me lo pidas, sino porque quiero ser alguien de quien puedas sentirte orgullosa.",
+      "Porque me gusta imaginar todas las historias que todavía no hemos vivido y pensar que algún día podremos recordarlas juntos.",
+      "Porque incluso después de dejar de hablar contigo, de alguna manera sigues dejando una pequeña huella en mi día.",
+      "Porque algunos momentos que he vivido contigo ya están entre mis recuerdos favoritos.",
+      "Porque si pudiera volver atrás y repetir todos los momentos que nos llevaron hasta aquí, elegiría cada uno de ellos otra vez."
     ]
 
   ];
