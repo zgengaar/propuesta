@@ -1,5 +1,5 @@
-```html
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
@@ -394,8 +394,8 @@
 
       grid-template-columns:
         repeat(
-            auto-fit,
-            minmax(230px,1fr)
+          auto-fit,
+          minmax(230px,1fr)
         );
 
       gap:20px;
@@ -434,7 +434,10 @@
 
       transform:translateY(30px);
 
-      animation:aparecerRazon .7s forwards;
+      animation:
+        aparecerRazon
+        .7s
+        forwards;
     }
 
     .razon:hover{
@@ -460,66 +463,91 @@
     }
 
     /* =========================================
-       ✨ MÁS RAZONES
+       ✨ SISTEMA DE RAZONES
     ========================================= */
 
-    .mas-razones{
+    .grupo-razones{
+      width:100%;
+    }
 
-      margin-top:45px;
+    .grupo-razones.oculto{
+      display:none;
+    }
 
-      padding:35px 25px;
+    .razones-navegacion{
 
-      border-radius:30px;
+      display:flex;
+
+      justify-content:center;
+
+      align-items:center;
+
+      gap:18px;
+
+      margin-top:30px;
+
+      flex-wrap:wrap;
+    }
+
+    .boton-nav{
+
+      border:none;
+
+      padding:12px 22px;
+
+      border-radius:999px;
 
       background:
-        linear-gradient(
-          145deg,
-          rgba(255,180,210,.12),
-          rgba(232,93,145,.08)
-        );
+        rgba(255,180,210,.13);
 
       border:
         1px solid
-        rgba(255,200,220,.2);
+        rgba(255,200,220,.25);
 
+      color:white;
+
+      font-family:"Quicksand",sans-serif;
+
+      font-weight:700;
+
+      cursor:pointer;
+
+      transition:.25s;
+    }
+
+    .boton-nav:hover{
+
+      transform:
+        translateY(-3px);
+
+      background:
+        rgba(255,180,210,.23);
+    }
+
+    .boton-nav:disabled{
+
+      opacity:.35;
+
+      cursor:not-allowed;
+
+      transform:none;
+    }
+
+    .indicador-razones{
+
+      color:var(--rosa-claro);
+
+      font-weight:700;
+
+      min-width:70px;
+    }
+
+    .razones-extra{
       display:none;
-
-      animation:
-        aparecerMas
-        .8s ease;
     }
 
-    .mas-razones.mostrar{
-      display:block;
-    }
-
-    .mas-razones h3{
-
-      font-family:"Playfair Display",serif;
-
-      color:#ffd5e5;
-
-      font-size:1.8rem;
-
-      margin-top:0;
-    }
-
-    @keyframes aparecerMas{
-
-      from{
-        opacity:0;
-        transform:
-          translateY(30px)
-          scale(.96);
-      }
-
-      to{
-        opacity:1;
-        transform:
-          translateY(0)
-          scale(1);
-      }
-
+    .razones-extra.activo{
+      display:grid;
     }
 
     /* =========================================
@@ -635,6 +663,7 @@
 
       0%{
         opacity:1;
+
         transform:
           translateY(0)
           scale(.8)
@@ -643,6 +672,7 @@
 
       100%{
         opacity:0;
+
         transform:
           translateY(-100vh)
           scale(1.5)
@@ -677,11 +707,19 @@
           80px 20px;
       }
 
+      .razones-navegacion{
+        gap:10px;
+      }
+
+      .boton-nav{
+        padding:10px 16px;
+      }
+
     }
 
   </style>
-</head>
 
+</head>
 
 <body>
 
@@ -695,16 +733,17 @@
 
 <div id="estrellas"></div>
 
-
 <div class="contenedor">
-
 
   <!-- =========================================
        💌 INICIO
   ========================================= -->
 
-  <section class="inicio" id="inicio">
+  <section
+    class="inicio"
+    id="inicio">
 
+    ```
     <div
       class="sobre"
       id="sobre"
@@ -727,9 +766,11 @@
 
 
     <p>
+
       Hay cosas que simplemente no se pueden
       decir en una conversación cualquiera.
       Así que decidí prepararte algo especial. 💕
+
     </p>
 
 
@@ -740,9 +781,9 @@
       💌 Abrir
 
     </button>
+    ```
 
   </section>
-
 
   <!-- =========================================
        💗 RAZONES
@@ -752,6 +793,7 @@
     class="seccion"
     id="razones">
 
+    ```
     <h2>
       💗 ¿Por qué tú?
     </h2>
@@ -765,73 +807,81 @@
     </p>
 
 
-    <div class="contador">
-      ✨ Aquí hay 5 razones ✨
-    </div>
-
-
-    <div
-      class="razones"
-      id="razonesIniciales">
-
-      <div class="razon">
-        Porque contigo puedo ser completamente yo,
-        sin tener que fingir ser alguien diferente.
-      </div>
-
-      <div class="razon">
-        Porque incluso los momentos más simples
-        terminan siendo especiales cuando estoy contigo.
-      </div>
-
-      <div class="razon">
-        Porque tienes una forma muy tuya de hacer
-        que un día normal termine siendo un día bonito.
-      </div>
-
-      <div class="razon">
-        Porque tu sonrisa tiene un extraño poder
-        para mejorarme el día. 💗
-      </div>
-
-      <div class="razon">
-        Porque cuando pienso en las personas
-        con las que quiero compartir más momentos,
-        apareces tú.
-      </div>
-
-    </div>
-
-
-    <button
-      class="boton"
-      id="botonMasRazones"
-      onclick="mostrarMasRazones()">
-
-      💕 ¿Quieres conocer más?
-
-    </button>
-
-
     <!-- =====================================
-         ✨ +10 RAZONES
+         🌸 PRIMERAS 5 RAZONES
     ====================================== -->
 
     <div
-      class="mas-razones"
-      id="masRazones">
+      class="grupo-razones"
+      id="razonesIniciales">
 
-      <h3>
-        💕 Bueno... tú lo pediste
-      </h3>
-
-      <p>
-        Aquí tienes otras <strong>10 razones</strong>.
-        Y créeme, podría seguir inventando más 😂💗
-      </p>
+      <div class="contador">
+        ✨ Aquí hay 5 razones ✨
+      </div>
 
 
       <div class="razones">
+
+        <div class="razon">
+          Porque contigo puedo ser completamente yo,
+          sin tener que fingir ser alguien diferente.
+        </div>
+
+        <div class="razon">
+          Porque incluso los momentos más simples
+          terminan siendo especiales cuando estoy contigo.
+        </div>
+
+        <div class="razon">
+          Porque tienes una forma muy tuya de hacer
+          que un día normal termine siendo un día bonito.
+        </div>
+
+        <div class="razon">
+          Porque tu sonrisa tiene un extraño poder
+          para mejorarme el día. 💗
+        </div>
+
+        <div class="razon">
+          Porque cuando pienso en las personas
+          con las que quiero compartir más momentos,
+          apareces tú.
+        </div>
+
+      </div>
+
+
+      <button
+        class="boton"
+        onclick="mostrarMasRazones()">
+
+        💕 ¿Quieres conocer más?
+
+      </button>
+
+    </div>
+
+
+    <!-- =====================================
+         💕 10 RAZONES EXTRA
+    ====================================== -->
+
+    <div
+      class="grupo-razones oculto"
+      id="razonesExtra">
+
+      <div
+        class="contador"
+        id="contadorExtra">
+
+        ✨ Aquí tienes más razones ✨
+
+      </div>
+
+
+      <div
+        class="razones"
+        id="razonesExtraLista">
 
         <div class="razon">
           Porque contigo las conversaciones pueden
@@ -886,8 +936,58 @@
 
       </div>
 
+
+      <!-- =====================================
+           ⬅️ ➡️ NAVEGACIÓN
+      ====================================== -->
+
+      <div class="razones-navegacion">
+
+        <button
+          class="boton-nav"
+          id="anterior"
+          onclick="razonAnterior()">
+
+          ← Anterior
+
+        </button>
+
+
+        <div
+          class="indicador-razones"
+          id="indicadorRazones">
+
+          1 / 10
+
+        </div>
+
+
+        <button
+          class="boton-nav"
+          id="siguiente"
+          onclick="razonSiguiente()">
+
+          Siguiente →
+
+        </button>
+
+      </div>
+
+
+      <button
+        class="boton"
+        onclick="volverRazonesIniciales()">
+
+        💗 Volver a las primeras 5
+
+      </button>
+
     </div>
 
+
+    <!-- =====================================
+         ✨ CONTINUAR
+    ====================================== -->
 
     <button
       class="boton"
@@ -896,9 +996,9 @@
       ✨ Continuar
 
     </button>
+    ```
 
   </section>
-
 
   <!-- =========================================
        💍 PREGUNTA
@@ -908,6 +1008,7 @@
     class="pregunta"
     id="pregunta">
 
+    ```
     <h2>
       Entonces...
     </h2>
@@ -959,11 +1060,11 @@
 
 
     <div id="respuesta"></div>
+    ```
 
   </section>
 
 </div>
-
 
 <script>
 
@@ -974,6 +1075,7 @@
   const estrellas =
     document.getElementById("estrellas");
 
+
   function crearEstrellas(){
 
     for(let i=0;i<120;i++){
@@ -981,7 +1083,8 @@
       const estrella =
         document.createElement("div");
 
-      estrella.className="estrella";
+      estrella.className =
+        "estrella";
 
       estrella.style.left =
         Math.random()*100+"%";
@@ -1000,6 +1103,7 @@
 
   }
 
+
   crearEstrellas();
 
 
@@ -1012,7 +1116,9 @@
     const sobre =
       document.getElementById("sobre");
 
-    sobre.classList.add("abierto");
+    sobre.classList.add(
+      "abierto"
+    );
 
   }
 
@@ -1033,37 +1139,175 @@
 
 
   /* =========================================
-     ✨ MÁS RAZONES
+     ✨ SISTEMA DE RAZONES
   ========================================= */
+
+  let razonActual = 0;
+
 
   function mostrarMasRazones(){
 
-    const masRazones =
+    const iniciales =
       document.getElementById(
-        "masRazones"
+        "razonesIniciales"
       );
 
-    const boton =
+    const extras =
       document.getElementById(
-        "botonMasRazones"
+        "razonesExtra"
       );
 
 
-    masRazones.classList.add(
-      "mostrar"
+    iniciales.classList.add(
+      "oculto"
     );
 
-    boton.style.display="none";
+    extras.classList.remove(
+      "oculto"
+    );
 
+    razonActual = 0;
+
+    actualizarRazones();
 
     setTimeout(()=>{
 
-      masRazones.scrollIntoView({
+      extras.scrollIntoView({
         behavior:"smooth",
         block:"center"
       });
 
-    },200);
+    },150);
+
+  }
+
+
+  function actualizarRazones(){
+
+    const razones =
+      document.querySelectorAll(
+        "#razonesExtraLista .razon"
+      );
+
+
+    razones.forEach(
+      (razon,index)=>{
+
+        if(index === razonActual){
+
+          razon.style.display =
+            "flex";
+
+          razon.style.opacity="0";
+
+          razon.style.transform =
+            "translateX(30px)";
+
+          setTimeout(()=>{
+
+            razon.style.opacity="1";
+
+            razon.style.transform =
+              "translateX(0)";
+
+          },50);
+
+        }else{
+
+          razon.style.display =
+            "none";
+
+        }
+
+      }
+    );
+
+
+    document.getElementById(
+      "indicadorRazones"
+    ).textContent =
+      `${razonActual+1} / ${razones.length}`;
+
+
+    document.getElementById(
+      "anterior"
+    ).disabled =
+      razonActual === 0;
+
+
+    document.getElementById(
+      "siguiente"
+    ).disabled =
+      razonActual === razones.length-1;
+
+  }
+
+
+  function razonSiguiente(){
+
+    const razones =
+      document.querySelectorAll(
+        "#razonesExtraLista .razon"
+      );
+
+
+    if(
+      razonActual <
+      razones.length-1
+    ){
+
+      razonActual++;
+
+      actualizarRazones();
+
+    }
+
+  }
+
+
+  function razonAnterior(){
+
+    if(razonActual > 0){
+
+      razonActual--;
+
+      actualizarRazones();
+
+    }
+
+  }
+
+
+  function volverRazonesIniciales(){
+
+    const iniciales =
+      document.getElementById(
+        "razonesIniciales"
+      );
+
+    const extras =
+      document.getElementById(
+        "razonesExtra"
+      );
+
+
+    extras.classList.add(
+      "oculto"
+    );
+
+    iniciales.classList.remove(
+      "oculto"
+    );
+
+
+    setTimeout(()=>{
+
+      iniciales.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+
+    },150);
 
   }
 
@@ -1079,6 +1323,7 @@
         "respuesta"
       );
 
+
     respuesta.innerHTML =
       `
         💗 Sabía que eras tú.
@@ -1086,9 +1331,10 @@
         Entonces oficialmente...
         <br>
         <strong>
-        tenemos una nueva historia que comenzar. 🌸
+          tenemos una nueva historia que comenzar. 🌸
         </strong>
-        `;
+      `;
+
 
     crearCorazones(35);
 
@@ -1099,7 +1345,8 @@
      😂 BOTÓN NO
   ========================================= */
 
-  let tamañoNo=1;
+  let tamañoNo = 1;
+
 
   function noQuiero(){
 
@@ -1108,15 +1355,19 @@
         "botonNo"
       );
 
+
     const respuesta =
       document.getElementById(
         "respuesta"
       );
 
-    tamañoNo*=0.8;
+
+    tamañoNo *= 0.8;
+
 
     boton.style.transform =
       `scale(${tamañoNo})`;
+
 
     respuesta.innerHTML =
       "👀 Ehhh... creo que ese botón está empezando a desaparecer...";
@@ -1128,7 +1379,9 @@
      💕 CORAZONES
   ========================================= */
 
-  function crearCorazones(cantidad=12){
+  function crearCorazones(
+    cantidad=12
+  ){
 
     const corazones=[
       "💗",
@@ -1138,31 +1391,44 @@
       "💞"
     ];
 
-    for(let i=0;i<cantidad;i++){
+
+    for(
+      let i=0;
+      i<cantidad;
+      i++
+    ){
 
       const corazon =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
-      corazon.className=
+
+      corazon.className =
         "corazon";
+
 
       corazon.textContent =
         corazones[
           Math.floor(
-            Math.random()*
+            Math.random() *
             corazones.length
           )
           ];
 
+
       corazon.style.left =
         Math.random()*100+"%";
+
 
       corazon.style.animationDelay =
         Math.random()*.8+"s";
 
+
       document.body.appendChild(
         corazon
       );
+
 
       setTimeout(
         ()=>{
