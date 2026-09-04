@@ -215,12 +215,6 @@
     .inicio {
       text-align: center;
 
-      /*
-       IMPORTANTE:
-       No hay ningún fondo blanco detrás
-       del título ni del sobre.
-      */
-
       background: transparent;
     }
 
@@ -231,7 +225,7 @@
 
       max-width: 800px;
 
-      margin-bottom: 45px;
+      margin-bottom: 25px;
 
       font-family: 'Playfair Display', serif;
 
@@ -253,7 +247,7 @@
 
       max-width: 650px;
 
-      margin-top: 35px;
+      margin-top: 70px;
       margin-bottom: 25px;
 
       font-size: 1.1rem;
@@ -279,6 +273,18 @@
       align-items: center;
 
       perspective: 1000px;
+
+      /*
+       Separación entre el título
+       y el sobre.
+      */
+      margin-top: 30px;
+
+      /*
+       Espacio para el mensaje
+       que aparece debajo del sobre.
+      */
+      margin-bottom: 45px;
     }
 
     .sobre {
@@ -301,7 +307,9 @@
       transform: translateY(-8px);
     }
 
-    /* Parte inferior del sobre */
+    /* =========================
+       BASE DEL SOBRE
+    ========================= */
 
     .sobre-base {
       position: absolute;
@@ -324,8 +332,6 @@
         inset 0 0 0 2px rgba(255,255,255,.12);
     }
 
-    /* Triángulo inferior izquierdo */
-
     .sobre-base::before {
       content: "";
 
@@ -341,8 +347,6 @@
       border-right: 170px solid transparent;
       border-bottom: 115px solid rgba(184, 59, 109, .22);
     }
-
-    /* Parte inferior central */
 
     .sobre-base::after {
       content: "";
@@ -361,7 +365,7 @@
     }
 
     /* =========================
-       TAPA DEL SOBRE
+       TAPA
     ========================= */
 
     .sobre-tapa {
@@ -394,8 +398,6 @@
         transform .8s cubic-bezier(.68,-.55,.27,1.55),
         z-index 0s .4s;
     }
-
-    /* Cuando se abre */
 
     .sobre.abierto .sobre-tapa {
       transform: rotateX(180deg);
@@ -446,7 +448,9 @@
     }
 
     .sobre:hover .corazon-sobre {
-      transform: translate(-50%, -50%) scale(1.08);
+      transform:
+        translate(-50%, -50%)
+        scale(1.08);
     }
 
     .sobre.abierto .corazon-sobre {
@@ -465,9 +469,12 @@
       position: absolute;
 
       left: 50%;
-      bottom: -55px;
 
-      transform: translateX(-50%) translateY(10px);
+      bottom: -32px;
+
+      transform:
+        translateX(-50%)
+        translateY(10px);
 
       width: 100%;
 
@@ -509,7 +516,7 @@
 
       z-index: 20;
 
-      margin-top: 75px;
+      margin-top: 15px;
 
       padding: 14px 28px;
 
@@ -571,7 +578,7 @@
     }
 
     /* =========================
-       CONTENEDOR DE RAZONES
+       CONTENEDOR
     ========================= */
 
     .contenedor-razones {
@@ -591,24 +598,20 @@
                 repeat(5, minmax(0, 1fr));
 
       gap: 18px;
-
-      transition:
-        transform .65s cubic-bezier(.65,0,.35,1),
-        opacity .35s ease;
     }
 
-    /*
-    Esta animación hace que el grupo actual
-    salga hacia la derecha y el siguiente
-    entre desde la izquierda/derecha.
-    */
+    .razones-grid.animando {
+      pointer-events: none;
+    }
 
     .razones-grid.saliendo-derecha {
-      animation: salirDerecha .65s ease forwards;
+      animation:
+        salirDerecha .65s ease forwards;
     }
 
     .razones-grid.saliendo-izquierda {
-      animation: salirIzquierda .65s ease forwards;
+      animation:
+        salirIzquierda .65s ease forwards;
     }
 
     @keyframes salirDerecha {
@@ -658,7 +661,7 @@
     }
 
     /* =========================
-       CUADRADOS DE RAZONES
+       TARJETAS
     ========================= */
 
     .razon {
@@ -709,8 +712,24 @@
         0 0 25px rgba(245,139,179,.12);
     }
 
+    /*
+     Números de las razones
+    */
+
+    .razon strong {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: var(--rosa-claro);
+
+      font-size: 1.15rem;
+
+      font-weight: 700;
+    }
+
     /* =========================
-       CONTROLES DEL CARRUSEL
+       CONTROLES
     ========================= */
 
     .controles-carrusel {
@@ -1028,7 +1047,10 @@
 
     </div>
 
-    <div class="mensaje-sobre" id="mensajeSobre">
+    <div
+      class="mensaje-sobre"
+      id="mensajeSobre"
+    >
       El sobre se abrió... 💌
     </div>
 
@@ -1081,7 +1103,7 @@
   </div>
 
 
-  <!-- CONTROLES -->
+  <!-- CONTROLES DEL CARRUSEL -->
 
   <div
     class="controles-carrusel"
@@ -1144,6 +1166,10 @@
   id="final"
 >
 
+  <p class="antetitulo-final">
+    Después de todo esto... creo que ya es momento de preguntártelo.
+  </p>
+
   <h2>
     ¿Quieres ser mi novia? 💗
   </h2>
@@ -1190,13 +1216,21 @@
 
   let sobreAbierto = false;
 
+
   function abrirSobre() {
 
-    const sobre = document.getElementById("sobre");
-    const mensaje = document.getElementById("mensajeSobre");
-    const boton = document.getElementById("botonAbrir");
+    const sobre =
+      document.getElementById("sobre");
+
+    const mensaje =
+      document.getElementById("mensajeSobre");
+
+    const boton =
+      document.getElementById("botonAbrir");
+
 
     sobreAbierto = !sobreAbierto;
+
 
     if (sobreAbierto) {
 
@@ -1223,11 +1257,14 @@
 
   function abrirYContinuar() {
 
-    const sobre = document.getElementById("sobre");
+    const sobre =
+      document.getElementById("sobre");
+
 
     if (!sobreAbierto) {
 
       abrirSobre();
+
 
       setTimeout(() => {
 
@@ -1257,7 +1294,7 @@
   const gruposRazones = [
 
     /* =========================
-       PRIMERAS 5
+       RAZONES 1 - 5
     ========================= */
 
     [
@@ -1274,7 +1311,7 @@
 
 
     /* =========================
-       SEGUNDAS 5
+       RAZONES 6 - 10
     ========================= */
 
     [
@@ -1291,7 +1328,7 @@
 
 
     /* =========================
-       TERCERAS 5
+       RAZONES 11 - 15
     ========================= */
 
     [
@@ -1313,6 +1350,7 @@
 
   let carruselActivado = false;
 
+
   const razonesGrid =
     document.getElementById("razonesGrid");
 
@@ -1330,8 +1368,7 @@
 
 
   /*
-   Renderiza SIEMPRE 5 tarjetas.
-   Nunca agrega las nuevas debajo.
+   Muestra exactamente 5 razones.
   */
 
   function mostrarGrupo(indice) {
@@ -1339,6 +1376,7 @@
     grupoActual = indice;
 
     razonesGrid.innerHTML = "";
+
 
     const grupo =
       gruposRazones[grupoActual];
@@ -1349,10 +1387,26 @@
       const tarjeta =
         document.createElement("div");
 
-      tarjeta.className = "razon";
+      tarjeta.className =
+        "razon";
+
+
+      /*
+       Número total de la razón.
+       */
+
+      const numero =
+        (grupoActual * 5)
+        + indice
+        + 1;
+
 
       tarjeta.innerHTML =
-        `<span>${texto}</span>`;
+        `<span>
+                        <strong>${numero}.</strong>
+                        ${texto}
+                    </span>`;
+
 
       razonesGrid.appendChild(tarjeta);
 
@@ -1366,19 +1420,15 @@
 
   /*
    Estado inicial:
-   solamente aparecen las primeras 5.
+   solamente las primeras 5.
   */
 
   mostrarGrupo(0);
 
 
-  /*
-   Al pulsar "Quiero conocer más":
-
-   1. Las primeras 5 salen hacia la derecha.
-   2. Las siguientes 5 ocupan exactamente el mismo lugar.
-   3. Aparecen los botones ← →
-  */
+  /* =====================================================
+     ACTIVAR CARRUSEL
+  ===================================================== */
 
   function activarCarrusel() {
 
@@ -1386,33 +1436,51 @@
       return;
     }
 
+
     carruselActivado = true;
+
+
+    /*
+     Las primeras 5 salen hacia la derecha
+     y son reemplazadas por las siguientes 5.
+    */
 
     cambiarGrupo(
       1,
       "derecha"
     );
 
-    controlesCarrusel.classList.add("visible");
 
-    textoCarrusel.classList.add("visible");
+    controlesCarrusel.classList.add(
+      "visible"
+    );
 
-    botonMasRazones.style.display = "none";
+
+    textoCarrusel.classList.add(
+      "visible"
+    );
+
+
+    botonMasRazones.style.display =
+      "none";
   }
 
 
-  /*
-   Cambiar al grupo siguiente
-  */
+  /* =====================================================
+     SIGUIENTE
+  ===================================================== */
 
   function razonSiguiente() {
 
     let siguiente =
       grupoActual + 1;
 
+
     if (siguiente >= gruposRazones.length) {
+
       siguiente = 0;
     }
+
 
     cambiarGrupo(
       siguiente,
@@ -1421,19 +1489,22 @@
   }
 
 
-  /*
-   Cambiar al grupo anterior
-  */
+  /* =====================================================
+     ANTERIOR
+  ===================================================== */
 
   function razonAnterior() {
 
     let anterior =
       grupoActual - 1;
 
+
     if (anterior < 0) {
+
       anterior =
         gruposRazones.length - 1;
     }
+
 
     cambiarGrupo(
       anterior,
@@ -1442,20 +1513,27 @@
   }
 
 
-  /*
-   Animación de reemplazo.
+  /* =====================================================
+     CAMBIO DE GRUPO
+  ===================================================== */
 
-   No se crean tarjetas nuevas debajo:
-   el mismo contenedor se reutiliza.
-  */
+  function cambiarGrupo(
+    nuevoGrupo,
+    direccion
+  ) {
 
-  function cambiarGrupo(nuevoGrupo, direccion) {
-
-    if (razonesGrid.classList.contains("animando")) {
+    if (
+      razonesGrid.classList
+        .contains("animando")
+    ) {
       return;
     }
 
-    razonesGrid.classList.add("animando");
+
+    razonesGrid.classList.add(
+      "animando"
+    );
+
 
     if (direccion === "derecha") {
 
@@ -1471,9 +1549,16 @@
     }
 
 
+    /*
+     A mitad de la animación
+     reemplazamos las 5 tarjetas.
+    */
+
     setTimeout(() => {
 
-      mostrarGrupo(nuevoGrupo);
+      mostrarGrupo(
+        nuevoGrupo
+      );
 
     }, 300);
 
@@ -1491,7 +1576,7 @@
 
 
   /* =====================================================
-     RESPUESTA "SÍ"
+     RESPUESTA SÍ
   ===================================================== */
 
   function decirSi() {
@@ -1499,35 +1584,43 @@
     const respuesta =
       document.getElementById("respuesta");
 
+
     respuesta.textContent =
       "Sabía que dirías que sí... 💗🥹";
+
 
     crearCorazones(30);
   }
 
 
   /* =====================================================
-     RESPUESTA "NO"
+     RESPUESTA NO
   ===================================================== */
 
   let tamañoNo = 1;
+
 
   function decirNo() {
 
     const botonNo =
       document.getElementById("botonNo");
 
+
     tamañoNo -= .15;
+
 
     if (tamañoNo <= .25) {
 
-      botonNo.style.display = "none";
+      botonNo.style.display =
+        "none";
 
       return;
     }
 
+
     botonNo.style.transform =
       `scale(${tamañoNo})`;
+
 
     botonNo.textContent =
       "¿Segura? 🥺";
@@ -1540,27 +1633,50 @@
 
   function crearCorazones(cantidad) {
 
-    for (let i = 0; i < cantidad; i++) {
+    for (
+      let i = 0;
+      i < cantidad;
+      i++
+    ) {
 
       setTimeout(() => {
 
         const corazon =
           document.createElement("div");
 
+
         corazon.className =
           "corazon-flotante";
 
+
         corazon.textContent =
-          ["💗", "💕", "💖", "💘", "❤️"]
-            [Math.floor(Math.random() * 5)];
+          [
+            "💗",
+            "💕",
+            "💖",
+            "💘",
+            "❤️"
+          ][
+            Math.floor(
+              Math.random() * 5
+            )
+            ];
+
 
         corazon.style.left =
           Math.random() * 100 + "vw";
 
-        corazon.style.animationDuration =
-          (3 + Math.random() * 3) + "s";
 
-        document.body.appendChild(corazon);
+        corazon.style.animationDuration =
+          (
+            3 +
+            Math.random() * 3
+          ) + "s";
+
+
+        document.body.appendChild(
+          corazon
+        );
 
 
         setTimeout(() => {
