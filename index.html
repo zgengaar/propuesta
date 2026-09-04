@@ -1,43 +1,26 @@
+```html
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>💗 Una pregunta para ti</title>
 
   <style>
 
-    /* =====================================================
-       🌸 VARIABLES
-    ===================================================== */
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
     :root{
-
-      --rosa:#ff4f91;
-      --rosa-claro:#ff8fba;
-      --rosa-suave:#ffc4da;
-      --rosa-oscuro:#d92f70;
-
-      --fondo:#5c1235;
-      --fondo-2:#8f1f50;
-
-      --blanco:#fff8fc;
-
+      --rosa:#f58bb3;
+      --rosa-claro:#ffc1d8;
+      --rosa-fuerte:#e85d91;
+      --rosa-oscuro:#b83b6d;
+      --fondo:#3b1427;
+      --fondo-claro:#6b2746;
+      --blanco:#fff8fb;
     }
-
-
-    /* =====================================================
-       🔧 GENERAL
-    ===================================================== */
 
     *{
       box-sizing:border-box;
@@ -48,194 +31,506 @@
     }
 
     body{
-
       margin:0;
-
-      min-height:100vh;
-
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
       color:var(--blanco);
+      font-family:"Quicksand",sans-serif;
 
       background:
-
         radial-gradient(
           circle at 50% 0%,
-          #c53d76 0%,
-          #8f1f50 30%,
-          #5c1235 70%,
-          #35091f 100%
+          #8d3c62,
+          #541d38 40%,
+          var(--fondo) 80%
         );
 
       overflow-x:hidden;
-
     }
 
-
-    /* =====================================================
-       ✨ FONDO
-    ===================================================== */
+    /* =========================================
+       🌸 FONDO
+    ========================================= */
 
     .fondo{
-
       position:fixed;
-
       inset:0;
-
       pointer-events:none;
-
       overflow:hidden;
-
       z-index:0;
-
     }
 
     .burbuja{
-
       position:absolute;
-
       border-radius:50%;
-
-      background:
-        rgba(255,180,210,.12);
-
+      background:rgba(255,190,215,.12);
       filter:blur(2px);
-
-      animation:
-        flotarBurbuja
-        12s
-        ease-in-out
-        infinite
-        alternate;
-
+      animation:flotar 10s ease-in-out infinite;
     }
 
     .burbuja:nth-child(1){
-
-      width:300px;
-      height:300px;
-
-      left:-100px;
-      top:10%;
-
+      width:180px;
+      height:180px;
+      left:5%;
+      top:15%;
     }
 
     .burbuja:nth-child(2){
-
-      width:400px;
-      height:400px;
-
-      right:-150px;
-      top:35%;
-
-      animation-delay:-4s;
-
+      width:250px;
+      height:250px;
+      right:5%;
+      top:45%;
+      animation-delay:-3s;
     }
 
     .burbuja:nth-child(3){
-
-      width:250px;
-      height:250px;
-
-      left:30%;
-      bottom:-100px;
-
-      animation-delay:-7s;
-
+      width:140px;
+      height:140px;
+      left:40%;
+      bottom:5%;
+      animation-delay:-6s;
     }
 
-    @keyframes flotarBurbuja{
+    @keyframes flotar{
 
-      from{
-        transform:translate(0,0) scale(1);
+      0%,100%{
+        transform:translateY(0) scale(1);
       }
 
-      to{
-        transform:translate(70px,-50px) scale(1.2);
+      50%{
+        transform:translateY(-30px) scale(1.08);
       }
 
     }
 
+    /* =========================================
+       ✨ ESTRELLAS
+    ========================================= */
 
-    /* =====================================================
-       🌸 CORAZONES
-    ===================================================== */
-
-    .corazones{
-
+    #estrellas{
       position:fixed;
-
       inset:0;
-
       pointer-events:none;
-
-      z-index:2;
-
+      z-index:1;
     }
 
-    .corazon{
-
+    .estrella{
       position:absolute;
-
-      color:#ffb1ce;
-
-      opacity:.5;
-
-      animation:
-        subir
-        linear
-        infinite;
-
+      width:3px;
+      height:3px;
+      border-radius:50%;
+      background:white;
+      box-shadow:0 0 8px white;
+      animation:brillar 3s ease-in-out infinite;
     }
 
-    @keyframes subir{
+    @keyframes brillar{
 
-      from{
-
-        transform:
-          translateY(110vh)
-          rotate(0deg);
-
+      0%,100%{
+        opacity:.2;
+        transform:scale(.7);
       }
 
-      to{
-
-        transform:
-          translateY(-20vh)
-          rotate(360deg);
-
+      50%{
+        opacity:1;
+        transform:scale(1.5);
       }
 
     }
 
+    /* =========================================
+       🌸 CONTENEDOR
+    ========================================= */
 
-    /* =====================================================
-       📱 CONTENEDOR
-    ===================================================== */
+    .contenedor{
+      position:relative;
+      z-index:2;
+    }
 
-    .app{
+    /* =========================================
+       💌 SOBRE
+    ========================================= */
+
+    .inicio{
+
+      min-height:100vh;
+
+      display:flex;
+      flex-direction:column;
+
+      justify-content:center;
+      align-items:center;
+
+      text-align:center;
+
+      padding:30px;
+    }
+
+    .sobre{
 
       position:relative;
 
-      z-index:5;
+      width:230px;
+      height:160px;
 
+      margin-bottom:40px;
+
+      cursor:pointer;
+
+      transition:.4s;
     }
 
+    .sobre:hover{
+      transform:scale(1.05);
+    }
 
-    /* =====================================================
-       📄 SECCIONES
-    ===================================================== */
+    .sobre-base{
+
+      position:absolute;
+      inset:0;
+
+      background:
+        linear-gradient(
+          145deg,
+          #ff9fc2,
+          #e85d91
+        );
+
+      border-radius:8px;
+
+      box-shadow:
+        0 20px 50px rgba(0,0,0,.3);
+    }
+
+    .sobre-tapa{
+
+      position:absolute;
+
+      left:0;
+      top:0;
+
+      width:0;
+      height:0;
+
+      border-left:115px solid transparent;
+      border-right:115px solid transparent;
+      border-top:85px solid #ffb5d0;
+
+      transform-origin:top;
+
+      transition:.8s;
+
+      z-index:3;
+    }
+
+    .sobre.abierto .sobre-tapa{
+      transform:rotateX(180deg);
+    }
+
+    .corazon-sobre{
+
+      position:absolute;
+
+      left:50%;
+      top:50%;
+
+      transform:
+        translate(-50%,-50%);
+
+      font-size:45px;
+
+      z-index:5;
+
+      transition:.5s;
+    }
+
+    .sobre.abierto .corazon-sobre{
+      transform:
+        translate(-50%,-150%)
+        scale(.7);
+
+      opacity:0;
+    }
+
+    .inicio h1{
+
+      font-family:"Playfair Display",serif;
+
+      font-size:
+        clamp(
+          2.5rem,
+          7vw,
+          4.5rem
+        );
+
+      margin:0 0 15px;
+
+      color:#ffd8e6;
+    }
+
+    .inicio p{
+
+      max-width:600px;
+
+      font-size:1.1rem;
+
+      line-height:1.8;
+
+      opacity:.9;
+    }
+
+    /* =========================================
+       🔘 BOTONES
+    ========================================= */
+
+    .boton{
+
+      border:none;
+
+      padding:14px 28px;
+
+      margin-top:20px;
+
+      border-radius:999px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--rosa),
+          var(--rosa-fuerte)
+        );
+
+      color:white;
+
+      font-family:"Quicksand",sans-serif;
+
+      font-weight:700;
+
+      font-size:1rem;
+
+      cursor:pointer;
+
+      box-shadow:
+        0 10px 30px
+        rgba(232,93,145,.3);
+
+      transition:.25s;
+    }
+
+    .boton:hover{
+
+      transform:
+        translateY(-4px)
+        scale(1.03);
+
+      box-shadow:
+        0 15px 40px
+        rgba(232,93,145,.45);
+    }
+
+    /* =========================================
+       💗 SECCIONES
+    ========================================= */
 
     .seccion{
 
       min-height:100vh;
 
-      width:100%;
+      max-width:850px;
+
+      margin:auto;
+
+      padding:
+        100px 25px;
+
+      display:flex;
+
+      flex-direction:column;
+
+      justify-content:center;
+
+      text-align:center;
+    }
+
+    .seccion h2{
+
+      font-family:"Playfair Display",serif;
+
+      font-size:2.7rem;
+
+      color:#ffd2e2;
+
+      margin-bottom:15px;
+    }
+
+    .seccion > p{
+
+      line-height:1.8;
+
+      opacity:.85;
+
+      max-width:650px;
+
+      margin:
+        0 auto 50px;
+    }
+
+    /* =========================================
+       🌸 RAZONES
+    ========================================= */
+
+    .contador{
+
+      font-size:1.1rem;
+
+      color:var(--rosa-claro);
+
+      font-weight:700;
+
+      margin-bottom:25px;
+    }
+
+    .razones{
+
+      display:grid;
+
+      grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(230px,1fr)
+        );
+
+      gap:20px;
+    }
+
+    .razon{
+
+      padding:28px 22px;
+
+      min-height:180px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      border-radius:25px;
+
+      background:
+        rgba(255,180,210,.09);
+
+      border:
+        1px solid
+        rgba(255,200,220,.18);
+
+      backdrop-filter:blur(8px);
+
+      line-height:1.7;
+
+      font-size:1.05rem;
+
+      transition:.3s;
+
+      opacity:0;
+
+      transform:translateY(30px);
+
+      animation:aparecerRazon .7s forwards;
+    }
+
+    .razon:hover{
+
+      transform:
+        translateY(-7px);
+
+      background:
+        rgba(255,180,210,.16);
+
+      box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.2);
+    }
+
+    @keyframes aparecerRazon{
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+
+    }
+
+    /* =========================================
+       ✨ MÁS RAZONES
+    ========================================= */
+
+    .mas-razones{
+
+      margin-top:45px;
+
+      padding:35px 25px;
+
+      border-radius:30px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,180,210,.12),
+          rgba(232,93,145,.08)
+        );
+
+      border:
+        1px solid
+        rgba(255,200,220,.2);
 
       display:none;
+
+      animation:
+        aparecerMas
+        .8s ease;
+    }
+
+    .mas-razones.mostrar{
+      display:block;
+    }
+
+    .mas-razones h3{
+
+      font-family:"Playfair Display",serif;
+
+      color:#ffd5e5;
+
+      font-size:1.8rem;
+
+      margin-top:0;
+    }
+
+    @keyframes aparecerMas{
+
+      from{
+        opacity:0;
+        transform:
+          translateY(30px)
+          scale(.96);
+      }
+
+      to{
+        opacity:1;
+        transform:
+          translateY(0)
+          scale(1);
+      }
+
+    }
+
+    /* =========================================
+       💗 PREGUNTA FINAL
+    ========================================= */
+
+    .pregunta{
+
+      min-height:100vh;
+
+      display:flex;
 
       flex-direction:column;
 
@@ -245,184 +540,12 @@
 
       text-align:center;
 
-      padding:40px 20px 130px;
-
-      animation:
-        aparecer
-        .8s
-        ease;
-
+      padding:30px;
     }
 
-    .seccion.activa{
+    .pregunta h2{
 
-      display:flex;
-
-    }
-
-    @keyframes aparecer{
-
-      from{
-
-        opacity:0;
-
-        transform:
-          translateY(30px);
-
-      }
-
-      to{
-
-        opacity:1;
-
-        transform:
-          translateY(0);
-
-      }
-
-    }
-
-
-    /* =====================================================
-       💌 SOBRE
-    ===================================================== */
-
-    .sobre-contenedor{
-
-      cursor:pointer;
-
-      perspective:1000px;
-
-    }
-
-    .sobre{
-
-      position:relative;
-
-      width:300px;
-
-      height:200px;
-
-      background:#ffe4ee;
-
-      border-radius:8px;
-
-      box-shadow:
-        0 30px 70px
-        rgba(0,0,0,.35);
-
-      transition:
-        transform .4s ease;
-
-    }
-
-    .sobre:hover{
-
-      transform:
-        translateY(-8px)
-        scale(1.03);
-
-    }
-
-    .sobre::before{
-
-      content:"";
-
-      position:absolute;
-
-      inset:0;
-
-      background:
-
-        linear-gradient(
-          135deg,
-          transparent 49%,
-          #f7b2cb 50%
-        );
-
-      clip-path:
-        polygon(
-          0 0,
-          50% 55%,
-          100% 0,
-          100% 100%,
-          0 100%
-        );
-
-    }
-
-    .solapa{
-
-      position:absolute;
-
-      top:0;
-
-      left:0;
-
-      width:100%;
-
-      height:110px;
-
-      background:#ffc1d8;
-
-      clip-path:
-        polygon(
-          0 0,
-          50% 100%,
-          100% 0
-        );
-
-      transform-origin:top;
-
-      transition:
-        transform 1s ease;
-
-      z-index:3;
-
-    }
-
-    .sobre.abierto .solapa{
-
-      transform:
-        rotateX(180deg);
-
-    }
-
-    .corazon-sobre{
-
-      position:absolute;
-
-      z-index:5;
-
-      top:75px;
-
-      left:50%;
-
-      transform:
-        translateX(-50%);
-
-      font-size:50px;
-
-      transition:
-        transform .5s ease;
-
-    }
-
-    .sobre.abierto .corazon-sobre{
-
-      transform:
-        translateX(-50%)
-        translateY(-80px)
-        scale(1.2);
-
-    }
-
-
-    /* =====================================================
-       ✍️ TITULOS
-    ===================================================== */
-
-    h1{
+      font-family:"Playfair Display",serif;
 
       font-size:
         clamp(
@@ -431,51 +554,21 @@
           5rem
         );
 
-      margin:
-        30px
-        0
-        15px;
+      color:#ffd7e5;
 
-      color:white;
-
-      text-shadow:
-        0 5px 30px
-        rgba(255,100,160,.4);
-
+      margin-bottom:20px;
     }
 
-    h2{
+    .pregunta p{
 
-      font-size:
-        clamp(
-          2rem,
-          6vw,
-          3.5rem
-        );
+      font-size:1.2rem;
 
-      color:white;
+      line-height:1.8;
 
-      margin-bottom:15px;
+      max-width:650px;
 
+      opacity:.9;
     }
-
-    p{
-
-      max-width:700px;
-
-      line-height:1.9;
-
-      font-size:1.1rem;
-
-      color:
-        rgba(255,245,250,.9);
-
-    }
-
-
-    /* =====================================================
-       🔘 BOTONES
-    ===================================================== */
 
     .botones{
 
@@ -483,708 +576,114 @@
 
       gap:15px;
 
-      flex-wrap:wrap;
-
       justify-content:center;
 
-      margin-top:30px;
+      flex-wrap:wrap;
 
+      margin-top:25px;
     }
 
-    .boton{
-
-      border:none;
-
-      border-radius:999px;
-
-      padding:
-        14px
-        25px;
-
-      font-family:inherit;
-
-      font-size:1rem;
-
-      font-weight:bold;
-
-      cursor:pointer;
-
-      color:white;
+    #botonNo{
 
       background:
-        linear-gradient(
-          135deg,
-          var(--rosa),
-          var(--rosa-oscuro)
-        );
-
-      box-shadow:
-        0 10px 30px
-        rgba(0,0,0,.25);
-
-      transition:
-        transform .2s,
-        box-shadow .2s;
-
-    }
-
-    .boton:hover{
-
-      transform:
-        translateY(-4px);
-
-      box-shadow:
-        0 15px 35px
-        rgba(255,80,145,.35);
-
-    }
-
-    .boton-secundario{
-
-      background:
-        rgba(255,255,255,.12);
+        rgba(255,255,255,.08);
 
       border:
         1px solid
         rgba(255,255,255,.2);
 
+      box-shadow:none;
     }
 
+    #respuesta{
 
-    /* =====================================================
-       🎵 REPRODUCTOR
-    ===================================================== */
+      min-height:50px;
 
-    .reproductor{
+      margin-top:25px;
 
-      position:fixed;
-
-      bottom:20px;
-
-      left:50%;
-
-      transform:
-        translateX(-50%);
-
-      width:
-        min(600px, calc(100% - 30px));
-
-      padding:15px 18px;
-
-      border-radius:25px;
-
-      background:
-        rgba(55,8,30,.82);
-
-      border:
-        1px solid
-        rgba(255,180,210,.25);
-
-      backdrop-filter:
-        blur(15px);
-
-      box-shadow:
-        0 15px 50px
-        rgba(0,0,0,.35);
-
-      z-index:100;
-
-    }
-
-    .musica-info{
-
-      display:flex;
-
-      align-items:center;
-
-      gap:12px;
-
-      margin-bottom:10px;
-
-    }
-
-    .disco{
-
-      width:42px;
-      height:42px;
-
-      border-radius:50%;
-
-      display:flex;
-
-      justify-content:center;
-      align-items:center;
-
-      background:
-        linear-gradient(
-          135deg,
-          #ff9bc0,
-          #d52f71
-        );
-
-      animation:
-        girarDisco
-        4s
-        linear
-        infinite;
-
-    }
-
-    .disco.pausado{
-
-      animation-play-state:
-        paused;
-
-    }
-
-    @keyframes girarDisco{
-
-      to{
-        transform:rotate(360deg);
-      }
-
-    }
-
-    .nombre-musica{
-
-      font-weight:bold;
-
-    }
-
-    .controles{
-
-      display:flex;
-
-      align-items:center;
-
-      gap:8px;
-
-    }
-
-    .control{
-
-      width:38px;
-      height:38px;
-
-      border:none;
-
-      border-radius:50%;
-
-      cursor:pointer;
-
-      color:white;
-
-      background:
-        rgba(255,255,255,.1);
-
-      font-size:16px;
-
-    }
-
-    .control:hover{
-
-      background:
-        rgba(255,100,160,.4);
-
-    }
-
-    #progreso{
-
-      flex:1;
-
-      accent-color:
-        var(--rosa);
-
-      cursor:pointer;
-
-    }
-
-    .volumen{
-
-      width:80px;
-
-      accent-color:
-        var(--rosa);
-
-    }
-
-
-    /* =====================================================
-       💗 RAZONES
-    ===================================================== */
-
-    .razones{
-
-      display:grid;
-
-      grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(
-        230px,
-        1fr
-      )
-    );
-
-      gap:20px;
-
-      width:min(
-        1000px,
-        100%
-      );
-
-      margin-top:35px;
-
-    }
-
-    .razon{
-
-      padding:30px 25px;
-
-      border-radius:25px;
-
-      background:
-        rgba(255,255,255,.1);
-
-      border:
-        1px solid
-        rgba(255,190,215,.2);
-
-      backdrop-filter:
-        blur(8px);
-
-      transition:
-        transform .3s,
-        background .3s;
-
-    }
-
-    .razon:hover{
-
-      transform:
-        translateY(-8px);
-
-      background:
-        rgba(255,255,255,.15);
-
-    }
-
-    .razon-numero{
-
-      font-size:2rem;
-
-      color:
-        var(--rosa-suave);
-
-      margin-bottom:12px;
-
-    }
-
-    .razon h3{
-
-      margin:
-        5px
-        0
-        12px;
-
-      font-size:1.3rem;
-
-    }
-
-    .razon p{
-
-      font-size:.95rem;
-
-      margin:0;
-
-    }
-
-
-    /* =====================================================
-       💗 PREGUNTA FINAL
-    ===================================================== */
-
-    .pregunta{
-
-      position:relative;
-
-      width:min(
-        850px,
-        100%
-      );
-
-      padding:55px 30px;
-
-      border-radius:40px;
-
-      background:
-        rgba(255,255,255,.09);
-
-      border:
-        1px solid
-        rgba(255,190,215,.25);
-
-      backdrop-filter:
-        blur(15px);
-
-      box-shadow:
-        0 30px 90px
-        rgba(0,0,0,.3);
-
-    }
-
-    .pregunta h2{
-
-      font-size:
-        clamp(
-          2.2rem,
-          7vw,
-          4rem
-        );
-
-    }
-
-    .botones-respuesta{
-
-      position:relative;
-
-      min-height:180px;
-
-      display:flex;
-
-      justify-content:center;
-
-      align-items:center;
-
-      gap:25px;
-
-      margin-top:30px;
-
-    }
-
-    #botonNo{
-
-      position:relative;
-
-    }
-
-    #botonSi{
-
-      background:
-        linear-gradient(
-          135deg,
-          #ff4f91,
-          #ff176b
-        );
+      color:#ffd1e1;
 
       font-size:1.2rem;
 
-      padding:
-        16px
-        35px;
-
+      font-weight:700;
     }
 
+    /* =========================================
+       💕 CORAZONES
+    ========================================= */
 
-    /* =====================================================
-       🎉 FINAL
-    ===================================================== */
-
-    .final-mensaje{
-
-      display:none;
-
-      animation:
-        aparecerFinal
-        1s
-        ease;
-
-    }
-
-    .final-mensaje.activo{
-
-      display:block;
-
-    }
-
-    @keyframes aparecerFinal{
-
-      from{
-
-        opacity:0;
-
-        transform:
-          scale(.7);
-
-      }
-
-      to{
-
-        opacity:1;
-
-        transform:
-          scale(1);
-
-      }
-
-    }
-
-    .gran-corazon{
-
-      font-size:100px;
-
-      animation:
-        latir
-        1.2s
-        infinite;
-
-    }
-
-    @keyframes latir{
-
-      0%,100%{
-        transform:scale(1);
-      }
-
-      50%{
-        transform:scale(1.15);
-      }
-
-    }
-
-
-    /* =====================================================
-       🧭 NAVEGACIÓN
-    ===================================================== */
-
-    .navegacion{
+    .corazon{
 
       position:fixed;
 
-      bottom:105px;
-
-      left:50%;
-
-      transform:
-        translateX(-50%);
-
-      display:flex;
-
-      gap:10px;
-
-      z-index:90;
-
-    }
-
-    .nav-boton{
-
-      border:none;
-
-      border-radius:999px;
-
-      padding:
-        11px
-        18px;
-
-      cursor:pointer;
-
-      color:white;
-
-      background:
-        rgba(60,5,30,.8);
-
-      border:
-        1px solid
-        rgba(255,180,210,.2);
-
-      backdrop-filter:
-        blur(10px);
-
-    }
-
-    .nav-boton:hover{
-
-      background:
-        rgba(255,80,145,.5);
-
-    }
-
-
-    /* =====================================================
-       ✨ ESTRELLAS
-    ===================================================== */
-
-    .estrellas{
-
-      position:fixed;
-
-      inset:0;
+      bottom:-30px;
 
       pointer-events:none;
 
-      z-index:1;
-
-    }
-
-    .estrella{
-
-      position:absolute;
-
-      width:3px;
-      height:3px;
-
-      border-radius:50%;
-
-      background:white;
-
-      box-shadow:
-        0 0 8px white;
-
-      animation:
-        parpadear
-        2s
-        infinite;
-
-    }
-
-    @keyframes parpadear{
-
-      0%,100%{
-        opacity:.2;
-        transform:scale(.7);
-      }
-
-      50%{
-        opacity:1;
-        transform:scale(1.4);
-      }
-
-    }
-
-
-    /* =====================================================
-       📱 RESPONSIVE
-    ===================================================== */
-
-    @media(max-width:600px){
-
-      .sobre{
-
-        width:260px;
-
-        height:175px;
-
-      }
-
-      .solapa{
-
-        height:95px;
-
-      }
-
-      .corazon-sobre{
-
-        top:65px;
-
-      }
-
-      .reproductor{
-
-        bottom:10px;
-
-        padding:12px;
-
-      }
-
-      .volumen{
-
-        display:none;
-
-      }
-
-      .navegacion{
-
-        bottom:105px;
-
-      }
-
-      .nav-boton{
-
-        padding:
-          9px
-          14px;
-
-        font-size:.85rem;
-
-      }
-
-      .razones{
-
-        grid-template-columns:1fr;
-
-      }
-
-    }
-
-
-    /* =====================================================
-       💥 CORAZONES EXTRA
-    ===================================================== */
-
-    .corazon-explosion{
-
-      position:fixed;
-
-      pointer-events:none;
-
-      z-index:300;
+      z-index:100;
 
       font-size:25px;
 
       animation:
-        explosion
-        2s
+        subir
+        3s
         ease-out
         forwards;
+    }
+
+    @keyframes subir{
+
+      0%{
+        opacity:1;
+        transform:
+          translateY(0)
+          scale(.8)
+          rotate(0);
+      }
+
+      100%{
+        opacity:0;
+        transform:
+          translateY(-100vh)
+          scale(1.5)
+          rotate(25deg);
+      }
 
     }
 
-    @keyframes explosion{
+    /* =========================================
+       📱 RESPONSIVE
+    ========================================= */
 
-      from{
+    @media(max-width:600px){
 
-        opacity:1;
-
-        transform:
-          translate(0,0)
-          scale(.5);
-
+      .sobre{
+        width:200px;
+        height:140px;
       }
 
-      to{
+      .sobre-tapa{
+        border-left-width:100px;
+        border-right-width:100px;
+        border-top-width:75px;
+      }
 
-        opacity:0;
+      .razones{
+        grid-template-columns:1fr;
+      }
 
-        transform:
-          translate(
-            var(--x),
-            var(--y)
-          )
-          scale(1.5);
-
+      .seccion{
+        padding:
+          80px 20px;
       }
 
     }
 
   </style>
-
 </head>
 
-<body>
 
-<!-- =====================================================
-     🌸 FONDO
-===================================================== -->
+<body>
 
 <div class="fondo">
 
@@ -1194,1199 +693,482 @@
 
 </div>
 
-<!-- =====================================================
-     ✨ ESTRELLAS
-===================================================== -->
+<div id="estrellas"></div>
 
-<div
-  class="estrellas"
-  id="estrellas">
-</div>
 
-<!-- =====================================================
-     💗 CORAZONES
-===================================================== -->
+<div class="contenedor">
 
-<div
-  class="corazones"
-  id="corazones">
-</div>
 
-<!-- =====================================================
-     🌸 APP
-===================================================== -->
+  <!-- =========================================
+       💌 INICIO
+  ========================================= -->
 
-<div class="app">
-
-  <!-- =====================================================
-       💌 SECCIÓN 1 — SOBRE
-  ===================================================== -->
-
-  <section
-    class="seccion activa"
-    id="seccion1">
+  <section class="inicio" id="inicio">
 
     <div
-      class="sobre-contenedor"
+      class="sobre"
+      id="sobre"
       onclick="abrirSobre()">
 
-      ```
-      <div
-        class="sobre"
-        id="sobre">
+      <div class="sobre-base"></div>
 
-        <div
-          class="solapa">
-        </div>
+      <div class="sobre-tapa"></div>
 
-        <div
-          class="corazon-sobre">
-
-          💗
-
-        </div>
-
+      <div class="corazon-sobre">
+        💗
       </div>
-      ```
 
     </div>
+
 
     <h1>
       Tengo algo que preguntarte...
     </h1>
 
+
     <p>
-
-      Hay algo que llevo un tiempo
-      queriendo decirte.
-
-      <br>
-
-      Pero antes de hacerlo,
-      quiero llevarte a través
-      de una pequeña historia. 💗
-
+      Hay cosas que simplemente no se pueden
+      decir en una conversación cualquiera.
+      Así que decidí prepararte algo especial. 💕
     </p>
+
 
     <button
       class="boton"
-      onclick="siguienteSeccion()">
+      onclick="siguienteSeccion('razones')">
 
-      ```
       💌 Abrir
-      ```
 
     </button>
 
   </section>
 
-  <!-- =====================================================
-       🌸 SECCIÓN 2 — INTRO
-  ===================================================== -->
+
+  <!-- =========================================
+       💗 RAZONES
+  ========================================= -->
 
   <section
     class="seccion"
-    id="seccion2">
+    id="razones">
 
     <h2>
-      Para empezar...
+      💗 ¿Por qué tú?
     </h2>
+
 
     <p>
 
-      No creo que exista una forma
-      perfecta de explicar lo que
-      una persona puede llegar a
-      significar para otra.
-
-      <br><br>
-
-      A veces simplemente sucede.
-
-      <br><br>
-
-      Conoces a alguien y, poco a poco,
-      empieza a ocupar un espacio
-      especial en tus pensamientos.
-
-      💗
+      Podría darte mil razones...
+      pero decidí empezar solamente con cinco.
 
     </p>
 
-    <div class="botones">
 
-      <button
-        class="boton boton-secundario"
-        onclick="seccionAnterior()">
-
-        ← Anterior
-
-      </button>
-
-      <button
-        class="boton"
-        onclick="siguienteSeccion()">
-
-        Continuar →
-
-      </button>
-
+    <div class="contador">
+      ✨ Aquí hay 5 razones ✨
     </div>
 
-  </section>
-
-  <!-- =====================================================
-       🌷 SECCIÓN 3 — RAZONES
-  ===================================================== -->
-
-  <section
-    class="seccion"
-    id="seccion3">
-
-    <h2>
-      🌷 ¿Por qué tú?
-    </h2>
-
-    <p>
-
-      Podría darte mil razones,
-      pero elegí cinco que creo
-      que explican bastante bien
-      por qué eres una persona
-      tan especial para mí.
-
-    </p>
-
-    <div class="razones">
-
-      <div class="razon">
-
-        <div class="razon-numero">
-          01
-        </div>
-
-        <h3>
-          Porque me haces sonreír
-        </h3>
-
-        <p>
-
-          Incluso en los días más
-          normales, tienes una forma
-          muy tuya de hacer que todo
-          se sienta un poquito mejor.
-
-        </p>
-
-      </div>
-
-
-      <div class="razon">
-
-        <div class="razon-numero">
-          02
-        </div>
-
-        <h3>
-          Porque puedo ser yo
-        </h3>
-
-        <p>
-
-          Contigo no siento que tenga
-          que fingir ser alguien diferente
-          para poder gustarte.
-
-        </p>
-
-      </div>
-
-
-      <div class="razon">
-
-        <div class="razon-numero">
-          03
-        </div>
-
-        <h3>
-          Porque me importas
-        </h3>
-
-        <p>
-
-          Tu felicidad, tus días,
-          tus problemas y hasta esas
-          pequeñas cosas que quizás
-          tú consideras insignificantes.
-
-        </p>
-
-      </div>
-
-
-      <div class="razon">
-
-        <div class="razon-numero">
-          04
-        </div>
-
-        <h3>
-          Porque eres especial
-        </h3>
-
-        <p>
-
-          No por ser perfecta,
-          sino porque eres tú.
-          Y eso es precisamente
-          lo que me gusta.
-
-        </p>
-
-      </div>
-
-
-      <div class="razon">
-
-        <div class="razon-numero">
-          05
-        </div>
-
-        <h3>
-          Porque quiero intentarlo
-        </h3>
-
-        <p>
-
-          Porque cuando pienso en
-          todas las cosas que podríamos
-          vivir juntos, sinceramente,
-          me hace mucha ilusión.
-
-        </p>
-
-      </div>
-      ```
-
-    </div>
-
-    <div class="botones">
-
-      <button
-        class="boton boton-secundario"
-        onclick="seccionAnterior()">
-
-        ← Anterior
-
-      </button>
-
-      <button
-        class="boton"
-        onclick="siguienteSeccion()">
-
-        Tengo una última pregunta →
-
-      </button>
-
-    </div>
-
-  </section>
-
-  <!-- =====================================================
-       💗 SECCIÓN 4 — PREGUNTA
-  ===================================================== -->
-
-  <section
-    class="seccion"
-    id="seccion4">
-
-    <div class="pregunta">
-
-      <div
-        id="preguntaContenido">
-
-        <div
-          style="font-size:60px">
-
-          💗
-
-        </div>
-
-
-        <h2>
-
-          Entonces...
-
-        </h2>
-
-
-        <p>
-
-          Después de todo esto,
-          hay una pregunta que
-          realmente quiero hacerte.
-
-          <br><br>
-
-          ¿Quieres ser mi novia?
-
-        </p>
-
-
-        <div
-          class="botones-respuesta">
-
-
-          <button
-            id="botonSi"
-            class="boton"
-            onclick="aceptar()">
-
-            💗 Sí, quiero
-
-          </button>
-
-
-          <button
-            id="botonNo"
-            class="boton boton-secundario"
-            onclick="noQuiero()">
-
-            No
-
-          </button>
-
-
-        </div>
-
-      </div>
-
-
-      <div
-        id="finalMensaje"
-        class="final-mensaje">
-
-
-        <div class="gran-corazon">
-
-          💗
-
-        </div>
-
-
-        <h2>
-
-          Sabía que eras tú. 🥹💗
-
-        </h2>
-
-
-        <p>
-
-          No tienes idea de lo feliz
-          que me hace poder decir que
-          ahora podemos llamar a esto
-          nuestro.
-
-          <br><br>
-
-          Prometo cuidar este pequeño
-          comienzo y disfrutar cada
-          momento que podamos compartir.
-
-          <br><br>
-
-          Gracias por elegirme. 💗
-
-        </p>
-
-
-        <div style="font-size:40px">
-
-          🌷 💗 🌷 💗 🌷
-
-        </div>
-
-
-      </div>
-
-    </div>
-
-    <div class="botones">
-
-      <button
-        class="boton boton-secundario"
-        onclick="seccionAnterior()">
-
-        ← Volver
-
-      </button>
-
-    </div>
-
-  </section>
-
-</div>
-
-<!-- =====================================================
-     🧭 NAVEGACIÓN
-===================================================== -->
-
-<div class="navegacion">
-
-  <button
-    class="nav-boton"
-    onclick="seccionAnterior()">
-
-
-    ← Anterior
-
-  </button>
-
-  <button
-    class="nav-boton"
-    onclick="siguienteSeccion()">
-
-    Siguiente →
-
-  </button>
-
-</div>
-
-<!-- =====================================================
-     🎵 REPRODUCTOR
-===================================================== -->
-
-<div class="reproductor">
-
-  <div class="musica-info">
 
     <div
-      id="disco"
-      class="disco">
+      class="razones"
+      id="razonesIniciales">
 
-      ♪
+      <div class="razon">
+        Porque contigo puedo ser completamente yo,
+        sin tener que fingir ser alguien diferente.
+      </div>
+
+      <div class="razon">
+        Porque incluso los momentos más simples
+        terminan siendo especiales cuando estoy contigo.
+      </div>
+
+      <div class="razon">
+        Porque tienes una forma muy tuya de hacer
+        que un día normal termine siendo un día bonito.
+      </div>
+
+      <div class="razon">
+        Porque tu sonrisa tiene un extraño poder
+        para mejorarme el día. 💗
+      </div>
+
+      <div class="razon">
+        Porque cuando pienso en las personas
+        con las que quiero compartir más momentos,
+        apareces tú.
+      </div>
 
     </div>
 
 
-    <div>
+    <button
+      class="boton"
+      id="botonMasRazones"
+      onclick="mostrarMasRazones()">
 
-      <div
-        id="nombreMusica"
-        class="nombre-musica">
+      💕 ¿Quieres conocer más?
 
-        Nuestra canción 💗
+    </button>
+
+
+    <!-- =====================================
+         ✨ +10 RAZONES
+    ====================================== -->
+
+    <div
+      class="mas-razones"
+      id="masRazones">
+
+      <h3>
+        💕 Bueno... tú lo pediste
+      </h3>
+
+      <p>
+        Aquí tienes otras <strong>10 razones</strong>.
+        Y créeme, podría seguir inventando más 😂💗
+      </p>
+
+
+      <div class="razones">
+
+        <div class="razon">
+          Porque contigo las conversaciones pueden
+          durar horas y aun así nunca parecen suficientes.
+        </div>
+
+        <div class="razon">
+          Porque me gusta escuchar lo que tienes que decir,
+          incluso cuando estamos hablando de cualquier tontería.
+        </div>
+
+        <div class="razon">
+          Porque tienes una manera especial de quedarte
+          en mis pensamientos incluso cuando no estás presente.
+        </div>
+
+        <div class="razon">
+          Porque cada recuerdo contigo termina teniendo
+          un lugar especial en mi cabeza.
+        </div>
+
+        <div class="razon">
+          Porque me haces querer crear nuevos recuerdos
+          en lugar de quedarme solamente con los que ya existen.
+        </div>
+
+        <div class="razon">
+          Porque me gusta la tranquilidad que siento
+          cuando simplemente estoy hablando contigo.
+        </div>
+
+        <div class="razon">
+          Porque entre tantas personas que existen,
+          de alguna manera terminé encontrándote a ti.
+        </div>
+
+        <div class="razon">
+          Porque tienes esa combinación peligrosa
+          de hacerme sonreír y dejarme pensando en ti. 😂
+        </div>
+
+        <div class="razon">
+          Porque cuando imagino algunos de mis próximos
+          momentos favoritos, me gustaría que estuvieras ahí.
+        </div>
+
+        <div class="razon">
+          Y porque, después de todas estas razones,
+          todavía siento que ninguna explica completamente
+          por qué me gustas tanto. 💗
+        </div>
 
       </div>
 
-      <small>
-        Una pequeña banda sonora para este momento
-      </small>
+    </div>
+
+
+    <button
+      class="boton"
+      onclick="siguienteSeccion('pregunta')">
+
+      ✨ Continuar
+
+    </button>
+
+  </section>
+
+
+  <!-- =========================================
+       💍 PREGUNTA
+  ========================================= -->
+
+  <section
+    class="pregunta"
+    id="pregunta">
+
+    <h2>
+      Entonces...
+    </h2>
+
+
+    <p>
+
+      Después de todas estas razones,
+      hay una última cosa que quiero preguntarte.
+
+      <br><br>
+
+      No quiero que sea una pregunta cualquiera.
+
+      <br>
+
+      Quiero que sea el comienzo de algo
+      bonito para los dos. 💗
+
+    </p>
+
+
+    <h2>
+      ¿Quieres ser mi novia? 💗
+    </h2>
+
+
+    <div class="botones">
+
+      <button
+        class="boton"
+        onclick="aceptar()">
+
+        💗 Sí, quiero
+
+      </button>
+
+
+      <button
+        class="boton"
+        id="botonNo"
+        onclick="noQuiero()">
+
+        No
+
+      </button>
 
     </div>
 
-  </div>
 
-  <div class="controles">
+    <div id="respuesta"></div>
 
-    <button
-      class="control"
-      onclick="cancionAnterior()">
-
-      ⏮
-
-    </button>
-
-
-    <button
-      id="play"
-      class="control"
-      onclick="alternarMusica()">
-
-      ▶
-
-    </button>
-
-
-    <button
-      class="control"
-      onclick="cancionSiguiente()">
-
-      ⏭
-
-    </button>
-
-
-    <input
-      id="progreso"
-      type="range"
-      min="0"
-      max="100"
-      value="0"
-      step="0.1"
-      onchange="cambiarProgreso()"
-    >
-
-
-    <input
-      class="volumen"
-      type="range"
-      min="0"
-      max="1"
-      step="0.01"
-      value=".7"
-      onchange="cambiarVolumen(this.value)"
-    >
-
-  </div>
+  </section>
 
 </div>
 
-<audio
-  id="audio"
-  preload="metadata"> </audio>
 
 <script>
 
-
-  /* =====================================================
-     ✨ ESTRELLAS
-  ===================================================== */
+  /* =========================================
+     ⭐ ESTRELLAS
+  ========================================= */
 
   const estrellas =
-    document.getElementById(
-      "estrellas"
-    );
+    document.getElementById("estrellas");
 
+  function crearEstrellas(){
 
-  for(
-    let i=0;
-    i<100;
-    i++
-  ){
+    for(let i=0;i<120;i++){
 
-    const estrella =
-      document.createElement(
-        "div"
+      const estrella =
+        document.createElement("div");
+
+      estrella.className="estrella";
+
+      estrella.style.left =
+        Math.random()*100+"%";
+
+      estrella.style.top =
+        Math.random()*100+"%";
+
+      estrella.style.animationDelay =
+        Math.random()*4+"s";
+
+      estrellas.appendChild(
+        estrella
       );
 
-    estrella.className =
-      "estrella";
-
-    estrella.style.left =
-      Math.random()*100+"%";
-
-    estrella.style.top =
-      Math.random()*100+"%";
-
-    estrella.style.animationDelay =
-      Math.random()*3+"s";
-
-    estrellas.appendChild(
-      estrella
-    );
+    }
 
   }
 
-
-  /* =====================================================
-     💗 CORAZONES DE FONDO
-  ===================================================== */
-
-  const contenedorCorazones =
-    document.getElementById(
-      "corazones"
-    );
+  crearEstrellas();
 
 
-  for(
-    let i=0;
-    i<18;
-    i++
-  ){
-
-    const corazon =
-      document.createElement(
-        "div"
-      );
-
-    corazon.className =
-      "corazon";
-
-    corazon.textContent =
-      "♡";
-
-    corazon.style.left =
-      Math.random()*100+"%";
-
-    corazon.style.fontSize =
-      (15+
-        Math.random()*25)
-      +"px";
-
-    corazon.style.animationDuration =
-      (8+
-        Math.random()*10)
-      +"s";
-
-    corazon.style.animationDelay =
-      -Math.random()*15+"s";
-
-    contenedorCorazones.appendChild(
-      corazon
-    );
-
-  }
-
-
-  /* =====================================================
+  /* =========================================
      💌 SOBRE
-  ===================================================== */
+  ========================================= */
 
   function abrirSobre(){
 
     const sobre =
-      document.getElementById(
-        "sobre"
-      );
+      document.getElementById("sobre");
 
-    sobre.classList.add(
-      "abierto"
-    );
+    sobre.classList.add("abierto");
 
   }
 
 
-  /* =====================================================
-     🧭 SECCIONES
-  ===================================================== */
+  /* =========================================
+     ➡️ NAVEGACIÓN
+  ========================================= */
 
-  let seccionActual=1;
-
-  const totalSecciones=4;
-
-
-  function mostrarSeccion(numero){
+  function siguienteSeccion(id){
 
     document
-      .querySelectorAll(
-        ".seccion"
-      )
-      .forEach(
-        seccion=>{
-          seccion.classList.remove(
-            "activa"
-          );
-        }
-      );
+      .getElementById(id)
+      .scrollIntoView({
+        behavior:"smooth"
+      });
+
+  }
 
 
-    const nueva =
+  /* =========================================
+     ✨ MÁS RAZONES
+  ========================================= */
+
+  function mostrarMasRazones(){
+
+    const masRazones =
       document.getElementById(
-        "seccion"+numero
+        "masRazones"
+      );
+
+    const boton =
+      document.getElementById(
+        "botonMasRazones"
       );
 
 
-    nueva.classList.add(
-      "activa"
+    masRazones.classList.add(
+      "mostrar"
     );
 
+    boton.style.display="none";
 
-    seccionActual=numero;
 
+    setTimeout(()=>{
 
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
+      masRazones.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+
+    },200);
 
   }
 
 
-  function siguienteSeccion(){
+  /* =========================================
+     💗 ACEPTAR
+  ========================================= */
 
-    if(
-      seccionActual<
-      totalSecciones
-    ){
+  function aceptar(){
 
-      mostrarSeccion(
-        seccionActual+1
+    const respuesta =
+      document.getElementById(
+        "respuesta"
       );
 
-    }
+    respuesta.innerHTML =
+      `
+        💗 Sabía que eras tú.
+        <br><br>
+        Entonces oficialmente...
+        <br>
+        <strong>
+        tenemos una nueva historia que comenzar. 🌸
+        </strong>
+        `;
+
+    crearCorazones(35);
 
   }
 
 
-  function seccionAnterior(){
-
-    if(
-      seccionActual>1
-    ){
-
-      mostrarSeccion(
-        seccionActual-1
-      );
-
-    }
-
-  }
-
-
-  /* =====================================================
-     🎵 MÚSICA
-  ===================================================== */
-
-  /*
-
-    👇 AQUÍ PONES TUS CANCIONES.
-
-    Descarga tus MP3 y colócalos
-    junto al index.html.
-
-    Ejemplo:
-
-    musica1.mp3
-    musica2.mp3
-    musica3.mp3
-
-  */
-
-  const canciones=[
-
-    {
-      nombre:
-        "Nuestra canción 💗",
-
-      archivo:
-        "musica1.mp3"
-    },
-
-    {
-      nombre:
-        "Otra canción para ti 🌸",
-
-      archivo:
-        "musica2.mp3"
-    },
-
-    {
-      nombre:
-        "Nuestro momento ✨",
-
-      archivo:
-        "musica3.mp3"
-    }
-
-  ];
-
-
-  let cancionActual=0;
-
-  const audio =
-    document.getElementById(
-      "audio"
-    );
-
-  const play =
-    document.getElementById(
-      "play"
-    );
-
-  const disco =
-    document.getElementById(
-      "disco"
-    );
-
-  const progreso =
-    document.getElementById(
-      "progreso"
-    );
-
-  const nombreMusica =
-    document.getElementById(
-      "nombreMusica"
-    );
-
-
-  function cargarCancion(){
-
-    const cancion =
-      canciones[
-        cancionActual
-        ];
-
-
-    audio.src =
-      cancion.archivo;
-
-
-    nombreMusica.textContent =
-      cancion.nombre;
-
-
-    progreso.value=0;
-
-  }
-
-
-  function alternarMusica(){
-
-    if(
-      audio.paused
-    ){
-
-      audio.play()
-        .then(()=>{
-          actualizarReproductor();
-        })
-        .catch(()=>{
-          alert(
-            "Primero coloca tus archivos MP3 junto al index.html 🎵"
-          );
-        });
-
-    }else{
-
-      audio.pause();
-
-      actualizarReproductor();
-
-    }
-
-  }
-
-
-  function actualizarReproductor(){
-
-    if(
-      audio.paused
-    ){
-
-      play.textContent="▶";
-
-      disco.classList.add(
-        "pausado"
-      );
-
-    }else{
-
-      play.textContent="⏸";
-
-      disco.classList.remove(
-        "pausado"
-      );
-
-    }
-
-  }
-
-
-  function cancionSiguiente(){
-
-    cancionActual++;
-
-    if(
-      cancionActual>=
-      canciones.length
-    ){
-
-      cancionActual=0;
-
-    }
-
-
-    cargarCancion();
-
-    audio.play()
-      .then(()=>{
-        actualizarReproductor();
-      })
-      .catch(()=>{});
-
-  }
-
-
-  function cancionAnterior(){
-
-    cancionActual--;
-
-    if(
-      cancionActual<0
-    ){
-
-      cancionActual =
-        canciones.length-1;
-
-    }
-
-
-    cargarCancion();
-
-    audio.play()
-      .then(()=>{
-        actualizarReproductor();
-      })
-      .catch(()=>{});
-
-  }
-
-
-  audio.addEventListener(
-    "timeupdate",
-    ()=>{
-
-      if(
-        audio.duration
-      ){
-
-        progreso.value =
-          (
-            audio.currentTime /
-            audio.duration
-          )*
-          100;
-
-      }
-
-    }
-  );
-
-
-  audio.addEventListener(
-    "ended",
-    ()=>{
-
-      cancionSiguiente();
-
-    }
-  );
-
-
-  function cambiarProgreso(){
-
-    if(
-      audio.duration
-    ){
-
-      audio.currentTime =
-        (
-          progreso.value /
-          100
-        )*
-        audio.duration;
-
-    }
-
-  }
-
-
-  function cambiarVolumen(valor){
-
-    audio.volume =
-      valor;
-
-  }
-
-
-  cargarCancion();
-
-  audio.volume=.7;
-
-
-  /* =====================================================
-     💗 BOTÓN NO
-  ===================================================== */
-
-  let tamañoSi=1;
-
-  let vecesNo=0;
-
+  /* =========================================
+     😂 BOTÓN NO
+  ========================================= */
+
+  let tamañoNo=1;
 
   function noQuiero(){
 
-    vecesNo++;
-
-
-    tamañoSi+=.15;
-
-
-    const botonSi =
-      document.getElementById(
-        "botonSi"
-      );
-
-
-    botonSi.style.transform =
-      `scale(${tamañoSi})`;
-
-
-    const botonNo =
+    const boton =
       document.getElementById(
         "botonNo"
       );
 
+    const respuesta =
+      document.getElementById(
+        "respuesta"
+      );
 
-    const maxX=120;
+    tamañoNo*=0.8;
 
-    const maxY=70;
+    boton.style.transform =
+      `scale(${tamañoNo})`;
+
+    respuesta.innerHTML =
+      "👀 Ehhh... creo que ese botón está empezando a desaparecer...";
+
+  }
 
 
-    botonNo.style.transform =
-      `translate(
-      ${(Math.random()*2-1)*maxX}px,
-      ${(Math.random()*2-1)*maxY}px
-    )`;
+  /* =========================================
+     💕 CORAZONES
+  ========================================= */
 
+  function crearCorazones(cantidad=12){
 
-    const mensajes=[
-
-      "¿Segura? 🥺",
-
-      "Piénsalo otra vez... 💗",
-
-      "Ese botón está empezando a darme miedo 😭",
-
-      "Creo que el universo quiere que digas que sí ✨",
-
-      "Última oportunidad 👀",
-
-      "El botón Sí se está poniendo enorme JAJA",
-
-      "Ya no sé ni dónde está el No 😭"
-
+    const corazones=[
+      "💗",
+      "💖",
+      "💕",
+      "🩷",
+      "💞"
     ];
 
-
-    document
-      .querySelector(
-        "#preguntaContenido p"
-      )
-      .innerHTML =
-      mensajes[
-        Math.min(
-          vecesNo-1,
-          mensajes.length-1
-        )
-        ];
-
-
-  }
-
-
-  /* =====================================================
-     💗 ACEPTAR
-  ===================================================== */
-
-  function aceptar(){
-
-    const contenido =
-      document.getElementById(
-        "preguntaContenido"
-      );
-
-    const final =
-      document.getElementById(
-        "finalMensaje"
-      );
-
-
-    contenido.style.display=
-      "none";
-
-
-    final.classList.add(
-      "activo"
-    );
-
-
-    crearExplosionCorazones();
-
-
-    if(
-      audio.paused
-    ){
-
-      audio.play()
-        .then(()=>{
-          actualizarReproductor();
-        })
-        .catch(()=>{});
-
-    }
-
-  }
-
-
-  /* =====================================================
-     💥 EXPLOSIÓN
-  ===================================================== */
-
-  function crearExplosionCorazones(){
-
-    for(
-      let i=0;
-      i<35;
-      i++
-    ){
+    for(let i=0;i<cantidad;i++){
 
       const corazon =
-        document.createElement(
-          "div"
-        );
+        document.createElement("div");
 
-      corazon.className =
-        "corazon-explosion";
+      corazon.className=
+        "corazon";
 
       corazon.textContent =
-        [
-          "💗",
-          "💖",
-          "💕",
-          "🩷",
-          "🌸"
-        ][
+        corazones[
           Math.floor(
-            Math.random()*5
+            Math.random()*
+            corazones.length
           )
           ];
 
-
       corazon.style.left =
-        "50%";
+        Math.random()*100+"%";
 
-      corazon.style.top =
-        "50%";
-
-
-      corazon.style.setProperty(
-        "--x",
-        (
-          Math.random()*600-300
-        )+"px"
-      );
-
-
-      corazon.style.setProperty(
-        "--y",
-        (
-          Math.random()*600-300
-        )+"px"
-      );
-
+      corazon.style.animationDelay =
+        Math.random()*.8+"s";
 
       document.body.appendChild(
         corazon
       );
 
-
       setTimeout(
         ()=>{
           corazon.remove();
         },
-        2000
+        3500
       );
 
     }
@@ -2396,5 +1178,4 @@
 </script>
 
 </body>
-
 </html>
