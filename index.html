@@ -1,5 +1,5 @@
+```html
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
@@ -176,6 +176,8 @@
       cursor:pointer;
 
       transition:.4s;
+
+      perspective:800px;
     }
 
     .sobre:hover{
@@ -198,7 +200,72 @@
 
       box-shadow:
         0 20px 50px rgba(0,0,0,.3);
+
+      z-index:1;
     }
+
+    /* =========================================
+       💌 CARTA DENTRO DEL SOBRE
+    ========================================= */
+
+    .carta-dentro{
+
+      position:absolute;
+
+      width:190px;
+      height:125px;
+
+      left:20px;
+      bottom:10px;
+
+      background:#fff8fb;
+
+      border-radius:8px;
+
+      color:#b83b6d;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      text-align:center;
+
+      padding:15px;
+
+      font-family:"Playfair Display",serif;
+
+      font-size:1rem;
+
+      line-height:1.4;
+
+      box-shadow:
+        0 5px 20px rgba(0,0,0,.2);
+
+      z-index:2;
+
+      transform:
+        translateY(65px);
+
+      opacity:0;
+
+      transition:
+        transform .9s ease,
+        opacity .6s ease;
+    }
+
+    .sobre.abierto .carta-dentro{
+
+      transform:
+        translateY(-55px);
+
+      opacity:1;
+    }
+
+    /* =========================================
+       🔺 TAPA DEL SOBRE
+    ========================================= */
 
     .sobre-tapa{
 
@@ -216,14 +283,21 @@
 
       transform-origin:top;
 
-      transition:.8s;
+      transition:
+        transform .8s cubic-bezier(.68,-.55,.27,1.55);
 
-      z-index:3;
+      z-index:4;
     }
 
     .sobre.abierto .sobre-tapa{
-      transform:rotateX(180deg);
+
+      transform:
+        rotateX(180deg);
     }
+
+    /* =========================================
+       💗 CORAZÓN DEL SOBRE
+    ========================================= */
 
     .corazon-sobre{
 
@@ -239,15 +313,59 @@
 
       z-index:5;
 
-      transition:.5s;
+      transition:
+        .8s cubic-bezier(.68,-.55,.27,1.55);
     }
 
     .sobre.abierto .corazon-sobre{
+
       transform:
-        translate(-50%,-150%)
-        scale(.7);
+        translate(-50%,-190%)
+        scale(.65);
 
       opacity:0;
+    }
+
+    /* =========================================
+       ✨ MENSAJE SOBRE
+    ========================================= */
+
+    .mensaje-sobre{
+
+      position:absolute;
+
+      top:-55px;
+
+      left:50%;
+
+      transform:
+        translateX(-50%)
+        translateY(10px);
+
+      width:280px;
+
+      opacity:0;
+
+      pointer-events:none;
+
+      color:#ffd8e6;
+
+      font-size:.95rem;
+
+      transition:
+        opacity .7s ease,
+        transform .7s ease;
+
+      z-index:10;
+    }
+
+    .sobre.abierto .mensaje-sobre{
+
+      opacity:1;
+
+      transform:
+        translateX(-50%)
+        translateY(0);
     }
 
     .inicio h1{
@@ -324,6 +442,43 @@
       box-shadow:
         0 15px 40px
         rgba(232,93,145,.45);
+    }
+
+    /* Botón inicialmente bloqueado */
+
+    #botonAbrir{
+
+      opacity:.45;
+
+      pointer-events:none;
+
+      transform:scale(.95);
+    }
+
+    #botonAbrir.habilitado{
+
+      opacity:1;
+
+      pointer-events:auto;
+
+      transform:scale(1);
+
+      animation:
+        aparecerBoton .8s ease;
+    }
+
+    @keyframes aparecerBoton{
+
+      from{
+        opacity:0;
+        transform:scale(.8);
+      }
+
+      to{
+        opacity:1;
+        transform:scale(1);
+      }
+
     }
 
     /* =========================================
@@ -463,91 +618,66 @@
     }
 
     /* =========================================
-       ✨ SISTEMA DE RAZONES
+       ✨ MÁS RAZONES
     ========================================= */
 
-    .grupo-razones{
-      width:100%;
-    }
+    .mas-razones{
 
-    .grupo-razones.oculto{
-      display:none;
-    }
+      margin-top:45px;
 
-    .razones-navegacion{
+      padding:35px 25px;
 
-      display:flex;
-
-      justify-content:center;
-
-      align-items:center;
-
-      gap:18px;
-
-      margin-top:30px;
-
-      flex-wrap:wrap;
-    }
-
-    .boton-nav{
-
-      border:none;
-
-      padding:12px 22px;
-
-      border-radius:999px;
+      border-radius:30px;
 
       background:
-        rgba(255,180,210,.13);
+        linear-gradient(
+          145deg,
+          rgba(255,180,210,.12),
+          rgba(232,93,145,.08)
+        );
 
       border:
         1px solid
-        rgba(255,200,220,.25);
+        rgba(255,200,220,.2);
 
-      color:white;
-
-      font-family:"Quicksand",sans-serif;
-
-      font-weight:700;
-
-      cursor:pointer;
-
-      transition:.25s;
-    }
-
-    .boton-nav:hover{
-
-      transform:
-        translateY(-3px);
-
-      background:
-        rgba(255,180,210,.23);
-    }
-
-    .boton-nav:disabled{
-
-      opacity:.35;
-
-      cursor:not-allowed;
-
-      transform:none;
-    }
-
-    .indicador-razones{
-
-      color:var(--rosa-claro);
-
-      font-weight:700;
-
-      min-width:70px;
-    }
-
-    .razones-extra{
       display:none;
+
+      animation:
+        aparecerMas
+        .8s ease;
     }
 
-    .razones-extra.activo{
-      display:grid;
+    .mas-razones.mostrar{
+      display:block;
+    }
+
+    .mas-razones h3{
+
+      font-family:"Playfair Display",serif;
+
+      color:#ffd5e5;
+
+      font-size:1.8rem;
+
+      margin-top:0;
+    }
+
+    @keyframes aparecerMas{
+
+      from{
+        opacity:0;
+        transform:
+          translateY(30px)
+          scale(.96);
+      }
+
+      to{
+        opacity:1;
+        transform:
+          translateY(0)
+          scale(1);
+      }
+
     }
 
     /* =========================================
@@ -663,7 +793,6 @@
 
       0%{
         opacity:1;
-
         transform:
           translateY(0)
           scale(.8)
@@ -672,7 +801,6 @@
 
       100%{
         opacity:0;
-
         transform:
           translateY(-100vh)
           scale(1.5)
@@ -698,6 +826,12 @@
         border-top-width:75px;
       }
 
+      .carta-dentro{
+        width:165px;
+        height:110px;
+        left:17px;
+      }
+
       .razones{
         grid-template-columns:1fr;
       }
@@ -707,19 +841,11 @@
           80px 20px;
       }
 
-      .razones-navegacion{
-        gap:10px;
-      }
-
-      .boton-nav{
-        padding:10px 16px;
-      }
-
     }
 
   </style>
-
 </head>
+
 
 <body>
 
@@ -733,28 +859,57 @@
 
 <div id="estrellas"></div>
 
+
 <div class="contenedor">
+
 
   <!-- =========================================
        💌 INICIO
   ========================================= -->
 
-  <section
-    class="inicio"
-    id="inicio">
+  <section class="inicio" id="inicio">
+
 
     <div
       class="sobre"
       id="sobre"
       onclick="abrirSobre()">
 
+
       <div class="sobre-base"></div>
 
+
+      <!-- Carta que sale del sobre -->
+
+      <div class="carta-dentro">
+
+        Hay algo que quiero
+        preguntarte... 💗
+
+      </div>
+
+
+      <!-- Tapa -->
+
       <div class="sobre-tapa"></div>
+
+
+      <!-- Corazón -->
 
       <div class="corazon-sobre">
         💗
       </div>
+
+
+      <!-- Mensaje -->
+
+      <div class="mensaje-sobre">
+
+        Elige con calma...
+        esto lo hice especialmente para ti. 🥹💗
+
+      </div>
+
 
     </div>
 
@@ -765,23 +920,23 @@
 
 
     <p>
-
       Hay cosas que simplemente no se pueden
       decir en una conversación cualquiera.
       Así que decidí prepararte algo especial. 💕
-
     </p>
 
 
     <button
       class="boton"
+      id="botonAbrir"
       onclick="siguienteSeccion('razones')">
 
-      💌 Abrir
+      💌 Abrir propuesta
 
     </button>
 
   </section>
+
 
   <!-- =========================================
        💗 RAZONES
@@ -804,187 +959,179 @@
     </p>
 
 
+    <div class="contador">
+      ✨ Aquí hay 5 razones ✨
+    </div>
+
+
+    <div
+      class="razones"
+      id="razonesIniciales">
+
+
+      <div class="razon">
+
+        Porque contigo puedo ser completamente yo,
+        sin tener que fingir ser alguien diferente.
+
+      </div>
+
+
+      <div class="razon">
+
+        Porque incluso los momentos más simples
+        terminan siendo especiales cuando estoy contigo.
+
+      </div>
+
+
+      <div class="razon">
+
+        Porque tienes una forma muy tuya de hacer
+        que un día normal termine siendo un día bonito.
+
+      </div>
+
+
+      <div class="razon">
+
+        Porque tu sonrisa tiene un extraño poder
+        para mejorarme el día. 💗
+
+      </div>
+
+
+      <div class="razon">
+
+        Porque cuando pienso en las personas
+        con las que quiero compartir más momentos,
+        apareces tú.
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="boton"
+      id="botonMasRazones"
+      onclick="mostrarMasRazones()">
+
+      💕 ¿Quieres conocer más?
+
+    </button>
+
+
     <!-- =====================================
-         🌸 PRIMERAS 5 RAZONES
+         ✨ +10 RAZONES
     ====================================== -->
 
     <div
-      class="grupo-razones"
-      id="razonesIniciales">
+      class="mas-razones"
+      id="masRazones">
 
-      <div class="contador">
-        ✨ Aquí hay 5 razones ✨
-      </div>
+
+      <h3>
+        💕 Bueno... tú lo pediste
+      </h3>
+
+
+      <p>
+
+        Aquí tienes otras <strong>10 razones</strong>.
+        Y créeme, podría seguir inventando más 😂💗
+
+      </p>
 
 
       <div class="razones">
 
-        <div class="razon">
-          Porque contigo puedo ser completamente yo,
-          sin tener que fingir ser alguien diferente.
-        </div>
 
         <div class="razon">
-          Porque incluso los momentos más simples
-          terminan siendo especiales cuando estoy contigo.
-        </div>
 
-        <div class="razon">
-          Porque tienes una forma muy tuya de hacer
-          que un día normal termine siendo un día bonito.
-        </div>
-
-        <div class="razon">
-          Porque tu sonrisa tiene un extraño poder
-          para mejorarme el día. 💗
-        </div>
-
-        <div class="razon">
-          Porque cuando pienso en las personas
-          con las que quiero compartir más momentos,
-          apareces tú.
-        </div>
-
-      </div>
-
-
-      <button
-        class="boton"
-        onclick="mostrarMasRazones()">
-
-        💕 ¿Quieres más razones?
-
-      </button>
-
-    </div>
-
-
-    <!-- =====================================
-         💕 10 RAZONES EXTRA
-    ====================================== -->
-
-    <div
-      class="grupo-razones oculto"
-      id="razonesExtra">
-
-      <div
-        class="contador"
-        id="contadorExtra">
-
-        ✨ Aquí tienes más razones ✨
-
-      </div>
-
-
-      <div
-        class="razones"
-        id="razonesExtraLista">
-
-        <div class="razon">
           Porque contigo las conversaciones pueden
           durar horas y aun así nunca parecen suficientes.
+
         </div>
 
+
         <div class="razon">
+
           Porque me gusta escuchar lo que tienes que decir,
           incluso cuando estamos hablando de cualquier tontería.
+
         </div>
 
+
         <div class="razon">
+
           Porque tienes una manera especial de quedarte
           en mis pensamientos incluso cuando no estás presente.
+
         </div>
 
+
         <div class="razon">
+
           Porque cada recuerdo contigo termina teniendo
           un lugar especial en mi cabeza.
+
         </div>
 
+
         <div class="razon">
+
           Porque me haces querer crear nuevos recuerdos
           en lugar de quedarme solamente con los que ya existen.
+
         </div>
 
+
         <div class="razon">
+
           Porque me gusta la tranquilidad que siento
           cuando simplemente estoy hablando contigo.
+
         </div>
 
+
         <div class="razon">
+
           Porque entre tantas personas que existen,
           de alguna manera terminé encontrándote a ti.
+
         </div>
 
+
         <div class="razon">
+
           Porque tienes esa combinación peligrosa
           de hacerme sonreír y dejarme pensando en ti. 😂
+
         </div>
 
+
         <div class="razon">
+
           Porque cuando imagino algunos de mis próximos
           momentos favoritos, me gustaría que estuvieras ahí.
+
         </div>
 
+
         <div class="razon">
+
           Y porque, después de todas estas razones,
           todavía siento que ninguna explica completamente
           por qué me gustas tanto. 💗
-        </div>
-
-      </div>
-
-
-      <!-- =====================================
-           ⬅️ ➡️ NAVEGACIÓN
-      ====================================== -->
-
-      <div class="razones-navegacion">
-
-        <button
-          class="boton-nav"
-          id="anterior"
-          onclick="razonAnterior()">
-
-          ← Anterior
-
-        </button>
-
-
-        <div
-          class="indicador-razones"
-          id="indicadorRazones">
-
-          1 / 10
 
         </div>
 
 
-        <button
-          class="boton-nav"
-          id="siguiente"
-          onclick="razonSiguiente()">
-
-          Siguiente →
-
-        </button>
-
       </div>
-
-
-      <button
-        class="boton"
-        onclick="volverRazonesIniciales()">
-
-        💗 Volver a las primeras 5
-
-      </button>
 
     </div>
 
-
-    <!-- =====================================
-         ✨ CONTINUAR
-    ====================================== -->
 
     <button
       class="boton"
@@ -996,6 +1143,7 @@
 
   </section>
 
+
   <!-- =========================================
        💍 PREGUNTA
   ========================================= -->
@@ -1003,6 +1151,7 @@
   <section
     class="pregunta"
     id="pregunta">
+
 
     <h2>
       Entonces...
@@ -1033,6 +1182,7 @@
 
     <div class="botones">
 
+
       <button
         class="boton"
         onclick="aceptar()">
@@ -1051,6 +1201,7 @@
 
       </button>
 
+
     </div>
 
 
@@ -1059,6 +1210,7 @@
   </section>
 
 </div>
+
 
 <script>
 
@@ -1077,8 +1229,7 @@
       const estrella =
         document.createElement("div");
 
-      estrella.className =
-        "estrella";
+      estrella.className="estrella";
 
       estrella.style.left =
         Math.random()*100+"%";
@@ -1097,22 +1248,55 @@
 
   }
 
-
   crearEstrellas();
 
 
   /* =========================================
-     💌 SOBRE
+     💌 SOBRE INTERACTIVO
   ========================================= */
+
+  let sobreAbierto=false;
+
 
   function abrirSobre(){
 
     const sobre =
       document.getElementById("sobre");
 
-    sobre.classList.add(
-      "abierto"
-    );
+    const boton =
+      document.getElementById("botonAbrir");
+
+
+    /* Evita que se vuelva a ejecutar */
+
+    if(sobreAbierto){
+      return;
+    }
+
+
+    sobreAbierto=true;
+
+
+    /* Abrir sobre */
+
+    sobre.classList.add("abierto");
+
+
+    /* Pequeña explosión de corazones */
+
+    crearCorazones(12);
+
+
+    /* Después de la animación
+       aparece el botón */
+
+    setTimeout(()=>{
+
+      boton.classList.add(
+        "habilitado"
+      );
+
+    },1000);
 
   }
 
@@ -1133,175 +1317,37 @@
 
 
   /* =========================================
-     ✨ SISTEMA DE RAZONES
+     ✨ MÁS RAZONES
   ========================================= */
-
-  let razonActual = 0;
-
 
   function mostrarMasRazones(){
 
-    const iniciales =
+    const masRazones =
       document.getElementById(
-        "razonesIniciales"
+        "masRazones"
       );
 
-    const extras =
+    const boton =
       document.getElementById(
-        "razonesExtra"
+        "botonMasRazones"
       );
 
 
-    iniciales.classList.add(
-      "oculto"
+    masRazones.classList.add(
+      "mostrar"
     );
 
-    extras.classList.remove(
-      "oculto"
-    );
-
-    razonActual = 0;
-
-    actualizarRazones();
-
-    setTimeout(()=>{
-
-      extras.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-      });
-
-    },150);
-
-  }
-
-
-  function actualizarRazones(){
-
-    const razones =
-      document.querySelectorAll(
-        "#razonesExtraLista .razon"
-      );
-
-
-    razones.forEach(
-      (razon,index)=>{
-
-        if(index === razonActual){
-
-          razon.style.display =
-            "flex";
-
-          razon.style.opacity="0";
-
-          razon.style.transform =
-            "translateX(30px)";
-
-          setTimeout(()=>{
-
-            razon.style.opacity="1";
-
-            razon.style.transform =
-              "translateX(0)";
-
-          },50);
-
-        }else{
-
-          razon.style.display =
-            "none";
-
-        }
-
-      }
-    );
-
-
-    document.getElementById(
-      "indicadorRazones"
-    ).textContent =
-      `${razonActual+1} / ${razones.length}`;
-
-
-    document.getElementById(
-      "anterior"
-    ).disabled =
-      razonActual === 0;
-
-
-    document.getElementById(
-      "siguiente"
-    ).disabled =
-      razonActual === razones.length-1;
-
-  }
-
-
-  function razonSiguiente(){
-
-    const razones =
-      document.querySelectorAll(
-        "#razonesExtraLista .razon"
-      );
-
-
-    if(
-      razonActual <
-      razones.length-1
-    ){
-
-      razonActual++;
-
-      actualizarRazones();
-
-    }
-
-  }
-
-
-  function razonAnterior(){
-
-    if(razonActual > 0){
-
-      razonActual--;
-
-      actualizarRazones();
-
-    }
-
-  }
-
-
-  function volverRazonesIniciales(){
-
-    const iniciales =
-      document.getElementById(
-        "razonesIniciales"
-      );
-
-    const extras =
-      document.getElementById(
-        "razonesExtra"
-      );
-
-
-    extras.classList.add(
-      "oculto"
-    );
-
-    iniciales.classList.remove(
-      "oculto"
-    );
+    boton.style.display="none";
 
 
     setTimeout(()=>{
 
-      iniciales.scrollIntoView({
+      masRazones.scrollIntoView({
         behavior:"smooth",
         block:"center"
       });
 
-    },150);
+    },200);
 
   }
 
@@ -1325,7 +1371,7 @@
         Entonces oficialmente...
         <br>
         <strong>
-          tenemos una nueva historia que comenzar. 🌸
+        tenemos una nueva historia que comenzar. 🌸
         </strong>
       `;
 
@@ -1339,7 +1385,7 @@
      😂 BOTÓN NO
   ========================================= */
 
-  let tamañoNo = 1;
+  let tamañoNo=1;
 
 
   function noQuiero(){
@@ -1349,14 +1395,13 @@
         "botonNo"
       );
 
-
     const respuesta =
       document.getElementById(
         "respuesta"
       );
 
 
-    tamañoNo *= 0.8;
+    tamañoNo*=0.8;
 
 
     boton.style.transform =
@@ -1373,9 +1418,7 @@
      💕 CORAZONES
   ========================================= */
 
-  function crearCorazones(
-    cantidad=12
-  ){
+  function crearCorazones(cantidad=12){
 
     const corazones=[
       "💗",
@@ -1386,26 +1429,20 @@
     ];
 
 
-    for(
-      let i=0;
-      i<cantidad;
-      i++
-    ){
+    for(let i=0;i<cantidad;i++){
 
       const corazon =
-        document.createElement(
-          "div"
-        );
+        document.createElement("div");
 
 
-      corazon.className =
+      corazon.className=
         "corazon";
 
 
       corazon.textContent =
         corazones[
           Math.floor(
-            Math.random() *
+            Math.random()*
             corazones.length
           )
           ];
@@ -1439,3 +1476,4 @@
 
 </body>
 </html>
+```
