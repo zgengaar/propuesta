@@ -1,495 +1,519 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>💗 Una pregunta para ti</title>
+  <title>Una pregunta para ti 💗</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
 
-    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+    :root {
+      --rosa: #f58bb3;
+      --rosa-claro: #ffc1d8;
+      --rosa-fuerte: #e85d91;
+      --rosa-oscuro: #b83b6d;
 
-    :root{
-      --rosa:#f58bb3;
-      --rosa-claro:#ffc1d8;
-      --rosa-fuerte:#e85d91;
-      --rosa-oscuro:#b83b6d;
-      --fondo:#3b1427;
-      --fondo-claro:#6b2746;
-      --blanco:#fff8fb;
+      --fondo: #3b1427;
+      --fondo-claro: #6b2746;
+
+      --blanco: #fff8fb;
     }
 
-    *{
-      box-sizing:border-box;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html{
-      scroll-behavior:smooth;
+    html {
+      scroll-behavior: smooth;
     }
 
-    body{
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
 
-      margin:0;
-
-      color:var(--blanco);
-
-      font-family:"Quicksand",sans-serif;
+      font-family: 'Quicksand', sans-serif;
+      color: var(--blanco);
 
       background:
-        radial-gradient(
-          circle at 50% 0%,
-          #8d3c62,
-          #541d38 40%,
-          var(--fondo) 80%
-        );
-
-      overflow-x:hidden;
+        radial-gradient(circle at 20% 20%, rgba(245, 139, 179, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(232, 93, 145, 0.15), transparent 35%),
+        linear-gradient(135deg, var(--fondo), #4c1832, var(--fondo-claro));
     }
 
+    /* =========================
+       FONDO
+    ========================= */
 
-    /* =========================================
-       🌸 FONDO
-    ========================================= */
+    .fondo {
+      position: fixed;
+      inset: 0;
 
-    .fondo{
+      overflow: hidden;
 
-      position:fixed;
+      pointer-events: none;
 
-      inset:0;
-
-      pointer-events:none;
-
-      overflow:hidden;
-
-      z-index:0;
+      z-index: 0;
     }
 
-    .burbuja{
+    .burbuja {
+      position: absolute;
 
-      position:absolute;
+      width: 80px;
+      height: 80px;
 
-      border-radius:50%;
+      border-radius: 50%;
 
-      background:rgba(255,190,215,.12);
+      background: rgba(255, 193, 216, 0.08);
 
-      filter:blur(2px);
-
-      animation:flotar 10s ease-in-out infinite;
+      animation: flotar 10s infinite ease-in-out;
     }
 
-    .burbuja:nth-child(1){
+    .burbuja:nth-child(1) {
+      width: 120px;
+      height: 120px;
 
-      width:180px;
-      height:180px;
+      left: 5%;
+      top: 15%;
 
-      left:5%;
-      top:15%;
+      animation-delay: 0s;
     }
 
-    .burbuja:nth-child(2){
+    .burbuja:nth-child(2) {
+      width: 70px;
+      height: 70px;
 
-      width:250px;
-      height:250px;
+      right: 10%;
+      top: 25%;
 
-      right:5%;
-      top:45%;
-
-      animation-delay:-3s;
+      animation-delay: 2s;
     }
 
-    .burbuja:nth-child(3){
+    .burbuja:nth-child(3) {
+      width: 160px;
+      height: 160px;
 
-      width:140px;
-      height:140px;
+      left: 35%;
+      bottom: 5%;
 
-      left:40%;
-      bottom:5%;
-
-      animation-delay:-6s;
+      animation-delay: 4s;
     }
 
-    @keyframes flotar{
+    .burbuja:nth-child(4) {
+      width: 60px;
+      height: 60px;
 
-      0%,100%{
-        transform:translateY(0) scale(1);
+      right: 30%;
+      bottom: 20%;
+
+      animation-delay: 6s;
+    }
+
+    @keyframes flotar {
+      0%, 100% {
+        transform: translateY(0) scale(1);
       }
 
-      50%{
-        transform:translateY(-30px) scale(1.08);
+      50% {
+        transform: translateY(-35px) scale(1.08);
+      }
+    }
+
+    .estrella {
+      position: absolute;
+
+      width: 4px;
+      height: 4px;
+
+      border-radius: 50%;
+
+      background: white;
+
+      box-shadow: 0 0 10px white;
+
+      animation: brillar 2s infinite alternate;
+    }
+
+    .estrella:nth-child(5) {
+      left: 15%;
+      top: 20%;
+    }
+
+    .estrella:nth-child(6) {
+      left: 30%;
+      top: 70%;
+      animation-delay: .5s;
+    }
+
+    .estrella:nth-child(7) {
+      left: 70%;
+      top: 15%;
+      animation-delay: 1s;
+    }
+
+    .estrella:nth-child(8) {
+      left: 85%;
+      top: 65%;
+      animation-delay: 1.5s;
+    }
+
+    .estrella:nth-child(9) {
+      left: 50%;
+      top: 35%;
+      animation-delay: .8s;
+    }
+
+    .estrella:nth-child(10) {
+      left: 10%;
+      top: 80%;
+      animation-delay: 1.2s;
+    }
+
+    @keyframes brillar {
+      from {
+        opacity: .25;
+        transform: scale(.7);
       }
 
-    }
-
-
-    /* =========================================
-       ✨ ESTRELLAS
-    ========================================= */
-
-    #estrellas{
-
-      position:fixed;
-
-      inset:0;
-
-      pointer-events:none;
-
-      z-index:1;
-    }
-
-    .estrella{
-
-      position:absolute;
-
-      width:3px;
-      height:3px;
-
-      border-radius:50%;
-
-      background:white;
-
-      box-shadow:0 0 8px white;
-
-      animation:brillar 3s ease-in-out infinite;
-    }
-
-    @keyframes brillar{
-
-      0%,100%{
-        opacity:.2;
-        transform:scale(.7);
+      to {
+        opacity: 1;
+        transform: scale(1.5);
       }
-
-      50%{
-        opacity:1;
-        transform:scale(1.5);
-      }
-
     }
 
+    /* =========================
+       SECCIONES
+    ========================= */
 
-    /* =========================================
-       🌸 CONTENEDOR
-    ========================================= */
+    section {
+      position: relative;
 
-    .contenedor{
+      min-height: 100vh;
 
-      position:relative;
+      display: flex;
+      flex-direction: column;
 
-      z-index:2;
+      justify-content: center;
+      align-items: center;
+
+      padding: 70px 20px;
+
+      z-index: 2;
     }
 
+    /* =========================
+       INICIO
+    ========================= */
 
-    /* =========================================
-       💌 INICIO
-    ========================================= */
+    .inicio {
+      text-align: center;
 
-    .inicio{
+      /*
+       IMPORTANTE:
+       No hay ningún fondo blanco detrás
+       del título ni del sobre.
+      */
 
-      min-height:100vh;
-
-      display:flex;
-
-      flex-direction:column;
-
-      justify-content:center;
-
-      align-items:center;
-
-      text-align:center;
-
-      padding:30px;
-
-      position:relative;
-
-      z-index:5;
+      background: transparent;
     }
 
+    .titulo-inicial {
+      position: relative;
 
-    /* =========================================
-       ✉️ SOBRE
-    ========================================= */
+      z-index: 20;
 
-    .sobre{
+      max-width: 800px;
 
-      position:relative;
+      margin-bottom: 45px;
 
-      width:230px;
-      height:160px;
+      font-family: 'Playfair Display', serif;
 
-      margin-bottom:40px;
+      font-size: clamp(2rem, 5vw, 4rem);
 
-      cursor:pointer;
+      color: var(--blanco);
 
-      transition:
-        transform .4s ease,
-        filter .4s ease;
+      text-shadow:
+        0 0 15px rgba(255, 193, 216, .4),
+        0 5px 20px rgba(0, 0, 0, .25);
 
-      z-index:10;
+      line-height: 1.2;
     }
 
-    .sobre:hover{
+    .subtitulo {
+      position: relative;
 
-      transform:scale(1.05);
+      z-index: 20;
 
+      max-width: 650px;
+
+      margin-top: 35px;
+      margin-bottom: 25px;
+
+      font-size: 1.1rem;
+
+      color: #ffe8f0;
+
+      line-height: 1.7;
     }
 
+    /* =========================
+       SOBRE
+    ========================= */
 
-    .sobre-base{
+    .zona-sobre {
+      position: relative;
 
-      position:absolute;
+      z-index: 10;
 
-      inset:0;
+      width: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      perspective: 1000px;
+    }
+
+    .sobre {
+      position: relative;
+
+      width: min(340px, 85vw);
+      height: 230px;
+
+      cursor: pointer;
+
+      transform-style: preserve-3d;
+
+      filter:
+        drop-shadow(0 20px 30px rgba(0, 0, 0, .3));
+
+      transition: transform .3s ease;
+    }
+
+    .sobre:hover {
+      transform: translateY(-8px);
+    }
+
+    /* Parte inferior del sobre */
+
+    .sobre-base {
+      position: absolute;
+
+      inset: 0;
 
       background:
         linear-gradient(
           145deg,
           #ff9fc2,
-          #e85d91
+          var(--rosa),
+          #e9699a
         );
 
-      border-radius:8px;
+      border-radius: 12px;
+
+      overflow: hidden;
 
       box-shadow:
-        0 20px 50px rgba(0,0,0,.35);
-
-      z-index:1;
+        inset 0 0 0 2px rgba(255,255,255,.12);
     }
 
+    /* Triángulo inferior izquierdo */
 
-    /* Triángulo frontal del sobre */
+    .sobre-base::before {
+      content: "";
 
-    .sobre-base::before{
+      position: absolute;
 
-      content:"";
+      left: 0;
+      bottom: 0;
 
-      position:absolute;
+      width: 0;
+      height: 0;
 
-      left:0;
-      bottom:0;
-
-      width:0;
-      height:0;
-
-      border-left:115px solid transparent;
-      border-right:115px solid transparent;
-
-      border-bottom:85px solid rgba(255,210,225,.35);
-
-      z-index:2;
+      border-left: 170px solid transparent;
+      border-right: 170px solid transparent;
+      border-bottom: 115px solid rgba(184, 59, 109, .22);
     }
 
+    /* Parte inferior central */
 
-    /* Tapa */
+    .sobre-base::after {
+      content: "";
 
-    .sobre-tapa{
+      position: absolute;
 
-      position:absolute;
+      left: 0;
+      bottom: 0;
 
-      left:0;
-      top:0;
+      width: 0;
+      height: 0;
 
-      width:0;
-      height:0;
-
-      border-left:115px solid transparent;
-      border-right:115px solid transparent;
-
-      border-top:85px solid #ffb5d0;
-
-      transform-origin:top;
-
-      transition:
-        transform .8s cubic-bezier(.68,-.55,.27,1.55);
-
-      z-index:5;
+      border-left: 170px solid transparent;
+      border-right: 170px solid transparent;
+      border-bottom: 130px solid rgba(255,255,255,.10);
     }
 
+    /* =========================
+       TAPA DEL SOBRE
+    ========================= */
 
-    .sobre.abierto .sobre-tapa{
+    .sobre-tapa {
+      position: absolute;
 
-      transform:
-        rotateX(180deg);
+      left: 0;
+      top: 0;
 
-    }
+      width: 100%;
+      height: 100px;
 
+      z-index: 5;
 
-    /* Carta dentro */
+      transform-origin: top center;
 
-    .carta{
-
-      position:absolute;
-
-      width:180px;
-
-      height:115px;
-
-      left:25px;
-
-      top:25px;
-
-      background:#fff8fb;
-
-      border-radius:6px;
-
-      box-shadow:
-        0 5px 20px rgba(0,0,0,.15);
-
-      z-index:2;
-
-      transition:
-        transform 1s ease,
-        opacity .5s ease;
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      color:#b83b6d;
-
-      font-family:"Playfair Display",serif;
-
-      font-size:18px;
-
-      padding:15px;
-
-      text-align:center;
-    }
-
-
-    .sobre.abierto .carta{
-
-      transform:
-        translateY(-75px);
-
-    }
-
-
-    /* Corazón */
-
-    .corazon-sobre{
-
-      position:absolute;
-
-      left:50%;
-      top:50%;
-
-      transform:
-        translate(-50%,-50%);
-
-      font-size:45px;
-
-      z-index:8;
-
-      transition:
-        .8s cubic-bezier(.68,-.55,.27,1.55);
-    }
-
-    .sobre.abierto .corazon-sobre{
-
-      transform:
-        translate(-50%,-180%)
-        scale(.7);
-
-      opacity:0;
-
-    }
-
-
-    /* =========================================
-       💌 MENSAJE DEL SOBRE
-    ========================================= */
-
-    #mensajeSobre{
-
-      min-height:30px;
-
-      margin-top:-20px;
-
-      margin-bottom:15px;
-
-      color:#ffd2e2;
-
-      font-size:1rem;
-
-      font-weight:600;
-
-      opacity:0;
-
-      transform:translateY(10px);
-
-      transition:.5s;
-
-    }
-
-    #mensajeSobre.mostrar{
-
-      opacity:1;
-
-      transform:translateY(0);
-
-    }
-
-
-    /* =========================================
-       TITULO
-    ========================================= */
-
-    .inicio h1{
-
-      font-family:"Playfair Display",serif;
-
-      font-size:
-        clamp(
-          2.5rem,
-          7vw,
-          4.5rem
+      background:
+        linear-gradient(
+          135deg,
+          #ffb2cd,
+          #f58bb3
         );
 
-      margin:0 0 15px;
+      clip-path: polygon(
+        0 0,
+        50% 100%,
+        100% 0
+      );
 
-      color:#ffd8e6;
-
-      position:relative;
-
-      z-index:20;
+      transition:
+        transform .8s cubic-bezier(.68,-.55,.27,1.55),
+        z-index 0s .4s;
     }
 
+    /* Cuando se abre */
 
-    .inicio p{
+    .sobre.abierto .sobre-tapa {
+      transform: rotateX(180deg);
 
-      max-width:600px;
-
-      font-size:1.1rem;
-
-      line-height:1.8;
-
-      opacity:.9;
-
-      position:relative;
-
-      z-index:20;
+      z-index: 1;
     }
 
+    /* =========================
+       CORAZÓN DEL SOBRE
+    ========================= */
 
-    /* =========================================
-       🔘 BOTONES
-    ========================================= */
+    .corazon-sobre {
+      position: absolute;
 
-    .boton{
+      left: 50%;
+      top: 48%;
 
-      border:none;
+      transform: translate(-50%, -50%);
 
-      padding:14px 28px;
+      z-index: 10;
 
-      margin-top:20px;
+      width: 62px;
+      height: 62px;
 
-      border-radius:999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          #ff477e 0%,
+          #ec5b92 50%,
+          #ff9fc2 100%
+        );
+
+      box-shadow:
+        0 0 0 8px rgba(255, 193, 216, .35),
+        0 0 25px rgba(255, 82, 140, .7);
+
+      font-size: 30px;
+
+      transition:
+        transform .4s ease,
+        opacity .4s ease;
+    }
+
+    .sobre:hover .corazon-sobre {
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+
+    .sobre.abierto .corazon-sobre {
+      opacity: 0;
+
+      transform:
+        translate(-50%, -50%)
+        scale(.5);
+    }
+
+    /* =========================
+       MENSAJE DEL SOBRE
+    ========================= */
+
+    .mensaje-sobre {
+      position: absolute;
+
+      left: 50%;
+      bottom: -55px;
+
+      transform: translateX(-50%) translateY(10px);
+
+      width: 100%;
+
+      text-align: center;
+
+      opacity: 0;
+
+      color: var(--rosa-claro);
+
+      font-weight: 600;
+
+      transition: .5s ease;
+
+      pointer-events: none;
+    }
+
+    .sobre.abierto + .mensaje-sobre {
+      opacity: 1;
+
+      transform:
+        translateX(-50%)
+        translateY(0);
+    }
+
+    /* =========================
+       BOTONES
+    ========================= */
+
+    button {
+      border: none;
+
+      font-family: 'Quicksand', sans-serif;
+
+      cursor: pointer;
+    }
+
+    .boton {
+      position: relative;
+
+      z-index: 20;
+
+      margin-top: 75px;
+
+      padding: 14px 28px;
+
+      border-radius: 999px;
 
       background:
         linear-gradient(
@@ -498,1406 +522,1058 @@
           var(--rosa-fuerte)
         );
 
-      color:white;
+      color: white;
 
-      font-family:"Quicksand",sans-serif;
-
-      font-weight:700;
-
-      font-size:1rem;
-
-      cursor:pointer;
+      font-size: 1rem;
+      font-weight: 700;
 
       box-shadow:
-        0 10px 30px
-        rgba(232,93,145,.3);
+        0 10px 25px rgba(0,0,0,.25),
+        0 0 20px rgba(245,139,179,.2);
 
-      transition:.25s;
-
-      position:relative;
-
-      z-index:20;
+      transition: .25s ease;
     }
 
-    .boton:hover{
-
-      transform:
-        translateY(-4px)
-        scale(1.03);
+    .boton:hover {
+      transform: translateY(-4px) scale(1.03);
 
       box-shadow:
-        0 15px 40px
-        rgba(232,93,145,.45);
+        0 15px 30px rgba(0,0,0,.3),
+        0 0 25px rgba(245,139,179,.4);
     }
 
+    /* =========================
+       RAZONES
+    ========================= */
 
-    /* =========================================
-       💗 SECCIONES
-    ========================================= */
-
-    .seccion{
-
-      min-height:100vh;
-
-      max-width:850px;
-
-      margin:auto;
-
-      padding:
-        100px 25px;
-
-      display:flex;
-
-      flex-direction:column;
-
-      justify-content:center;
-
-      text-align:center;
+    .razones-seccion {
+      text-align: center;
     }
 
-    .seccion h2{
+    .titulo-seccion {
+      font-family: 'Playfair Display', serif;
 
-      font-family:"Playfair Display",serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
 
-      font-size:2.7rem;
+      margin-bottom: 15px;
 
-      color:#ffd2e2;
-
-      margin-bottom:15px;
+      color: var(--blanco);
     }
 
-    .seccion > p{
+    .descripcion {
+      max-width: 700px;
 
-      line-height:1.8;
+      margin-bottom: 45px;
 
-      opacity:.85;
+      color: #ffe5ef;
 
-      max-width:650px;
-
-      margin:
-        0 auto 50px;
+      line-height: 1.7;
     }
 
+    /* =========================
+       CONTENEDOR DE RAZONES
+    ========================= */
 
-    /* =========================================
-       🌸 RAZONES
-    ========================================= */
+    .contenedor-razones {
+      position: relative;
 
-    .contador{
+      width: min(1100px, 95vw);
 
-      font-size:1.1rem;
-
-      color:var(--rosa-claro);
-
-      font-weight:700;
-
-      margin-bottom:25px;
+      overflow: hidden;
     }
 
+    .razones-grid {
+      width: 100%;
 
-    .razones{
-
-      display:grid;
+      display: grid;
 
       grid-template-columns:
-        repeat(
-          auto-fit,
-          minmax(230px,1fr)
-        );
+                repeat(5, minmax(0, 1fr));
 
-      gap:20px;
+      gap: 18px;
+
+      transition:
+        transform .65s cubic-bezier(.65,0,.35,1),
+        opacity .35s ease;
     }
 
+    /*
+    Esta animación hace que el grupo actual
+    salga hacia la derecha y el siguiente
+    entre desde la izquierda/derecha.
+    */
 
-    .razon{
-
-      padding:28px 22px;
-
-      min-height:180px;
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:center;
-
-      border-radius:25px;
-
-      background:
-        rgba(255,180,210,.09);
-
-      border:
-        1px solid
-        rgba(255,200,220,.18);
-
-      backdrop-filter:blur(8px);
-
-      line-height:1.7;
-
-      font-size:1.05rem;
-
-      transition:.3s;
-
-      animation:
-        aparecerRazon
-        .7s
-        forwards;
+    .razones-grid.saliendo-derecha {
+      animation: salirDerecha .65s ease forwards;
     }
 
-    .razon:hover{
-
-      transform:
-        translateY(-7px);
-
-      background:
-        rgba(255,180,210,.16);
-
-      box-shadow:
-        0 15px 40px
-        rgba(0,0,0,.2);
+    .razones-grid.saliendo-izquierda {
+      animation: salirIzquierda .65s ease forwards;
     }
 
-    @keyframes aparecerRazon{
+    @keyframes salirDerecha {
 
-      from{
-
-        opacity:0;
-
-        transform:
-          translateY(30px);
+      0% {
+        transform: translateX(0);
+        opacity: 1;
       }
 
-      to{
-
-        opacity:1;
-
-        transform:
-          translateY(0);
+      45% {
+        transform: translateX(110%);
+        opacity: 0;
       }
 
+      55% {
+        transform: translateX(-110%);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
 
+    @keyframes salirIzquierda {
 
-    /* =========================================
-       💕 BOTÓN MÁS RAZONES
-    ========================================= */
+      0% {
+        transform: translateX(0);
+        opacity: 1;
+      }
 
-    #botonMasRazones{
+      45% {
+        transform: translateX(-110%);
+        opacity: 0;
+      }
 
-      margin-top:35px;
+      55% {
+        transform: translateX(110%);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
 
+    /* =========================
+       CUADRADOS DE RAZONES
+    ========================= */
 
-    /* =========================================
-       ✨ CARRUSEL DE RAZONES
-    ========================================= */
+    .razon {
+      min-height: 180px;
 
-    .carrusel{
+      display: flex;
 
-      display:none;
+      align-items: center;
+      justify-content: center;
 
-      margin-top:35px;
+      padding: 22px;
 
-      padding:30px 20px;
+      text-align: center;
 
-      border-radius:30px;
+      border-radius: 18px;
 
       background:
         linear-gradient(
           145deg,
-          rgba(255,180,210,.12),
-          rgba(232,93,145,.08)
+          rgba(255, 193, 216, .16),
+          rgba(232, 93, 145, .10)
         );
 
       border:
-        1px solid
-        rgba(255,200,220,.2);
+        1px solid rgba(255, 193, 216, .28);
 
-      animation:
-        aparecerCarrusel
-        .7s ease;
+      box-shadow:
+        0 10px 25px rgba(0,0,0,.18),
+        inset 0 0 20px rgba(255,255,255,.03);
+
+      color: #fff2f7;
+
+      line-height: 1.55;
+
+      font-size: .95rem;
+
+      transition: .3s ease;
     }
 
+    .razon:hover {
+      transform: translateY(-8px);
 
-    .carrusel.mostrar{
+      border-color:
+        rgba(255, 193, 216, .6);
 
-      display:block;
-
+      box-shadow:
+        0 18px 30px rgba(0,0,0,.25),
+        0 0 25px rgba(245,139,179,.12);
     }
 
+    /* =========================
+       CONTROLES DEL CARRUSEL
+    ========================= */
 
-    @keyframes aparecerCarrusel{
+    .controles-carrusel {
+      display: none;
 
-      from{
+      align-items: center;
+      justify-content: center;
 
-        opacity:0;
+      gap: 25px;
 
-        transform:
-          scale(.95)
-          translateY(20px);
-      }
-
-      to{
-
-        opacity:1;
-
-        transform:
-          scale(1)
-          translateY(0);
-      }
-
+      margin-top: 35px;
     }
 
-
-    .carrusel h3{
-
-      font-family:"Playfair Display",serif;
-
-      font-size:1.8rem;
-
-      color:#ffd5e5;
-
-      margin:
-        0 0 8px;
+    .controles-carrusel.visible {
+      display: flex;
     }
 
+    .flecha {
+      width: 52px;
+      height: 52px;
 
-    .contador-carrusel{
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      color:var(--rosa-claro);
-
-      font-weight:700;
-
-      margin-bottom:20px;
-    }
-
-
-    /* Cuadrito de la razón */
-
-    .razon-extra{
-
-      min-height:200px;
-
-      padding:35px 25px;
-
-      border-radius:25px;
+      border-radius: 50%;
 
       background:
-        rgba(255,180,210,.09);
+        rgba(245, 139, 179, .18);
 
       border:
-        1px solid
-        rgba(255,200,220,.18);
+        1px solid rgba(255, 193, 216, .4);
 
-      backdrop-filter:blur(8px);
+      color: white;
 
-      display:flex;
+      font-size: 1.5rem;
+      font-weight: bold;
 
-      align-items:center;
-
-      justify-content:center;
-
-      font-size:1.08rem;
-
-      line-height:1.8;
-
-      animation:
-        cambiarRazon
-        .4s ease;
+      transition: .25s ease;
     }
 
+    .flecha:hover {
+      background: var(--rosa-fuerte);
 
-    @keyframes cambiarRazon{
-
-      from{
-
-        opacity:0;
-
-        transform:
-          translateX(25px);
-      }
-
-      to{
-
-        opacity:1;
-
-        transform:
-          translateX(0);
-      }
-
+      transform: scale(1.1);
     }
 
+    .contador {
+      min-width: 60px;
 
-    /* =========================================
-       ⬅️➡️ FLECHAS
-    ========================================= */
+      color: var(--rosa-claro);
 
-    .controles-carrusel{
+      font-weight: 700;
 
-      display:flex;
-
-      justify-content:center;
-
-      align-items:center;
-
-      gap:20px;
-
-      margin-top:25px;
+      font-size: .95rem;
     }
 
+    /* =========================
+       BOTÓN MÁS RAZONES
+    ========================= */
 
-    .flecha{
+    #botonMasRazones {
+      margin-top: 40px;
+    }
 
-      width:50px;
+    .texto-carrusel {
+      display: none;
 
-      height:50px;
+      margin-top: 20px;
 
-      border:none;
+      color: var(--rosa-claro);
 
-      border-radius:50%;
+      font-size: .9rem;
+    }
+
+    .texto-carrusel.visible {
+      display: block;
+    }
+
+    /* =========================
+       PROPUESTA FINAL
+    ========================= */
+
+    .final {
+      text-align: center;
+    }
+
+    .final h2 {
+      font-family: 'Playfair Display', serif;
+
+      font-size: clamp(2.2rem, 6vw, 4rem);
+
+      margin-bottom: 20px;
+    }
+
+    .final p {
+      margin-bottom: 40px;
+
+      color: #ffe5ef;
+    }
+
+    .botones-final {
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      gap: 20px;
+
+      flex-wrap: wrap;
+    }
+
+    .si {
+      padding: 15px 32px;
+
+      border-radius: 999px;
 
       background:
         linear-gradient(
           135deg,
-          var(--rosa),
-          var(--rosa-fuerte)
+          #ff8fb9,
+          #e85d91
         );
 
-      color:white;
+      color: white;
 
-      font-size:1.5rem;
-
-      font-weight:bold;
-
-      cursor:pointer;
+      font-size: 1.05rem;
+      font-weight: 700;
 
       box-shadow:
-        0 8px 20px
-        rgba(232,93,145,.3);
+        0 10px 25px rgba(0,0,0,.25);
 
-      transition:.25s;
+      transition: .3s ease;
     }
 
-
-    .flecha:hover{
-
-      transform:
-        scale(1.1);
-
-      box-shadow:
-        0 12px 30px
-        rgba(232,93,145,.45);
+    .si:hover {
+      transform: scale(1.08);
     }
 
+    .no {
+      padding: 13px 27px;
 
-    .numero-razon{
+      border-radius: 999px;
 
-      color:#ffd2e2;
+      background: rgba(255,255,255,.12);
 
-      font-weight:700;
+      color: white;
 
-      min-width:70px;
+      font-weight: 600;
+
+      transition: .25s ease;
     }
 
+    .respuesta {
+      margin-top: 35px;
 
-    /* =========================================
-       💗 PREGUNTA FINAL
-    ========================================= */
+      min-height: 30px;
 
-    .pregunta{
+      font-size: 1.15rem;
 
-      min-height:100vh;
+      font-weight: 700;
 
-      display:flex;
-
-      flex-direction:column;
-
-      justify-content:center;
-
-      align-items:center;
-
-      text-align:center;
-
-      padding:30px;
+      color: var(--rosa-claro);
     }
 
-    .pregunta h2{
+    /* =========================
+       CORAZONES
+    ========================= */
 
-      font-family:"Playfair Display",serif;
+    .corazon-flotante {
+      position: fixed;
 
-      font-size:
-        clamp(
-          2.5rem,
-          8vw,
-          5rem
-        );
+      bottom: -30px;
 
-      color:#ffd7e5;
+      z-index: 100;
 
-      margin-bottom:20px;
-    }
+      pointer-events: none;
 
-    .pregunta p{
-
-      font-size:1.2rem;
-
-      line-height:1.8;
-
-      max-width:650px;
-
-      opacity:.9;
-    }
-
-
-    .botones{
-
-      display:flex;
-
-      gap:15px;
-
-      justify-content:center;
-
-      flex-wrap:wrap;
-
-      margin-top:25px;
-    }
-
-
-    #botonNo{
-
-      background:
-        rgba(255,255,255,.08);
-
-      border:
-        1px solid
-        rgba(255,255,255,.2);
-
-      box-shadow:none;
-    }
-
-
-    #respuesta{
-
-      min-height:50px;
-
-      margin-top:25px;
-
-      color:#ffd1e1;
-
-      font-size:1.2rem;
-
-      font-weight:700;
-    }
-
-
-    /* =========================================
-       💕 CORAZONES
-    ========================================= */
-
-    .corazon{
-
-      position:fixed;
-
-      bottom:-30px;
-
-      pointer-events:none;
-
-      z-index:100;
-
-      font-size:25px;
+      font-size: 24px;
 
       animation:
-        subir
-        3s
-        ease-out
-        forwards;
+        subirCorazon 4s linear forwards;
     }
 
+    @keyframes subirCorazon {
 
-    @keyframes subir{
-
-      0%{
-
-        opacity:1;
-
+      0% {
         transform:
           translateY(0)
-          scale(.8)
-          rotate(0);
+          rotate(0deg)
+          scale(.8);
+
+        opacity: 0;
       }
 
-      100%{
+      15% {
+        opacity: 1;
+      }
 
-        opacity:0;
-
+      100% {
         transform:
-          translateY(-100vh)
-          scale(1.5)
-          rotate(25deg);
-      }
+          translateY(-110vh)
+          rotate(360deg)
+          scale(1.4);
 
+        opacity: 0;
+      }
     }
 
+    /* =========================
+       RESPONSIVE
+    ========================= */
 
-    /* =========================================
-       📱 RESPONSIVE
-    ========================================= */
+    @media (max-width: 1000px) {
 
-    @media(max-width:600px){
+      .razones-grid {
+        grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+      }
+    }
 
-      .sobre{
+    @media (max-width: 650px) {
 
-        width:200px;
+      .razones-grid {
+        grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
 
-        height:140px;
+        gap: 12px;
       }
 
+      .razon {
+        min-height: 170px;
 
-      .sobre-tapa{
+        padding: 17px;
 
-        border-left-width:100px;
-
-        border-right-width:100px;
-
-        border-top-width:75px;
+        font-size: .9rem;
       }
 
+      .sobre {
+        width: min(310px, 88vw);
+      }
+    }
 
-      .sobre-base::before{
+    @media (max-width: 430px) {
 
-        border-left-width:100px;
-
-        border-right-width:100px;
-
-        border-bottom-width:75px;
+      .razones-grid {
+        grid-template-columns: 1fr;
       }
 
-
-      .carta{
-
-        width:155px;
-
-        height:100px;
-
-        left:22px;
-
-        top:20px;
-
-        font-size:15px;
+      .razon {
+        min-height: 145px;
       }
 
-
-      .razones{
-
-        grid-template-columns:1fr;
+      .titulo-inicial {
+        font-size: 2.1rem;
       }
 
-
-      .seccion{
-
-        padding:
-          80px 20px;
+      .sobre {
+        height: 205px;
       }
-
-
-      .razon-extra{
-
-        min-height:220px;
-
-        padding:30px 20px;
-      }
-
     }
 
   </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================================
-     🌸 FONDO
-========================================= -->
+<!-- =========================
+     FONDO
+========================= -->
 
 <div class="fondo">
 
   <div class="burbuja"></div>
-
+  <div class="burbuja"></div>
+  <div class="burbuja"></div>
   <div class="burbuja"></div>
 
-  <div class="burbuja"></div>
+  <div class="estrella"></div>
+  <div class="estrella"></div>
+  <div class="estrella"></div>
+  <div class="estrella"></div>
+  <div class="estrella"></div>
+  <div class="estrella"></div>
 
 </div>
 
 
-<div id="estrellas"></div>
+<!-- =========================
+     INICIO
+========================= -->
+
+<section class="inicio" id="inicio">
+
+  <h1 class="titulo-inicial">
+    Tengo algo que preguntarte... 💗
+  </h1>
 
 
-<div class="contenedor">
-
-
-  <!-- =========================================
-       💌 INICIO
-  ========================================= -->
-
-  <section
-    class="inicio"
-    id="inicio">
-
+  <div class="zona-sobre">
 
     <div
       class="sobre"
       id="sobre"
-      onclick="abrirSobre()">
-
+      onclick="abrirSobre()"
+    >
 
       <div class="sobre-base"></div>
 
-
-      <div class="carta">
-
-        Hay algo que quiero
-        preguntarte... 💗
-
-      </div>
-
-
       <div class="sobre-tapa"></div>
 
-
       <div class="corazon-sobre">
-
         💗
-
       </div>
 
-
     </div>
 
-
-    <div id="mensajeSobre">
-
-      💌 El sobre se ha abierto...
-
+    <div class="mensaje-sobre" id="mensajeSobre">
+      El sobre se abrió... 💌
     </div>
 
-
-    <h1>
-
-      Tengo algo que preguntarte...
-
-    </h1>
+  </div>
 
 
-    <p>
-
-      Hay cosas que simplemente no se pueden
-      decir en una conversación cualquiera.
-      Así que decidí prepararte algo especial. 💕
-
-    </p>
+  <p class="subtitulo">
+    Hay algo que llevo un tiempo queriendo preguntarte,
+    pero antes quiero mostrarte algunas cosas. 💕
+  </p>
 
 
-    <button
-      class="boton"
-      onclick="siguienteSeccion('razones')">
+  <button
+    class="boton"
+    id="botonAbrir"
+    onclick="abrirYContinuar()"
+  >
+    💌 Abrir
+  </button>
 
-      💌 Abrir
-
-    </button>
-
-
-  </section>
-
+</section>
 
 
-  <!-- =========================================
-       💗 RAZONES
-  ========================================= -->
+<!-- =========================
+     RAZONES
+========================= -->
 
-  <section
-    class="seccion"
-    id="razones">
+<section
+  class="razones-seccion"
+  id="razones"
+>
 
-
-    <h2>
-
-      💗 ¿Por qué tú?
-
-    </h2>
+  <h2 class="titulo-seccion">
+    💗 ¿Por qué tú?
+  </h2>
 
 
-    <p>
-
-      Podría darte mil razones...
-      pero decidí empezar solamente con cinco.
-
-    </p>
+  <p class="descripcion">
+    Podría darte mil razones... pero decidí empezar solamente con cinco.
+  </p>
 
 
-    <div class="contador">
-
-      ✨ Aquí hay 5 razones ✨
-
-    </div>
-
-
-
-    <!-- =====================================
-         🌸 PRIMERAS 5 RAZONES
-    ====================================== -->
+  <div class="contenedor-razones">
 
     <div
-      class="razones"
-      id="razonesIniciales">
+      class="razones-grid"
+      id="razonesGrid"
+    ></div>
+
+  </div>
 
 
-      <div class="razon">
+  <!-- CONTROLES -->
 
-        Porque contigo puedo ser completamente yo,
-        sin tener que fingir ser alguien diferente.
-
-      </div>
-
-
-      <div class="razon">
-
-        Porque incluso los momentos más simples
-        terminan siendo especiales cuando estoy contigo.
-
-      </div>
-
-
-      <div class="razon">
-
-        Porque tienes una forma muy tuya de hacer
-        que un día normal termine siendo un día bonito.
-
-      </div>
-
-
-      <div class="razon">
-
-        Porque tu sonrisa tiene un extraño poder
-        para mejorarme el día. 💗
-
-      </div>
-
-
-      <div class="razon">
-
-        Porque cuando pienso en las personas
-        con las que quiero compartir más momentos,
-        apareces tú.
-
-      </div>
-
-
-    </div>
-
-
-
-    <!-- =====================================
-         💕 BOTÓN
-    ====================================== -->
+  <div
+    class="controles-carrusel"
+    id="controlesCarrusel"
+  >
 
     <button
-      class="boton"
-      id="botonMasRazones"
-      onclick="mostrarMasRazones()">
-
-      💕 Quiero conocer más
-
+      class="flecha"
+      onclick="razonAnterior()"
+      aria-label="Razones anteriores"
+    >
+      ←
     </button>
 
 
+    <span
+      class="contador"
+      id="contador"
+    >
+                1 / 3
+            </span>
 
-    <!-- =====================================
-         ✨ CARRUSEL
-    ====================================== -->
-
-    <div
-      class="carrusel"
-      id="carrusel">
-
-
-      <h3>
-
-        💕 Bueno... tú lo pediste
-
-      </h3>
-
-
-      <div class="contador-carrusel">
-
-        ✨ Razón
-        <span id="numeroRazon">1</span>
-        de 10 ✨
-
-      </div>
-
-
-      <div
-        class="razon-extra"
-        id="razonExtra">
-
-        Porque contigo las conversaciones pueden
-        durar horas y aun así nunca parecen suficientes.
-
-      </div>
-
-
-      <div class="controles-carrusel">
-
-
-        <button
-          class="flecha"
-          onclick="razonAnterior()">
-
-          ←
-
-        </button>
-
-
-        <div
-          class="numero-razon"
-          id="numeroRazonCentro">
-
-          1 / 10
-
-        </div>
-
-
-        <button
-          class="flecha"
-          onclick="razonSiguiente()">
-
-          →
-
-        </button>
-
-
-      </div>
-
-
-    </div>
-
-
-
-    <!-- =====================================
-         ✨ CONTINUAR
-    ====================================== -->
 
     <button
-      class="boton"
-      onclick="siguienteSeccion('pregunta')">
+      class="flecha"
+      onclick="razonSiguiente()"
+      aria-label="Siguientes razones"
+    >
+      →
+    </button>
 
-      ✨ Continuar
+  </div>
 
+
+  <p
+    class="texto-carrusel"
+    id="textoCarrusel"
+  >
+    Puedes volver a las primeras razones usando la flecha izquierda. 💗
+  </p>
+
+
+  <button
+    class="boton"
+    id="botonMasRazones"
+    onclick="activarCarrusel()"
+  >
+    💕 Quiero conocer más
+  </button>
+
+</section>
+
+
+<!-- =========================
+     PROPUESTA FINAL
+========================= -->
+
+<section
+  class="final"
+  id="final"
+>
+
+  <h2>
+    ¿Quieres ser mi novia? 💗
+  </h2>
+
+  <p>
+    Después de todo esto... creo que ya es momento de preguntártelo.
+  </p>
+
+
+  <div class="botones-final">
+
+    <button
+      class="si"
+      onclick="decirSi()"
+    >
+      💗 Sí, quiero
     </button>
 
 
-  </section>
+    <button
+      class="no"
+      id="botonNo"
+      onclick="decirNo()"
+    >
+      No
+    </button>
+
+  </div>
 
 
+  <div
+    class="respuesta"
+    id="respuesta"
+  ></div>
 
-  <!-- =========================================
-       💍 PREGUNTA
-  ========================================= -->
-
-  <section
-    class="pregunta"
-    id="pregunta">
-
-
-    <h2>
-
-      Entonces...
-
-    </h2>
-
-
-    <p>
-
-      Después de todas estas razones,
-      hay una última cosa que quiero preguntarte.
-
-      <br><br>
-
-      No quiero que sea una pregunta cualquiera.
-
-      <br>
-
-      Quiero que sea el comienzo de algo
-      bonito para los dos. 💗
-
-    </p>
-
-
-    <h2>
-
-      ¿Quieres ser mi novia? 💗
-
-    </h2>
-
-
-    <div class="botones">
-
-
-      <button
-        class="boton"
-        onclick="aceptar()">
-
-        💗 Sí, quiero
-
-      </button>
-
-
-      <button
-        class="boton"
-        id="botonNo"
-        onclick="noQuiero()">
-
-        No
-
-      </button>
-
-
-    </div>
-
-
-    <div id="respuesta"></div>
-
-
-  </section>
-
-
-</div>
-
+</section>
 
 
 <script>
 
+  /* =====================================================
+     SOBRE
+  ===================================================== */
 
-  /* =========================================
-     ⭐ ESTRELLAS
-  ========================================= */
+  let sobreAbierto = false;
 
-  const estrellas =
-    document.getElementById("estrellas");
+  function abrirSobre() {
 
+    const sobre = document.getElementById("sobre");
+    const mensaje = document.getElementById("mensajeSobre");
+    const boton = document.getElementById("botonAbrir");
 
-  function crearEstrellas(){
+    sobreAbierto = !sobreAbierto;
 
-    for(let i=0;i<120;i++){
-
-      const estrella =
-        document.createElement("div");
-
-
-      estrella.className =
-        "estrella";
-
-
-      estrella.style.left =
-        Math.random()*100+"%";
-
-
-      estrella.style.top =
-        Math.random()*100+"%";
-
-
-      estrella.style.animationDelay =
-        Math.random()*4+"s";
-
-
-      estrellas.appendChild(
-        estrella
-      );
-
-    }
-
-  }
-
-
-  crearEstrellas();
-
-
-
-  /* =========================================
-     💌 SOBRE
-  ========================================= */
-
-  let sobreAbierto=false;
-
-
-  function abrirSobre(){
-
-    const sobre =
-      document.getElementById("sobre");
-
-
-    const mensaje =
-      document.getElementById("mensajeSobre");
-
-
-    if(!sobreAbierto){
+    if (sobreAbierto) {
 
       sobre.classList.add("abierto");
 
-      mensaje.classList.add("mostrar");
+      mensaje.textContent =
+        "Ahora sí... 💌";
 
-      sobreAbierto=true;
+      boton.textContent =
+        "✨ Ir a las razones";
 
+    } else {
+
+      sobre.classList.remove("abierto");
+
+      mensaje.textContent =
+        "El sobre se abrió... 💌";
+
+      boton.textContent =
+        "💌 Abrir";
     }
-
   }
 
 
+  function abrirYContinuar() {
 
-  /* =========================================
-     ➡️ NAVEGACIÓN
-  ========================================= */
+    const sobre = document.getElementById("sobre");
 
-  function siguienteSeccion(id){
+    if (!sobreAbierto) {
 
-    document
-      .getElementById(id)
-      .scrollIntoView({
+      abrirSobre();
 
-        behavior:"smooth"
+      setTimeout(() => {
 
-      });
+        document
+          .getElementById("razones")
+          .scrollIntoView({
+            behavior: "smooth"
+          });
 
+      }, 750);
+
+    } else {
+
+      document
+        .getElementById("razones")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+    }
   }
 
 
+  /* =====================================================
+     RAZONES
+  ===================================================== */
 
-  /* =========================================
-     ✨ RAZONES EXTRA
-  ========================================= */
+  const gruposRazones = [
 
-  const razonesExtra = [
+    /* =========================
+       PRIMERAS 5
+    ========================= */
 
-    `Porque contigo las conversaciones pueden
-      durar horas y aun así nunca parecen suficientes.`,
+    [
+      "Porque contigo puedo ser completamente yo, sin tener que fingir ser alguien diferente.",
 
-    `Porque me gusta escuchar lo que tienes que decir,
-      incluso cuando estamos hablando de cualquier tontería.`,
+      "Porque incluso los momentos más simples terminan siendo especiales cuando estoy contigo.",
 
-    `Porque tienes una manera especial de quedarte
-      en mis pensamientos incluso cuando no estás presente.`,
+      "Porque tienes una forma muy tuya de hacer que un día normal termine siendo un día bonito.",
 
-    `Porque cada recuerdo contigo termina teniendo
-      un lugar especial en mi cabeza.`,
+      "Porque tu sonrisa tiene un extraño poder para mejorarme el día. 💗",
 
-    `Porque me haces querer crear nuevos recuerdos
-      en lugar de quedarme solamente con los que ya existen.`,
+      "Porque cuando pienso en las personas con las que quiero compartir más momentos, apareces tú."
+    ],
 
-    `Porque me gusta la tranquilidad que siento
-      cuando simplemente estoy hablando contigo.`,
 
-    `Porque entre tantas personas que existen,
-      de alguna manera terminé encontrándote a ti.`,
+    /* =========================
+       SEGUNDAS 5
+    ========================= */
 
-    `Porque tienes esa combinación peligrosa
-      de hacerme sonreír y dejarme pensando en ti. 😂`,
+    [
+      "Porque contigo puedo hablar durante horas y aun así sentir que el tiempo pasó demasiado rápido.",
 
-    `Porque cuando imagino algunos de mis próximos
-      momentos favoritos, me gustaría que estuvieras ahí.`,
+      "Porque tienes una manera especial de hacerme sentir acompañado incluso cuando no dices nada.",
 
-    `Y porque, después de todas estas razones,
-      todavía siento que ninguna explica completamente
-      por qué me gustas tanto. 💗`
+      "Porque cada recuerdo contigo termina teniendo un lugar especial en mi cabeza.",
+
+      "Porque me encanta descubrir poco a poco cada detalle de tu forma de ser.",
+
+      "Porque haces que tenga ganas de crear muchos más recuerdos contigo. 💕"
+    ],
+
+
+    /* =========================
+       TERCERAS 5
+    ========================= */
+
+    [
+      "Porque me gusta la tranquilidad que siento cuando estoy contigo.",
+
+      "Porque hasta una conversación cualquiera puede convertirse en uno de mis momentos favoritos.",
+
+      "Porque me haces sonreír incluso cuando no estoy teniendo precisamente el mejor día.",
+
+      "Porque siento que todavía nos quedan muchísimas cosas por vivir y descubrir juntos.",
+
+      "Porque entre tantas personas, de alguna manera terminaste siendo tú la persona que quiero tener cerca. 💗"
+    ]
 
   ];
 
 
-  let razonActual=0;
+  let grupoActual = 0;
 
+  let carruselActivado = false;
 
+  const razonesGrid =
+    document.getElementById("razonesGrid");
 
-  /* =========================================
-     💕 MOSTRAR CARRUSEL
-  ========================================= */
+  const controlesCarrusel =
+    document.getElementById("controlesCarrusel");
 
-  function mostrarMasRazones(){
+  const contador =
+    document.getElementById("contador");
 
-    const carrusel =
-      document.getElementById(
-        "carrusel"
-      );
+  const textoCarrusel =
+    document.getElementById("textoCarrusel");
 
+  const botonMasRazones =
+    document.getElementById("botonMasRazones");
 
-    const boton =
-      document.getElementById(
-        "botonMasRazones"
-      );
 
+  /*
+   Renderiza SIEMPRE 5 tarjetas.
+   Nunca agrega las nuevas debajo.
+  */
 
-    carrusel.classList.add(
-      "mostrar"
-    );
+  function mostrarGrupo(indice) {
 
+    grupoActual = indice;
 
-    boton.style.display="none";
+    razonesGrid.innerHTML = "";
 
+    const grupo =
+      gruposRazones[grupoActual];
 
-    setTimeout(()=>{
 
-      carrusel.scrollIntoView({
+    grupo.forEach((texto, indice) => {
 
-        behavior:"smooth",
-
-        block:"center"
-
-      });
-
-    },200);
-
-  }
-
-
-
-  /* =========================================
-     ➡️ SIGUIENTE RAZÓN
-  ========================================= */
-
-  function razonSiguiente(){
-
-    razonActual++;
-
-    if(razonActual >= razonesExtra.length){
-
-      razonActual=0;
-
-    }
-
-    actualizarRazon();
-
-  }
-
-
-
-  /* =========================================
-     ⬅️ RAZÓN ANTERIOR
-  ========================================= */
-
-  function razonAnterior(){
-
-    razonActual--;
-
-    if(razonActual < 0){
-
-      razonActual =
-        razonesExtra.length-1;
-
-    }
-
-    actualizarRazon();
-
-  }
-
-
-
-  /* =========================================
-     🔄 ACTUALIZAR RAZÓN
-  ========================================= */
-
-  function actualizarRazon(){
-
-    const razon =
-      document.getElementById(
-        "razonExtra"
-      );
-
-
-    const numero =
-      document.getElementById(
-        "numeroRazon"
-      );
-
-
-    const numeroCentro =
-      document.getElementById(
-        "numeroRazonCentro"
-      );
-
-
-    /* Reiniciar animación */
-
-    razon.style.animation="none";
-
-
-    void razon.offsetWidth;
-
-
-    razon.style.animation=
-      "cambiarRazon .4s ease";
-
-
-    razon.innerHTML =
-      razonesExtra[razonActual];
-
-
-    numero.textContent =
-      razonActual+1;
-
-
-    numeroCentro.textContent =
-      `${razonActual+1} / ${razonesExtra.length}`;
-
-  }
-
-
-
-  /* =========================================
-     💗 ACEPTAR
-  ========================================= */
-
-  function aceptar(){
-
-    const respuesta =
-      document.getElementById(
-        "respuesta"
-      );
-
-
-    respuesta.innerHTML =
-
-      `
-
-        💗 Sabía que eras tú.
-
-        <br><br>
-
-        Entonces oficialmente...
-
-        <br>
-
-        <strong>
-
-        tenemos una nueva historia que comenzar. 🌸
-
-        </strong>
-
-        `;
-
-
-    crearCorazones(35);
-
-  }
-
-
-
-  /* =========================================
-     😂 BOTÓN NO
-  ========================================= */
-
-  let tamañoNo=1;
-
-
-  function noQuiero(){
-
-    const boton =
-      document.getElementById(
-        "botonNo"
-      );
-
-
-    const respuesta =
-      document.getElementById(
-        "respuesta"
-      );
-
-
-    tamañoNo*=0.8;
-
-
-    boton.style.transform =
-      `scale(${tamañoNo})`;
-
-
-    respuesta.innerHTML =
-
-      "👀 Ehhh... creo que ese botón está empezando a desaparecer...";
-
-  }
-
-
-
-  /* =========================================
-     💕 CORAZONES
-  ========================================= */
-
-  function crearCorazones(cantidad=12){
-
-    const corazones=[
-
-      "💗",
-      "💖",
-      "💕",
-      "🩷",
-      "💞"
-
-    ];
-
-
-    for(let i=0;i<cantidad;i++){
-
-      const corazon =
+      const tarjeta =
         document.createElement("div");
 
+      tarjeta.className = "razon";
 
-      corazon.className =
-        "corazon";
+      tarjeta.innerHTML =
+        `<span>${texto}</span>`;
 
+      razonesGrid.appendChild(tarjeta);
 
-      corazon.textContent =
-        corazones[
-          Math.floor(
-            Math.random()*
-            corazones.length
-          )
-          ];
+    });
 
 
-      corazon.style.left =
-        Math.random()*100+"%";
+    contador.textContent =
+      `${grupoActual + 1} / ${gruposRazones.length}`;
+  }
 
 
-      corazon.style.animationDelay =
-        Math.random()*.8+"s";
+  /*
+   Estado inicial:
+   solamente aparecen las primeras 5.
+  */
+
+  mostrarGrupo(0);
 
 
-      document.body.appendChild(
-        corazon
+  /*
+   Al pulsar "Quiero conocer más":
+
+   1. Las primeras 5 salen hacia la derecha.
+   2. Las siguientes 5 ocupan exactamente el mismo lugar.
+   3. Aparecen los botones ← →
+  */
+
+  function activarCarrusel() {
+
+    if (carruselActivado) {
+      return;
+    }
+
+    carruselActivado = true;
+
+    cambiarGrupo(
+      1,
+      "derecha"
+    );
+
+    controlesCarrusel.classList.add("visible");
+
+    textoCarrusel.classList.add("visible");
+
+    botonMasRazones.style.display = "none";
+  }
+
+
+  /*
+   Cambiar al grupo siguiente
+  */
+
+  function razonSiguiente() {
+
+    let siguiente =
+      grupoActual + 1;
+
+    if (siguiente >= gruposRazones.length) {
+      siguiente = 0;
+    }
+
+    cambiarGrupo(
+      siguiente,
+      "derecha"
+    );
+  }
+
+
+  /*
+   Cambiar al grupo anterior
+  */
+
+  function razonAnterior() {
+
+    let anterior =
+      grupoActual - 1;
+
+    if (anterior < 0) {
+      anterior =
+        gruposRazones.length - 1;
+    }
+
+    cambiarGrupo(
+      anterior,
+      "izquierda"
+    );
+  }
+
+
+  /*
+   Animación de reemplazo.
+
+   No se crean tarjetas nuevas debajo:
+   el mismo contenedor se reutiliza.
+  */
+
+  function cambiarGrupo(nuevoGrupo, direccion) {
+
+    if (razonesGrid.classList.contains("animando")) {
+      return;
+    }
+
+    razonesGrid.classList.add("animando");
+
+    if (direccion === "derecha") {
+
+      razonesGrid.classList.add(
+        "saliendo-derecha"
       );
 
+    } else {
 
-      setTimeout(
+      razonesGrid.classList.add(
+        "saliendo-izquierda"
+      );
+    }
 
-        ()=>{
+
+    setTimeout(() => {
+
+      mostrarGrupo(nuevoGrupo);
+
+    }, 300);
+
+
+    setTimeout(() => {
+
+      razonesGrid.classList.remove(
+        "saliendo-derecha",
+        "saliendo-izquierda",
+        "animando"
+      );
+
+    }, 650);
+  }
+
+
+  /* =====================================================
+     RESPUESTA "SÍ"
+  ===================================================== */
+
+  function decirSi() {
+
+    const respuesta =
+      document.getElementById("respuesta");
+
+    respuesta.textContent =
+      "Sabía que dirías que sí... 💗🥹";
+
+    crearCorazones(30);
+  }
+
+
+  /* =====================================================
+     RESPUESTA "NO"
+  ===================================================== */
+
+  let tamañoNo = 1;
+
+  function decirNo() {
+
+    const botonNo =
+      document.getElementById("botonNo");
+
+    tamañoNo -= .15;
+
+    if (tamañoNo <= .25) {
+
+      botonNo.style.display = "none";
+
+      return;
+    }
+
+    botonNo.style.transform =
+      `scale(${tamañoNo})`;
+
+    botonNo.textContent =
+      "¿Segura? 🥺";
+  }
+
+
+  /* =====================================================
+     CORAZONES
+  ===================================================== */
+
+  function crearCorazones(cantidad) {
+
+    for (let i = 0; i < cantidad; i++) {
+
+      setTimeout(() => {
+
+        const corazon =
+          document.createElement("div");
+
+        corazon.className =
+          "corazon-flotante";
+
+        corazon.textContent =
+          ["💗", "💕", "💖", "💘", "❤️"]
+            [Math.floor(Math.random() * 5)];
+
+        corazon.style.left =
+          Math.random() * 100 + "vw";
+
+        corazon.style.animationDuration =
+          (3 + Math.random() * 3) + "s";
+
+        document.body.appendChild(corazon);
+
+
+        setTimeout(() => {
 
           corazon.remove();
 
-        },
+        }, 6000);
 
-        3500
-
-      );
-
+      }, i * 80);
     }
-
   }
-
 
 </script>
 
-
 </body>
-
 </html>
-```
