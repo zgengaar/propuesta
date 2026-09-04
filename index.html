@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Quicksand:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
 
@@ -23,6 +24,12 @@
       --fondo-claro: #6b2746;
 
       --blanco: #fff8fb;
+
+      /* COQUETTE */
+      --papel: #fff7f2;
+      --papel-rosa: #ffe9f0;
+      --tinta: #7c3856;
+      --dorado: #f6d6a8;
     }
 
     * {
@@ -79,40 +86,32 @@
     .burbuja:nth-child(1) {
       width: 120px;
       height: 120px;
-
       left: 5%;
       top: 15%;
-
       animation-delay: 0s;
     }
 
     .burbuja:nth-child(2) {
       width: 70px;
       height: 70px;
-
       right: 10%;
       top: 25%;
-
       animation-delay: 2s;
     }
 
     .burbuja:nth-child(3) {
       width: 160px;
       height: 160px;
-
       left: 35%;
       bottom: 5%;
-
       animation-delay: 4s;
     }
 
     .burbuja:nth-child(4) {
       width: 60px;
       height: 60px;
-
       right: 30%;
       bottom: 20%;
-
       animation-delay: 6s;
     }
 
@@ -126,6 +125,10 @@
       }
     }
 
+    /* =========================
+       ESTRELLAS / DESTELLOS
+    ========================= */
+
     .estrella {
       position: absolute;
 
@@ -136,7 +139,9 @@
 
       background: white;
 
-      box-shadow: 0 0 10px white;
+      box-shadow:
+        0 0 8px white,
+        0 0 18px rgba(255,193,216,.8);
 
       animation: brillar 2s infinite alternate;
     }
@@ -188,6 +193,64 @@
       }
     }
 
+    /* DESTELLOS COQUETTE */
+
+    .destello {
+      position: absolute;
+
+      color: var(--rosa-claro);
+
+      font-family: 'Playfair Display', serif;
+
+      font-size: 22px;
+
+      text-shadow:
+        0 0 10px rgba(255,193,216,.8);
+
+      animation:
+        destellar 3s infinite ease-in-out;
+
+      opacity: .75;
+    }
+
+    .destello-1 {
+      left: 8%;
+      top: 38%;
+    }
+
+    .destello-2 {
+      right: 12%;
+      top: 45%;
+
+      animation-delay: 1s;
+    }
+
+    .destello-3 {
+      left: 18%;
+      bottom: 12%;
+
+      animation-delay: 1.7s;
+    }
+
+    .destello-4 {
+      right: 20%;
+      bottom: 30%;
+
+      animation-delay: 2.3s;
+    }
+
+    @keyframes destellar {
+      0%, 100% {
+        opacity: .25;
+        transform: scale(.7) rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(12deg);
+      }
+    }
+
     /* =========================
        SECCIONES
     ========================= */
@@ -208,13 +271,45 @@
       z-index: 2;
     }
 
+    /* DECORACIÓN DE ENCAJE */
+
+    section::before,
+    section::after {
+      content: "♡  ·  ✦  ·  🎀  ·  ✦  ·  ♡";
+
+      position: absolute;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width: min(900px, 90vw);
+
+      text-align: center;
+
+      color: rgba(255,193,216,.45);
+
+      font-size: 15px;
+
+      letter-spacing: 7px;
+
+      pointer-events: none;
+    }
+
+    section::before {
+      top: 22px;
+    }
+
+    section::after {
+      bottom: 22px;
+    }
+
     /* =========================
        INICIO
     ========================= */
 
     .inicio {
       text-align: center;
-
       background: transparent;
     }
 
@@ -238,6 +333,33 @@
         0 5px 20px rgba(0, 0, 0, .25);
 
       line-height: 1.2;
+    }
+
+    .titulo-inicial::before,
+    .titulo-inicial::after {
+      position: absolute;
+
+      color: var(--rosa-claro);
+
+      font-size: 1.3rem;
+
+      animation: destellar 2.5s infinite ease-in-out;
+    }
+
+    .titulo-inicial::before {
+      content: "✦";
+
+      left: -35px;
+      top: 10px;
+    }
+
+    .titulo-inicial::after {
+      content: "✦";
+
+      right: -35px;
+      bottom: 5px;
+
+      animation-delay: 1s;
     }
 
     .subtitulo {
@@ -274,16 +396,8 @@
 
       perspective: 1000px;
 
-      /*
-       Separación entre el título
-       y el sobre.
-      */
       margin-top: 30px;
 
-      /*
-       Espacio para el mensaje
-       que aparece debajo del sobre.
-      */
       margin-bottom: 45px;
     }
 
@@ -305,6 +419,27 @@
 
     .sobre:hover {
       transform: translateY(-8px);
+    }
+
+    /* MARCO COQUETTE */
+
+    .sobre::before {
+      content: "";
+
+      position: absolute;
+
+      inset: -12px;
+
+      border: 1px dashed rgba(255,193,216,.75);
+
+      border-radius: 18px;
+
+      pointer-events: none;
+
+      z-index: -1;
+
+      box-shadow:
+        0 0 0 4px rgba(255,193,216,.08);
     }
 
     /* =========================
@@ -329,7 +464,8 @@
       overflow: hidden;
 
       box-shadow:
-        inset 0 0 0 2px rgba(255,255,255,.12);
+        inset 0 0 0 2px rgba(255,255,255,.12),
+        inset 0 -8px 20px rgba(184,59,109,.12);
     }
 
     .sobre-base::before {
@@ -406,7 +542,7 @@
     }
 
     /* =========================
-       CORAZÓN DEL SOBRE
+       SELLO DE CERA
     ========================= */
 
     .corazon-sobre {
@@ -436,9 +572,12 @@
           #ff9fc2 100%
         );
 
+      border: 3px solid rgba(255,255,255,.35);
+
       box-shadow:
         0 0 0 8px rgba(255, 193, 216, .35),
-        0 0 25px rgba(255, 82, 140, .7);
+        0 0 25px rgba(255, 82, 140, .7),
+        inset 0 3px 5px rgba(255,255,255,.25);
 
       font-size: 30px;
 
@@ -459,6 +598,42 @@
       transform:
         translate(-50%, -50%)
         scale(.5);
+    }
+
+    /* =========================
+       LAZO DEL SOBRE
+    ========================= */
+
+    .sobre::after {
+      content: "🎀";
+
+      position: absolute;
+
+      right: -25px;
+      top: -28px;
+
+      z-index: 20;
+
+      font-size: 42px;
+
+      filter:
+        drop-shadow(0 5px 5px rgba(0,0,0,.2));
+
+      transform: rotate(10deg);
+
+      animation:
+        lazoFlotar 3s infinite ease-in-out;
+    }
+
+    @keyframes lazoFlotar {
+
+      0%, 100% {
+        transform: rotate(10deg) translateY(0);
+      }
+
+      50% {
+        transform: rotate(4deg) translateY(-5px);
+      }
     }
 
     /* =========================
@@ -565,6 +740,32 @@
       margin-bottom: 15px;
 
       color: var(--blanco);
+
+      position: relative;
+    }
+
+    .titulo-seccion::before {
+      content: "🎀";
+
+      position: absolute;
+
+      left: -50px;
+      top: 5px;
+
+      font-size: 25px;
+    }
+
+    .titulo-seccion::after {
+      content: "🎀";
+
+      position: absolute;
+
+      right: -50px;
+      top: 5px;
+
+      font-size: 25px;
+
+      transform: scaleX(-1);
     }
 
     .descripcion {
@@ -587,6 +788,8 @@
       width: min(1100px, 95vw);
 
       overflow: hidden;
+
+      padding: 12px;
     }
 
     .razones-grid {
@@ -595,7 +798,7 @@
       display: grid;
 
       grid-template-columns:
-                repeat(5, minmax(0, 1fr));
+        repeat(5, minmax(0, 1fr));
 
       gap: 18px;
     }
@@ -661,10 +864,12 @@
     }
 
     /* =========================
-       TARJETAS
+       TARJETAS CARTA ANTIGUA
     ========================= */
 
     .razon {
+      position: relative;
+
       min-height: 180px;
 
       display: flex;
@@ -672,48 +877,96 @@
       align-items: center;
       justify-content: center;
 
-      padding: 22px;
+      padding: 28px 22px;
 
       text-align: center;
 
-      border-radius: 18px;
+      border-radius: 5px;
 
       background:
         linear-gradient(
           145deg,
-          rgba(255, 193, 216, .16),
-          rgba(232, 93, 145, .10)
+          rgba(255,247,242,.98),
+          rgba(255,233,240,.96)
         );
 
       border:
-        1px solid rgba(255, 193, 216, .28);
+        1px solid rgba(184,59,109,.25);
 
       box-shadow:
-        0 10px 25px rgba(0,0,0,.18),
-        inset 0 0 20px rgba(255,255,255,.03);
+        0 12px 25px rgba(0,0,0,.22),
+        inset 0 0 25px rgba(184,59,109,.06);
 
-      color: #fff2f7;
+      color: var(--tinta);
 
       line-height: 1.55;
 
-      font-size: .95rem;
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size: 1.05rem;
 
       transition: .3s ease;
+
+      overflow: hidden;
+    }
+
+    /* BORDE ORNAMENTAL */
+
+    .razon::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 7px;
+
+      border:
+        1px dashed rgba(184,59,109,.3);
+
+      pointer-events: none;
+    }
+
+    /* ESQUINAS DECORATIVAS */
+
+    .razon::after {
+      content: "✦";
+
+      position: absolute;
+
+      top: 8px;
+      right: 12px;
+
+      color: var(--rosa-fuerte);
+
+      font-size: 13px;
+
+      opacity: .65;
     }
 
     .razon:hover {
-      transform: translateY(-8px);
+      transform: translateY(-8px) rotate(-1deg);
 
       border-color:
-        rgba(255, 193, 216, .6);
+        rgba(232,93,145,.55);
 
       box-shadow:
-        0 18px 30px rgba(0,0,0,.25),
-        0 0 25px rgba(245,139,179,.12);
+        0 18px 30px rgba(0,0,0,.28),
+        0 0 25px rgba(245,139,179,.18);
     }
 
     /*
-     Números de las razones
+      Pequeño efecto de papel
+    */
+
+    .razon span {
+      position: relative;
+
+      z-index: 2;
+    }
+
+    /*
+      Números de las razones
     */
 
     .razon strong {
@@ -721,9 +974,13 @@
 
       margin-bottom: 8px;
 
-      color: var(--rosa-claro);
+      color: var(--rosa-oscuro);
 
-      font-size: 1.15rem;
+      font-family:
+        'Playfair Display',
+        serif;
+
+      font-size: 1.2rem;
 
       font-weight: 700;
     }
@@ -817,12 +1074,44 @@
       text-align: center;
     }
 
+    .antetitulo-final {
+      position: relative;
+
+      margin-bottom: 18px;
+
+      color: var(--rosa-claro);
+
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size: 1.3rem;
+
+      font-style: italic;
+
+      letter-spacing: .5px;
+    }
+
+    .antetitulo-final::before,
+    .antetitulo-final::after {
+      content: "✦";
+
+      margin: 0 12px;
+
+      color: var(--rosa);
+
+      font-style: normal;
+    }
+
     .final h2 {
       font-family: 'Playfair Display', serif;
 
       font-size: clamp(2.2rem, 6vw, 4rem);
 
       margin-bottom: 20px;
+
+      text-shadow:
+        0 0 20px rgba(255,193,216,.3);
     }
 
     .final p {
@@ -947,15 +1236,32 @@
 
       .razones-grid {
         grid-template-columns:
-                    repeat(3, minmax(0, 1fr));
+          repeat(3, minmax(0, 1fr));
       }
+
     }
 
     @media (max-width: 650px) {
 
+      section::before,
+      section::after {
+        letter-spacing: 3px;
+        font-size: 12px;
+      }
+
+      .titulo-inicial::before,
+      .titulo-inicial::after {
+        display: none;
+      }
+
+      .titulo-seccion::before,
+      .titulo-seccion::after {
+        display: none;
+      }
+
       .razones-grid {
         grid-template-columns:
-                    repeat(2, minmax(0, 1fr));
+          repeat(2, minmax(0, 1fr));
 
         gap: 12px;
       }
@@ -965,12 +1271,13 @@
 
         padding: 17px;
 
-        font-size: .9rem;
+        font-size: .95rem;
       }
 
       .sobre {
         width: min(310px, 88vw);
       }
+
     }
 
     @media (max-width: 430px) {
@@ -990,6 +1297,13 @@
       .sobre {
         height: 205px;
       }
+
+      .sobre::after {
+        right: -15px;
+        top: -25px;
+        font-size: 35px;
+      }
+
     }
 
   </style>
@@ -1014,6 +1328,13 @@
   <div class="estrella"></div>
   <div class="estrella"></div>
   <div class="estrella"></div>
+
+  <!-- DESTELLOS -->
+
+  <div class="destello destello-1">✦</div>
+  <div class="destello destello-2">✧</div>
+  <div class="destello destello-3">✦</div>
+  <div class="destello destello-4">✧</div>
 
 </div>
 
@@ -1123,8 +1444,8 @@
       class="contador"
       id="contador"
     >
-                1 / 3
-            </span>
+      1 / 3
+    </span>
 
 
     <button
@@ -1173,10 +1494,6 @@
   <h2>
     ¿Quieres ser mi novia? 💗
   </h2>
-
-  <p>
-    Después de todo esto... creo que ya es momento de preguntártelo.
-  </p>
 
 
   <div class="botones-final">
@@ -1293,10 +1610,6 @@
 
   const gruposRazones = [
 
-    /* =========================
-       RAZONES 1 - 5
-    ========================= */
-
     [
       "Porque contigo puedo ser completamente yo, sin tener que fingir ser alguien diferente.",
 
@@ -1309,11 +1622,6 @@
       "Porque cuando pienso en las personas con las que quiero compartir más momentos, apareces tú."
     ],
 
-
-    /* =========================
-       RAZONES 6 - 10
-    ========================= */
-
     [
       "Porque contigo puedo hablar durante horas y aun así sentir que el tiempo pasó demasiado rápido.",
 
@@ -1325,11 +1633,6 @@
 
       "Porque haces que tenga ganas de crear muchos más recuerdos contigo. 💕"
     ],
-
-
-    /* =========================
-       RAZONES 11 - 15
-    ========================= */
 
     [
       "Porque me gusta la tranquilidad que siento cuando estoy contigo.",
@@ -1367,10 +1670,6 @@
     document.getElementById("botonMasRazones");
 
 
-  /*
-   Muestra exactamente 5 razones.
-  */
-
   function mostrarGrupo(indice) {
 
     grupoActual = indice;
@@ -1387,13 +1686,10 @@
       const tarjeta =
         document.createElement("div");
 
+
       tarjeta.className =
         "razon";
 
-
-      /*
-       Número total de la razón.
-       */
 
       const numero =
         (grupoActual * 5)
@@ -1403,9 +1699,9 @@
 
       tarjeta.innerHTML =
         `<span>
-                        <strong>${numero}.</strong>
-                        ${texto}
-                    </span>`;
+          <strong>${numero}.</strong>
+          ${texto}
+        </span>`;
 
 
       razonesGrid.appendChild(tarjeta);
@@ -1417,11 +1713,6 @@
       `${grupoActual + 1} / ${gruposRazones.length}`;
   }
 
-
-  /*
-   Estado inicial:
-   solamente las primeras 5.
-  */
 
   mostrarGrupo(0);
 
@@ -1439,11 +1730,6 @@
 
     carruselActivado = true;
 
-
-    /*
-     Las primeras 5 salen hacia la derecha
-     y son reemplazadas por las siguientes 5.
-    */
 
     cambiarGrupo(
       1,
@@ -1548,11 +1834,6 @@
       );
     }
 
-
-    /*
-     A mitad de la animación
-     reemplazamos las 5 tarjetas.
-    */
 
     setTimeout(() => {
 
@@ -1693,3 +1974,4 @@
 
 </body>
 </html>
+```
