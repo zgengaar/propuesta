@@ -3,13 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Una pregunta para ti 💗</title>
+
+  <title>Para ti 💗</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Quicksand:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
+
     :root {
       --rosa: #f58bb3;
       --rosa-claro: #ffc1d8;
@@ -24,8 +30,6 @@
     }
 
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
     }
 
@@ -34,187 +38,223 @@
     }
 
     body {
+      margin: 0;
       min-height: 100vh;
-      overflow-x: hidden;
-      font-family: 'Quicksand', sans-serif;
-      color: var(--blanco);
 
       background:
-        radial-gradient(circle at 20% 20%, rgba(245,139,179,.18), transparent 30%),
-        radial-gradient(circle at 80% 70%, rgba(232,93,145,.15), transparent 35%),
-        linear-gradient(135deg,var(--fondo),#4c1832,var(--fondo-claro));
+        radial-gradient(
+          circle at top,
+          var(--fondo-claro),
+          var(--fondo) 65%
+        );
+
+      color: var(--blanco);
+
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      overflow-x: hidden;
     }
 
     /* =========================
        FONDO
     ========================= */
 
-    .fondo {
+    body::before {
+      content: "";
       position: fixed;
       inset: 0;
-      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(255,193,216,.08),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 80% 70%,
+          rgba(247,214,163,.06),
+          transparent 25%
+        );
+
       pointer-events: none;
-      z-index: 0;
+      z-index: -1;
     }
 
-    .burbuja {
-      position: absolute;
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: rgba(255,193,216,.08);
-      animation: flotar 10s infinite ease-in-out;
-    }
-
-    .burbuja:nth-child(1) {
-      width: 120px;
-      height: 120px;
-      left: 5%;
-      top: 15%;
-      animation-delay: 0s;
-    }
-
-    .burbuja:nth-child(2) {
-      width: 70px;
-      height: 70px;
-      right: 10%;
-      top: 25%;
-      animation-delay: 2s;
-    }
-
-    .burbuja:nth-child(3) {
-      width: 160px;
-      height: 160px;
-      left: 35%;
-      bottom: 5%;
-      animation-delay: 4s;
-    }
-
-    .burbuja:nth-child(4) {
-      width: 60px;
-      height: 60px;
-      right: 30%;
-      bottom: 20%;
-      animation-delay: 6s;
-    }
-
-    @keyframes flotar {
-      0%,100% {
-        transform: translateY(0) scale(1);
-      }
-
-      50% {
-        transform: translateY(-35px) scale(1.08);
-      }
-    }
+    /* =========================
+       ESTRELLAS
+    ========================= */
 
     .estrella {
-      position: absolute;
-      width: 4px;
-      height: 4px;
+      position: fixed;
+
+      width: 3px;
+      height: 3px;
+
+      background: var(--rosa-claro);
+
       border-radius: 50%;
-      background: white;
-      box-shadow: 0 0 10px white;
-      animation: brillar 2s infinite alternate;
+
+      box-shadow:
+        0 0 8px var(--rosa-claro);
+
+      animation:
+        parpadear 2s infinite alternate;
+
+      pointer-events: none;
     }
 
-    .estrella:nth-child(5){left:15%;top:20%;}
-    .estrella:nth-child(6){left:30%;top:70%;animation-delay:.5s;}
-    .estrella:nth-child(7){left:70%;top:15%;animation-delay:1s;}
-    .estrella:nth-child(8){left:85%;top:65%;animation-delay:1.5s;}
-    .estrella:nth-child(9){left:50%;top:35%;animation-delay:.8s;}
-    .estrella:nth-child(10){left:10%;top:80%;animation-delay:1.2s;}
-
-    @keyframes brillar {
+    @keyframes parpadear {
       from {
-        opacity: .25;
+        opacity: .2;
         transform: scale(.7);
       }
 
       to {
         opacity: 1;
-        transform: scale(1.5);
+        transform: scale(1.4);
       }
     }
 
     /* =========================
-       SECCIONES
+       CONTENEDOR
     ========================= */
 
-    section {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 70px 20px;
-      z-index: 2;
-    }
+    .contenedor {
+      width: min(900px,92vw);
+      margin: auto;
 
-    section::before {
-      content: "♡  ·  ✦  ·  🎀  ·  ✦  ·  ♡";
-      position: absolute;
-      top: 35px;
-      color: rgba(255,193,216,.45);
-      font-size: 14px;
-      letter-spacing: 4px;
+      padding:
+        70px
+        0
+        100px;
     }
 
     /* =========================
-       INICIO
+       TITULO
     ========================= */
 
-    .inicio {
+    .titulo {
       text-align: center;
-      background: transparent;
+
+      margin-bottom: 35px;
+
+      animation:
+        aparecer 1.2s ease;
     }
 
-    .titulo-inicial {
-      position: relative;
-      z-index: 20;
-      max-width: 800px;
-      margin-bottom: 25px;
-      font-family: 'Playfair Display',serif;
-      font-size: clamp(2rem,5vw,4rem);
-      color: var(--blanco);
+    .titulo h1 {
+      margin: 0;
+
+      font-family:
+        'Playfair Display',
+        serif;
+
+      font-size:
+        clamp(2.3rem,7vw,4.5rem);
+
+      color: var(--rosa-claro);
 
       text-shadow:
-        0 0 15px rgba(255,193,216,.4),
-        0 5px 20px rgba(0,0,0,.25);
-
-      line-height: 1.2;
+        0 0 15px rgba(255,193,216,.3);
     }
 
-    .titulo-inicial::before,
-    .titulo-inicial::after {
-      position: absolute;
-      color: var(--rosa-claro);
-      font-size: 1.1rem;
-      opacity: .8;
+    .titulo p {
+      margin-top: 12px;
+
+      font-size: 1.3rem;
+
+      color: #ffe5ee;
     }
 
-    .titulo-inicial::before {
-      content: "✦";
-      left: -35px;
-      top: 10px;
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .titulo-inicial::after {
-      content: "✦";
-      right: -35px;
-      bottom: 10px;
-    }
+    /* =========================
+       TARJETAS
+    ========================= */
 
-    .subtitulo {
+    .card {
       position: relative;
-      z-index: 20;
-      max-width: 650px;
-      margin-top: 100px;
-      margin-bottom: 25px;
-      font-size: 1.1rem;
-      color: #ffe8f0;
+
+      background:
+        linear-gradient(
+          145deg,
+          var(--papel),
+          var(--papel-rosa)
+        );
+
+      color: var(--rosa-oscuro);
+
+      padding:
+        35px
+        30px;
+
+      margin:
+        35px
+        0;
+
+      border-radius: 14px;
+
+      box-shadow:
+        0 20px 40px rgba(0,0,0,.25),
+        inset 0 0 25px rgba(255,193,216,.3);
+
+      border:
+        1px solid rgba(184,59,109,.18);
+
+      animation:
+        aparecer 1s ease;
+    }
+
+    .card::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 8px;
+
+      border:
+        1px dashed
+        rgba(184,59,109,.28);
+
+      border-radius: 9px;
+
+      pointer-events: none;
+    }
+
+    .card h2 {
+      position: relative;
+
+      margin-top: 0;
+
+      font-family:
+        'Playfair Display',
+        serif;
+
+      text-align: center;
+
+      font-size: 2rem;
+    }
+
+    .card p {
+      position: relative;
+
+      font-size: 1.3rem;
+
       line-height: 1.7;
+
+      text-align: center;
     }
 
     /* =========================
@@ -224,10 +264,13 @@
     .zona-sobre {
       position: relative;
       z-index: 10;
+
       width: 100%;
+
       display: flex;
       justify-content: center;
       align-items: center;
+
       perspective: 1000px;
 
       margin-top: 90px;
@@ -238,99 +281,82 @@
 
     .sobre {
       position: relative;
+
       width: min(340px,85vw);
       height: 230px;
+
       cursor: pointer;
+
       transform-style: preserve-3d;
 
-      filter: drop-shadow(0 20px 30px rgba(0,0,0,.3));
+      filter:
+        drop-shadow(
+          0 20px 30px rgba(0,0,0,.3)
+        );
 
-      transition: transform .3s ease;
+      transition:
+        transform .3s ease;
 
-      border: 2px dashed rgba(255,193,216,.35);
+      border:
+        2px dashed
+        rgba(255,193,216,.35);
+
       border-radius: 16px;
+
       padding: 5px;
 
       overflow: visible;
     }
 
     .sobre:hover {
-      transform: translateY(-8px);
+      transform: translateY(-5px);
     }
 
-    /* Texto del sobre */
-
-    .sobre::before {
-      content: "Para ti, con cariño ♡";
-      position: absolute;
-      left: 50%;
-      bottom: 24px;
-      transform: translateX(-50%);
-
-      z-index: 8;
-
-      width: 100%;
-      text-align: center;
-
-      font-family: 'Cormorant Garamond',serif;
-      font-size: 20px;
-      font-weight: 600;
-
-      color: rgba(255,248,251,.9);
-
-      letter-spacing: .5px;
-
-      pointer-events: none;
-
-      text-shadow: 0 2px 5px rgba(120,30,70,.25);
-    }
-
-    /* Base */
+    /* =========================
+       BASE DEL SOBRE
+    ========================= */
 
     .sobre-base {
       position: absolute;
+
       inset: 0;
 
       background:
-        linear-gradient(145deg,#ff9fc2,var(--rosa),#e9699a);
+        linear-gradient(
+          145deg,
+          #f4a0bd,
+          #df5b8e
+        );
 
       border-radius: 12px;
 
+      z-index: 1;
+
       overflow: hidden;
-
-      box-shadow:
-        inset 0 0 0 2px rgba(255,255,255,.12),
-        0 0 0 2px rgba(255,193,216,.15);
-
-      z-index: 0;
     }
 
     .sobre-base::before {
       content: "";
+
       position: absolute;
-      left: 0;
-      bottom: 0;
 
-      width: 0;
-      height: 0;
+      inset: 0;
 
-      border-left: 170px solid transparent;
-      border-right: 170px solid transparent;
-      border-bottom: 115px solid rgba(184,59,109,.22);
-    }
+      background:
+        linear-gradient(
+          135deg,
+          transparent 49%,
+          rgba(255,248,251,.35) 50%,
+          transparent 51%
+        ),
+        linear-gradient(
+          225deg,
+          transparent 49%,
+          rgba(255,248,251,.3) 50%,
+          transparent 51%
+        );
 
-    .sobre-base::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-
-      width: 0;
-      height: 0;
-
-      border-left: 170px solid transparent;
-      border-right: 170px solid transparent;
-      border-bottom: 130px solid rgba(255,255,255,.10);
+      opacity: .8;
     }
 
     /* =========================
@@ -367,38 +393,56 @@
           #ffeaf1
         );
 
-      border: 1px solid rgba(184,59,109,.15);
+      border:
+        1px solid
+        rgba(184,59,109,.15);
 
       box-shadow:
         0 8px 18px rgba(90,20,50,.18),
         inset 0 0 15px rgba(255,193,216,.3);
 
-      color: var(--rosa-oscuro);
+      color:
+        var(--rosa-oscuro);
 
-      font-family: 'Cormorant Garamond',serif;
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
       font-size: 24px;
       font-weight: 700;
 
       transition:
-        transform .9s cubic-bezier(.68,-.55,.27,1.55),
+        transform .9s
+        cubic-bezier(.68,-.55,.27,1.55),
+
         z-index 0s .25s;
     }
 
     .carta-sobre::before {
       content: "♡";
+
       position: absolute;
+
       top: 8px;
       left: 12px;
-      color: var(--rosa-claro);
+
+      color:
+        var(--rosa-claro);
+
       font-size: 16px;
     }
 
     .carta-sobre::after {
       content: "✦";
+
       position: absolute;
+
       bottom: 8px;
       right: 12px;
-      color: var(--dorado);
+
+      color:
+        var(--dorado);
+
       font-size: 15px;
     }
 
@@ -411,46 +455,63 @@
     }
 
     /* =========================
-       TAPA
+       TAPA DEL SOBRE
     ========================= */
 
     .sobre-tapa {
       position: absolute;
+
       left: 0;
       top: 0;
 
       width: 100%;
-      height: 100px;
+      height: 100%;
 
       z-index: 8;
 
       transform-origin: top center;
 
-      background:
-        linear-gradient(135deg,#ffb2cd,#f58bb3);
-
-      clip-path: polygon(0 0,50% 100%,100% 0);
-
       transition:
-        transform .8s cubic-bezier(.68,-.55,.27,1.55),
-        z-index 0s .4s;
+        transform .8s
+        cubic-bezier(.68,-.55,.27,1.55);
+
+      background:
+        linear-gradient(
+          145deg,
+          #ffb3ca,
+          #e85d91
+        );
+
+      clip-path:
+        polygon(
+          0 0,
+          100% 0,
+          50% 58%
+        );
+
+      border-radius:
+        12px 12px 0 0;
+
+      pointer-events: none;
     }
 
     .sobre.abierto .sobre-tapa {
-      transform: rotateX(180deg);
-      z-index: 1;
+      transform:
+        rotateX(180deg);
     }
 
     /* =========================
-       CINTA
+       CINTAS DEL SOBRE
     ========================= */
 
     .cinta-vertical {
       position: absolute;
+
       left: 50%;
       top: 0;
 
-      transform: translateX(-50%);
+      transform:
+        translateX(-50%);
 
       width: 44px;
       height: 100%;
@@ -466,15 +527,20 @@
         );
 
       box-shadow:
-        0 0 8px rgba(184,59,109,.18);
+        0 0 8px
+        rgba(184,59,109,.18);
 
       opacity: .95;
 
       pointer-events: none;
+
+      transition:
+        opacity .45s ease;
     }
 
     .cinta-horizontal {
       position: absolute;
+
       left: 0;
       top: 48%;
 
@@ -492,11 +558,22 @@
         );
 
       box-shadow:
-        0 0 8px rgba(184,59,109,.18);
+        0 0 8px
+        rgba(184,59,109,.18);
 
       opacity: .95;
 
       pointer-events: none;
+
+      transition:
+        opacity .45s ease;
+    }
+
+    /* LA CRUZ ROSA DESAPARECE AL ABRIR */
+
+    .sobre.abierto .cinta-vertical,
+    .sobre.abierto .cinta-horizontal {
+      opacity: 0;
     }
 
     /* =========================
@@ -540,10 +617,13 @@
           #e85d91
         );
 
-      border: 2px solid rgba(255,248,251,.65);
+      border:
+        2px solid
+        rgba(255,248,251,.65);
 
       box-shadow:
-        0 6px 12px rgba(90,20,50,.2);
+        0 6px 12px
+        rgba(90,20,50,.2);
     }
 
     .lazo-izq {
@@ -552,7 +632,8 @@
       border-radius:
         65% 35% 55% 45%;
 
-      transform: rotate(-18deg);
+      transform:
+        rotate(-18deg);
     }
 
     .lazo-der {
@@ -561,7 +642,8 @@
       border-radius:
         35% 65% 45% 55%;
 
-      transform: rotate(18deg);
+      transform:
+        rotate(18deg);
     }
 
     .lazo-centro {
@@ -570,12 +652,14 @@
       left: 50%;
       top: 19px;
 
-      transform: translateX(-50%);
+      transform:
+        translateX(-50%);
 
       width: 46px;
       height: 46px;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
@@ -589,24 +673,30 @@
           #ff9fc2 100%
         );
 
-      border: 3px solid rgba(255,248,251,.8);
+      border:
+        3px solid
+        rgba(255,248,251,.8);
 
       box-shadow:
-        0 0 0 7px rgba(255,193,216,.35),
-        0 0 22px rgba(255,82,140,.65);
+        0 0 0 7px
+        rgba(255,193,216,.35),
+
+        0 0 22px
+        rgba(255,82,140,.65);
 
       font-size: 23px;
     }
 
     .sobre.abierto .lazo {
       opacity: 0;
+
       transform:
         translate(-50%,-50%)
         scale(.5);
     }
 
     /* =========================
-       DECORACIONES DEL SOBRE
+       DECORACIONES
     ========================= */
 
     .decoracion-sobre {
@@ -616,574 +706,309 @@
 
       pointer-events: none;
 
-      color: var(--dorado);
+      color:
+        var(--dorado);
 
       text-shadow:
-        0 0 8px rgba(247,214,163,.55);
+        0 0 8px
+        rgba(247,214,163,.55);
 
       animation:
-        decorarSobre 1.8s infinite alternate ease-in-out;
+        decorarSobre
+        1.8s
+        infinite
+        alternate
+        ease-in-out;
     }
 
     .decoracion-1 {
       left: -22px;
       top: 15px;
+
       font-size: 20px;
     }
 
     .decoracion-2 {
       right: -22px;
       top: 25px;
+
       font-size: 18px;
+
       animation-delay: .4s;
     }
 
     .decoracion-3 {
       left: -18px;
       bottom: 20px;
-      color: var(--rosa-claro);
+
+      color:
+        var(--rosa-claro);
+
       font-size: 24px;
+
       animation-delay: .8s;
     }
 
     .decoracion-4 {
       right: -18px;
       bottom: 15px;
+
       font-size: 21px;
+
       animation-delay: 1.2s;
     }
 
     @keyframes decorarSobre {
+
       from {
-        transform: scale(.8) rotate(-8deg);
+        transform:
+          scale(.8)
+          rotate(-8deg);
+
         opacity: .55;
       }
 
       to {
-        transform: scale(1.15) rotate(8deg);
+        transform:
+          scale(1.15)
+          rotate(8deg);
+
         opacity: 1;
       }
     }
-
-    /* Corazón / sello original */
 
     .corazon-sobre {
       display: none;
     }
 
-    /* Mensaje */
+    /* =========================
+       MENSAJE DEL SOBRE
+    ========================= */
 
     .mensaje-sobre {
       position: absolute;
-      left: 50%;
-      bottom: -32px;
 
-      transform: translateX(-50%) translateY(10px);
+      top: 290px;
 
       width: 100%;
 
       text-align: center;
 
-      opacity: 0;
+      font-size: 1.25rem;
 
-      color: var(--rosa-claro);
+      color:
+        var(--rosa-claro);
 
-      font-weight: 600;
-
-      transition: .5s ease;
-
-      pointer-events: none;
-    }
-
-    .sobre.abierto + .mensaje-sobre {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    /* Brillo del sobre */
-
-    .sobre::after {
-      content: "✦";
-      position: absolute;
-
-      right: -25px;
-      top: -25px;
-
-      color: #fff1f7;
-
-      font-size: 20px;
-
-      opacity: .8;
-
-      animation: brilloSobre 1.8s infinite alternate;
-    }
-
-    @keyframes brilloSobre {
-      from {
-        transform: scale(.7) rotate(0deg);
-        opacity: .3;
-      }
-
-      to {
-        transform: scale(1.2) rotate(20deg);
-        opacity: 1;
-      }
+      opacity: .9;
     }
 
     /* =========================
        BOTONES
     ========================= */
 
-    button {
-      border: none;
-      font-family: 'Quicksand',sans-serif;
-      cursor: pointer;
+    .botones {
+      display: flex;
+
+      justify-content: center;
+
+      gap: 18px;
+
+      flex-wrap: wrap;
+
+      margin-top: 30px;
     }
 
-    .boton {
-      position: relative;
-      z-index: 20;
+    button {
+      border: none;
 
-      margin-top: 15px;
+      padding:
+        13px
+        24px;
 
-      padding: 14px 28px;
-
-      border-radius: 999px;
+      border-radius: 30px;
 
       background:
         linear-gradient(
           135deg,
-          var(--rosa),
-          var(--rosa-fuerte)
+          var(--rosa-fuerte),
+          var(--rosa)
         );
 
-      color: white;
+      color:
+        white;
 
-      font-size: 1rem;
-      font-weight: 700;
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size: 1.15rem;
+
+      cursor: pointer;
 
       box-shadow:
-        0 10px 25px rgba(0,0,0,.25),
-        0 0 20px rgba(245,139,179,.2);
+        0 8px 20px
+        rgba(0,0,0,.2);
 
-      transition: .25s ease;
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
     }
 
-    .boton:hover {
-      transform: translateY(-4px) scale(1.03);
+    button:hover {
+      transform:
+        translateY(-3px);
 
       box-shadow:
-        0 15px 30px rgba(0,0,0,.3),
-        0 0 25px rgba(245,139,179,.4);
+        0 12px 25px
+        rgba(0,0,0,.28);
     }
 
     /* =========================
        RAZONES
     ========================= */
 
-    .razones-seccion {
+    #razones {
+      scroll-margin-top: 40px;
+    }
+
+    .contador {
+      display: block;
+
       text-align: center;
+
+      margin-top: 10px;
+
+      font-size: 1.15rem;
+
+      color:
+        var(--rosa-oscuro);
     }
 
-    .titulo-seccion {
-      font-family: 'Playfair Display',serif;
-      font-size: clamp(2rem,5vw,3.2rem);
-      margin-bottom: 15px;
-      color: var(--blanco);
-    }
-
-    .descripcion {
-      max-width: 700px;
-      margin-bottom: 45px;
-      color: #ffe5ef;
-      line-height: 1.7;
-    }
-
-    .contenedor-razones {
+    .razones-contenedor {
       position: relative;
-      width: min(1100px,95vw);
-      overflow: hidden;
-    }
 
-    .razones-grid {
-      width: 100%;
-
-      display: grid;
-
-      grid-template-columns:
-    repeat(5,minmax(0,1fr));
-
-      gap: 18px;
-    }
-
-    .razones-grid.animando {
-      pointer-events: none;
-    }
-
-    .razones-grid.saliendo-derecha {
-      animation: salirDerecha .65s ease forwards;
-    }
-
-    .razones-grid.saliendo-izquierda {
-      animation: salirIzquierda .65s ease forwards;
-    }
-
-    @keyframes salirDerecha {
-      0% {
-        transform: translateX(0);
-        opacity: 1;
-      }
-
-      45% {
-        transform: translateX(110%);
-        opacity: 0;
-      }
-
-      55% {
-        transform: translateX(-110%);
-        opacity: 0;
-      }
-
-      100% {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes salirIzquierda {
-      0% {
-        transform: translateX(0);
-        opacity: 1;
-      }
-
-      45% {
-        transform: translateX(-110%);
-        opacity: 0;
-      }
-
-      55% {
-        transform: translateX(110%);
-        opacity: 0;
-      }
-
-      100% {
-        transform: translateX(0);
-        opacity: 1;
-      }
+      min-height: 380px;
     }
 
     .razon {
-      position: relative;
+      padding: 25px;
 
-      min-height: 180px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 22px;
-
-      text-align: center;
-
-      border-radius: 18px;
+      margin:
+        15px
+        0;
 
       background:
         linear-gradient(
           145deg,
-          var(--papel),
-          var(--papel-rosa)
+          #fff9fb,
+          #ffe8f0
         );
 
-      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 10px;
+
+      color:
+        var(--rosa-oscuro);
 
       box-shadow:
-        0 10px 25px rgba(0,0,0,.18),
-        inset 0 0 20px rgba(255,255,255,.6);
-
-      color: #6d3650;
-
-      line-height: 1.55;
-
-      font-family: 'Cormorant Garamond',serif;
-      font-size: 1.08rem;
-
-      transition: .3s ease;
-    }
-
-    .razon::before {
-      content: "♡";
-
-      position: absolute;
-
-      top: 10px;
-      left: 14px;
-
-      color: var(--rosa-fuerte);
-
-      font-size: 18px;
-    }
-
-    .razon::after {
-      content: "✦";
-
-      position: absolute;
-
-      bottom: 10px;
-      right: 14px;
-
-      color: var(--rosa);
-
-      font-size: 14px;
-    }
-
-    .razon:hover {
-      transform: translateY(-8px);
-
-      border-color: rgba(255,193,216,.6);
-
-      box-shadow:
-        0 18px 30px rgba(0,0,0,.25),
-        0 0 25px rgba(245,139,179,.12);
-    }
-
-    .razon strong {
-      display: block;
-
-      margin-bottom: 8px;
-
-      color: var(--rosa-oscuro);
+        0 8px 18px
+        rgba(90,20,50,.12);
 
       font-size: 1.25rem;
 
-      font-weight: 700;
-    }
+      text-align: center;
 
-    .controles-carrusel {
-      display: none;
-
-      align-items: center;
-      justify-content: center;
-
-      gap: 25px;
-
-      margin-top: 35px;
-    }
-
-    .controles-carrusel.visible {
-      display: flex;
-    }
-
-    .flecha {
-      width: 52px;
-      height: 52px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 50%;
-
-      background: rgba(245,139,179,.18);
-
-      border: 1px solid rgba(255,193,216,.4);
-
-      color: white;
-
-      font-size: 1.5rem;
-      font-weight: bold;
-
-      transition: .25s ease;
-    }
-
-    .flecha:hover {
-      background: var(--rosa-fuerte);
-      transform: scale(1.1);
-    }
-
-    .contador {
-      min-width: 60px;
-
-      color: var(--rosa-claro);
-
-      font-weight: 700;
-
-      font-size: .95rem;
-    }
-
-    #botonMasRazones {
-      margin-top: 40px;
-    }
-
-    .texto-carrusel {
-      display: none;
-
-      margin-top: 20px;
-
-      color: var(--rosa-claro);
-
-      font-size: .9rem;
-    }
-
-    .texto-carrusel.visible {
-      display: block;
+      border:
+        1px solid
+        rgba(184,59,109,.12);
     }
 
     /* =========================
-       FINAL
+       CONTROLES CARRUSEL
     ========================= */
 
-    .final {
-      text-align: center;
-    }
-
-    .antetitulo-final {
-      max-width: 700px;
-
-      margin-bottom: 15px;
-
-      color: var(--rosa-claro);
-
-      font-family: 'Cormorant Garamond',serif;
-
-      font-size: 1.15rem;
-
-      letter-spacing: .5px;
-    }
-
-    .final h2 {
-      font-family: 'Playfair Display',serif;
-
-      font-size: clamp(2.2rem,6vw,4rem);
-
-      margin-bottom: 20px;
-    }
-
-    .final p {
-      margin-bottom: 40px;
-      color: #ffe5ef;
-    }
-
-    .botones-final {
+    .controles-carrusel {
       display: flex;
 
       justify-content: center;
+
       align-items: center;
 
       gap: 20px;
 
-      flex-wrap: wrap;
+      margin-top: 20px;
+
+      opacity: 0;
+
+      transition:
+        opacity .5s ease;
     }
 
-    .si {
-      padding: 15px 32px;
-
-      border-radius: 999px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #ff8fb9,
-          #e85d91
-        );
-
-      color: white;
-
-      font-size: 1.05rem;
-
-      font-weight: 700;
-
-      box-shadow:
-        0 10px 25px rgba(0,0,0,.25);
-
-      transition: .3s ease;
+    .controles-carrusel.visible {
+      opacity: 1;
     }
 
-    .si:hover {
-      transform: scale(1.08);
+    .controles-carrusel button {
+      padding:
+        10px
+        18px;
     }
 
-    .no {
-      padding: 13px 27px;
+    .texto-carrusel {
+      text-align: center;
 
-      border-radius: 999px;
+      margin-top: 15px;
 
-      background: rgba(255,255,255,.12);
+      font-size: 1.1rem;
 
-      color: white;
+      color:
+        var(--rosa-claro);
 
-      font-weight: 600;
+      opacity: 0;
 
-      transition: .25s ease;
+      transition:
+        opacity .5s ease;
     }
 
-    .respuesta {
-      margin-top: 35px;
-
-      min-height: 30px;
-
-      max-width: 650px;
-
-      font-size: 1.15rem;
-
-      font-weight: 700;
-
-      color: var(--rosa-claro);
-
-      line-height: 1.7;
-
-      animation: aparecerRespuesta .8s ease;
-    }
-
-    @keyframes aparecerRespuesta {
-      from {
-        opacity: 0;
-        transform: translateY(15px) scale(.95);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+    .texto-carrusel.visible {
+      opacity: 1;
     }
 
     /* =========================
        CORAZONES
     ========================= */
 
-    .corazon-flotante {
+    .corazon {
       position: fixed;
 
       bottom: -30px;
 
-      z-index: 100;
+      font-size: 22px;
 
       pointer-events: none;
 
-      font-size: 24px;
-
       animation:
-        subirCorazon 4s linear forwards;
+        subirCorazon
+        4s
+        linear
+        forwards;
+
+      z-index: 100;
     }
 
     @keyframes subirCorazon {
-      0% {
+
+      from {
         transform:
           translateY(0)
-          rotate(0deg)
-          scale(.8);
+          rotate(0deg);
 
-        opacity: 0;
-      }
-
-      15% {
         opacity: 1;
       }
 
-      100% {
+      to {
         transform:
           translateY(-110vh)
-          rotate(360deg)
-          scale(1.4);
+          rotate(360deg);
 
         opacity: 0;
       }
@@ -1193,35 +1018,16 @@
        RESPONSIVE
     ========================= */
 
-    @media(max-width:1000px) {
-      .razones-grid {
-        grid-template-columns:
-      repeat(3,minmax(0,1fr));
-      }
-    }
-
     @media(max-width:650px) {
 
-      .razones-grid {
-        grid-template-columns:
-      repeat(2,minmax(0,1fr));
-
-        gap: 12px;
+      .contenedor {
+        padding-top: 45px;
       }
 
-      .razon {
-        min-height: 170px;
-        padding: 17px;
-        font-size: .95rem;
-      }
-
-      .sobre {
-        width: min(310px,88vw);
-      }
-
-      .titulo-inicial::before,
-      .titulo-inicial::after {
-        display: none;
+      .card {
+        padding:
+          28px
+          20px;
       }
 
       .lazo {
@@ -1243,20 +1049,8 @@
 
     @media(max-width:430px) {
 
-      .razones-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .razon {
-        min-height: 145px;
-      }
-
-      .titulo-inicial {
-        font-size: 2.1rem;
-      }
-
       .sobre {
-        height: 205px;
+        height: 210px;
       }
 
       .lazo {
@@ -1273,40 +1067,71 @@
 
       .carta-sobre {
         height: 145px;
+
         padding-top: 18px;
+
         font-size: 21px;
       }
     }
+
   </style>
 </head>
 
 <body>
 
-<div class="fondo">
-
-  <div class="burbuja"></div>
-  <div class="burbuja"></div>
-  <div class="burbuja"></div>
-  <div class="burbuja"></div>
-
-  <div class="estrella"></div>
-  <div class="estrella"></div>
-  <div class="estrella"></div>
-  <div class="estrella"></div>
-  <div class="estrella"></div>
-  <div class="estrella"></div>
-
-</div>
-
 <!-- =========================
-     INICIO
+     ESTRELLAS
 ========================= -->
 
-<section class="inicio" id="inicio">
+<div class="estrella" style="left:10%;top:15%;"></div>
+<div class="estrella" style="left:20%;top:35%;"></div>
+<div class="estrella" style="left:80%;top:20%;"></div>
+<div class="estrella" style="left:90%;top:50%;"></div>
+<div class="estrella" style="left:15%;top:75%;"></div>
+<div class="estrella" style="left:70%;top:80%;"></div>
+<div class="estrella" style="left:50%;top:12%;"></div>
+<div class="estrella" style="left:35%;top:65%;"></div>
 
-  <h1 class="titulo-inicial">
-    Tengo algo que preguntarte... 💗
-  </h1>
+<div class="contenedor">
+
+  <!-- =========================
+       TITULO
+  ========================= -->
+
+  <section class="titulo">
+
+    <h1>Para ti, mi amor 💗</h1>
+
+    <p>
+      Hay algo que quiero preguntarte...
+    </p>
+
+  </section>
+
+  <!-- =========================
+       CARTA
+  ========================= -->
+
+  <section class="card">
+
+    <h2>Antes de preguntarte algo...</h2>
+
+    <p>
+      Quiero que sepas que cada momento contigo
+      significa muchísimo para mí.
+      <br><br>
+
+      No importa si estamos haciendo algo especial
+      o simplemente hablando de cualquier tontería;
+      estar contigo siempre consigue hacer
+      que mi día sea un poquito mejor. 💗
+    </p>
+
+  </section>
+
+  <!-- =========================
+       SOBRE
+  ========================= -->
 
   <div class="zona-sobre">
 
@@ -1328,15 +1153,39 @@
       <div class="sobre-tapa"></div>
 
       <div class="lazo">
+
         <span class="lazo-izq"></span>
         <span class="lazo-der"></span>
-        <span class="lazo-centro">💗</span>
+
+        <span class="lazo-centro">
+          💗
+        </span>
+
       </div>
 
-      <span class="decoracion-sobre decoracion-1">✦</span>
-      <span class="decoracion-sobre decoracion-2">✦</span>
-      <span class="decoracion-sobre decoracion-3">♡</span>
-      <span class="decoracion-sobre decoracion-4">✦</span>
+      <span
+        class="decoracion-sobre decoracion-1"
+      >
+        ✦
+      </span>
+
+      <span
+        class="decoracion-sobre decoracion-2"
+      >
+        ✦
+      </span>
+
+      <span
+        class="decoracion-sobre decoracion-3"
+      >
+        ♡
+      </span>
+
+      <span
+        class="decoracion-sobre decoracion-4"
+      >
+        ✦
+      </span>
 
       <div class="corazon-sobre">
         💗
@@ -1353,60 +1202,61 @@
 
   </div>
 
-  <p class="subtitulo">
-    Hay algo que llevo un tiempo queriendo preguntarte,
-    pero antes quiero mostrarte algunas cosas. 💕
-  </p>
+  <!-- =========================
+       PREGUNTA
+  ========================= -->
 
-  <button
-    class="boton"
-    id="botonAbrir"
-    onclick="abrirYContinuar()"
+  <section class="card">
+
+    <h2>
+      Después de todo esto...
+    </h2>
+
+    <p>
+      creo que ya es momento de preguntártelo.
+    </p>
+
+    <div class="botones">
+
+      <button
+        id="botonSi"
+        onclick="decirSi()"
+      >
+        💗 Sí
+      </button>
+
+      <button
+        id="botonNo"
+        onclick="decirNo()"
+      >
+        No
+      </button>
+
+    </div>
+
+    <p
+      id="respuesta"
+      style="
+        margin-top:25px;
+        font-size:1.5rem;
+        font-weight:600;
+      "
+    ></p>
+
+  </section>
+
+  <!-- =========================
+       RAZONES
+  ========================= -->
+
+  <section
+    class="card"
+    id="razones"
   >
-    💌 Abrir
-  </button>
 
-</section>
-
-
-<!-- =========================
-     RAZONES
-========================= -->
-
-<section
-  class="razones-seccion"
-  id="razones"
->
-
-  <h2 class="titulo-seccion">
-    💗 ¿Por qué tú?
-  </h2>
-
-  <p class="descripcion">
-    Podría darte mil razones... pero decidí empezar solamente con cinco.
-  </p>
-
-  <div class="contenedor-razones">
-
-    <div
-      class="razones-grid"
-      id="razonesGrid"
-    ></div>
-
-  </div>
-
-  <div
-    class="controles-carrusel"
-    id="controlesCarrusel"
-  >
-
-    <button
-      class="flecha"
-      onclick="razonAnterior()"
-      aria-label="Razones anteriores"
-    >
-      ←
-    </button>
+    <h2>
+      30 razones por las que te quiero 💗
+    </h2>
 
     <span
       class="contador"
@@ -1415,157 +1265,97 @@
       1 / 6
     </span>
 
-    <button
-      class="flecha"
-      onclick="razonSiguiente()"
-      aria-label="Siguientes razones"
+    <div
+      class="razones-contenedor"
+      id="razonesContenedor"
+    ></div>
+
+    <div
+      class="controles-carrusel"
+      id="controlesCarrusel"
     >
-      →
-    </button>
 
-  </div>
+      <button onclick="razonAnterior()">
+        ⟵
+      </button>
 
-  <p
-    class="texto-carrusel"
-    id="textoCarrusel"
-  >
-    Puedes volver a las primeras razones usando la flecha izquierda. 💗
-  </p>
+      <button onclick="razonSiguiente()">
+        ⟶
+      </button>
 
-  <button
-    class="boton"
-    id="botonMasRazones"
-    onclick="activarCarrusel()"
-  >
-    💕 Quiero conocer más
-  </button>
+    </div>
 
-</section>
-
-
-<!-- =========================
-     FINAL
-========================= -->
-
-<section
-  class="final"
-  id="final"
->
-
-  <p class="antetitulo-final">
-    Después de todo esto... creo que ya es momento de preguntártelo.
-  </p>
-
-  <h2>
-    ¿Puedo ser tu novio? 💗
-  </h2>
-
-  <div class="botones-final">
+    <div
+      class="texto-carrusel"
+      id="textoCarrusel"
+    >
+      Puedes recorrer las razones 💕
+    </div>
 
     <button
-      class="si"
-      onclick="decirSi()"
+      id="botonMasRazones"
+      onclick="activarCarrusel()"
+      style="
+        display:block;
+        margin:25px auto 0;
+      "
     >
-      💗 Sí, quiero
+      💌 Ver las razones
     </button>
 
-    <button
-      class="no"
-      id="botonNo"
-      onclick="decirNo()"
-    >
-      No
-    </button>
+  </section>
 
-  </div>
-
-  <div
-    class="respuesta"
-    id="respuesta"
-  ></div>
-
-</section>
-
+</div>
 
 <script>
 
-  let sobreAbierto = false;
-
   /* =========================
-     SOBRE
+     VARIABLES
   ========================= */
 
-  function abrirSobre() {
+  const sobre =
+    document.getElementById("sobre");
 
-    const sobre =
-      document.getElementById("sobre");
+  const mensajeSobre =
+    document.getElementById("mensajeSobre");
 
-    const mensaje =
-      document.getElementById("mensajeSobre");
+  const respuesta =
+    document.getElementById("respuesta");
 
-    const boton =
-      document.getElementById("botonAbrir");
+  const botonSi =
+    document.getElementById("botonSi");
 
-    sobreAbierto = !sobreAbierto;
+  const botonNo =
+    document.getElementById("botonNo");
 
-    if (sobreAbierto) {
+  const contador =
+    document.getElementById("contador");
 
-      sobre.classList.add("abierto");
+  const razonesContenedor =
+    document.getElementById(
+      "razonesContenedor"
+    );
 
-      mensaje.textContent =
-        "Ahora sí... 💌";
+  const controlesCarrusel =
+    document.getElementById(
+      "controlesCarrusel"
+    );
 
-      boton.textContent =
-        "✨ Ir a las razones";
+  const textoCarrusel =
+    document.getElementById(
+      "textoCarrusel"
+    );
 
-    } else {
+  const botonMasRazones =
+    document.getElementById(
+      "botonMasRazones"
+    );
 
-      sobre.classList.remove("abierto");
+  let grupoActual = 0;
 
-      mensaje.textContent =
-        "El sobre se abrió... 💌";
+  let indice = 0;
 
-      boton.textContent =
-        "💌 Abrir";
-
-    }
-  }
-
-
-  /* =========================
-     CONTINUAR
-  ========================= */
-
-  function abrirYContinuar() {
-
-    const sobre =
-      document.getElementById("sobre");
-
-    if (!sobreAbierto) {
-
-      abrirSobre();
-
-      setTimeout(() => {
-
-        document
-          .getElementById("razones")
-          .scrollIntoView({
-            behavior: "smooth"
-          });
-
-      },750);
-
-    } else {
-
-      document
-        .getElementById("razones")
-        .scrollIntoView({
-          behavior: "smooth"
-        });
-
-    }
-  }
-
+  let carruselActivado = false;
 
   /* =========================
      RAZONES
@@ -1623,64 +1413,117 @@
 
   ];
 
-  let grupoActual = 0;
-  let carruselActivado = false;
+  /* =========================
+     MOSTRAR RAZONES
+  ========================= */
 
-  const razonesGrid =
-    document.getElementById("razonesGrid");
+  function mostrarRazones(
+    direccion = "derecha"
+  ) {
 
-  const controlesCarrusel =
-    document.getElementById("controlesCarrusel");
+    razonesContenedor.innerHTML = "";
 
-  const contador =
-    document.getElementById("contador");
+    gruposRazones[grupoActual]
+      .forEach(
+        (razon, i) => {
 
-  const textoCarrusel =
-    document.getElementById("textoCarrusel");
+          const div =
+            document.createElement("div");
 
-  const botonMasRazones =
-    document.getElementById("botonMasRazones");
+          div.className = "razon";
 
+          const numero =
+            (grupoActual * 5) +
+            i +
+            1;
 
-  function mostrarGrupo(indice) {
+          div.innerHTML =
+            `
+          <strong>
+            ${numero}.
+          </strong>
+          ${razon}
+          `;
 
-    grupoActual = indice;
+          razonesContenedor
+            .appendChild(div);
 
-    razonesGrid.innerHTML = "";
-
-    const grupo =
-      gruposRazones[grupoActual];
-
-    grupo.forEach((texto,indice) => {
-
-      const tarjeta =
-        document.createElement("div");
-
-      tarjeta.className =
-        "razon";
-
-      const numero =
-        (grupoActual * 5) +
-        indice +
-        1;
-
-      tarjeta.innerHTML =
-        `<span>
-        <strong>${numero}.</strong>
-        ${texto}
-      </span>`;
-
-      razonesGrid.appendChild(tarjeta);
-
-    });
+        }
+      );
 
     contador.textContent =
       `${grupoActual + 1} / ${gruposRazones.length}`;
-
   }
 
-  mostrarGrupo(0);
+  /* =========================
+     CAMBIAR GRUPO
+  ========================= */
 
+  function cambiarGrupo(
+    nuevoGrupo,
+    direccion
+  ) {
+
+    razonesContenedor.style.opacity = "0";
+
+    razonesContenedor.style.transform =
+      direccion === "derecha"
+        ? "translateX(35px)"
+        : "translateX(-35px)";
+
+    setTimeout(() => {
+
+      grupoActual = nuevoGrupo;
+
+      mostrarRazones(direccion);
+
+      razonesContenedor.style.transition =
+        "opacity .4s ease, transform .4s ease";
+
+      razonesContenedor.style.opacity = "1";
+
+      razonesContenedor.style.transform =
+        "translateX(0)";
+
+    }, 220);
+  }
+
+  /* =========================
+     SIGUIENTE
+  ========================= */
+
+  function razonSiguiente() {
+
+    const siguiente =
+      (grupoActual + 1)
+      % gruposRazones.length;
+
+    cambiarGrupo(
+      siguiente,
+      "derecha"
+    );
+  }
+
+  /* =========================
+     ANTERIOR
+  ========================= */
+
+  function razonAnterior() {
+
+    const anterior =
+      (grupoActual - 1 +
+        gruposRazones.length)
+      % gruposRazones.length;
+
+    cambiarGrupo(
+      anterior,
+      "izquierda"
+    );
+  }
+
+  /* =========================
+     ACTIVAR CARRUSEL
+  ========================= */
 
   function activarCarrusel() {
 
@@ -1689,7 +1532,10 @@
 
     carruselActivado = true;
 
-    cambiarGrupo(1,"derecha");
+    cambiarGrupo(
+      1,
+      "derecha"
+    );
 
     controlesCarrusel
       .classList
@@ -1703,217 +1549,160 @@
       "none";
   }
 
+  /* =========================
+     ABRIR SOBRE
+  ========================= */
 
-  function razonSiguiente() {
+  function abrirSobre() {
 
-    let siguiente =
-      grupoActual + 1;
-
-    if(
-      siguiente >=
-      gruposRazones.length
-    ) {
-      siguiente = 0;
-    }
-
-    cambiarGrupo(
-      siguiente,
-      "derecha"
-    );
-  }
-
-
-  function razonAnterior() {
-
-    let anterior =
-      grupoActual - 1;
-
-    if(anterior < 0) {
-      anterior =
-        gruposRazones.length - 1;
-    }
-
-    cambiarGrupo(
-      anterior,
-      "izquierda"
-    );
-  }
-
-
-  function cambiarGrupo(
-    nuevoGrupo,
-    direccion
-  ) {
+    sobre.classList.toggle("abierto");
 
     if(
-      razonesGrid.classList
-        .contains("animando")
-    )
-      return;
-
-    razonesGrid
-      .classList
-      .add("animando");
-
-    if(
-      direccion === "derecha"
+      sobre.classList.contains("abierto")
     ) {
 
-      razonesGrid
-        .classList
-        .add("saliendo-derecha");
+      mensajeSobre.textContent =
+        "Ahora sí... 💌";
 
     } else {
 
-      razonesGrid
-        .classList
-        .add("saliendo-izquierda");
+      mensajeSobre.textContent =
+        "El sobre se abrió... 💌";
+
+    }
+
+  }
+
+  /* =========================
+     ABRIR Y CONTINUAR
+  ========================= */
+
+  function abrirYContinuar() {
+
+    if(
+      !sobre.classList.contains("abierto")
+    ) {
+
+      abrirSobre();
 
     }
 
     setTimeout(() => {
 
-      mostrarGrupo(nuevoGrupo);
+      document
+        .getElementById("razones")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
 
-    },300);
-
-    setTimeout(() => {
-
-      razonesGrid.classList.remove(
-        "saliendo-derecha",
-        "saliendo-izquierda",
-        "animando"
-      );
-
-    },650);
+    },750);
 
   }
 
-
   /* =========================
-     RESPUESTA SÍ
+     DECIR SI
   ========================= */
 
   function decirSi() {
 
-    const respuesta =
-      document.getElementById("respuesta");
-
     respuesta.innerHTML =
       `
-    Sabía que dirías que sí... 💗🥹
+  Sabía que dirías que sí... 💗🥹
+  <br>
+  <span style="
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.35rem;
+    font-weight:600;
+  ">
+    Y ahora empieza oficialmente
+    una nueva parte de nuestra historia. 💕
+    <br>
+    Gracias por elegirme. Prometo cuidar
+    cada momento que vivamos juntos. 🌷
     <br>
     <span style="
-      font-family:'Cormorant Garamond',serif;
-      font-size:1.35rem;
-      font-weight:600;
+      display:inline-block;
+      margin-top:10px;
+      font-size:1.5rem;
     ">
-      Y ahora empieza oficialmente
-      una nueva parte de nuestra historia. 💕
-      <br>
-      Gracias por elegirme. Prometo cuidar
-      cada momento que vivamos juntos. 🌷
-      <br>
-      <span style="
-        display:inline-block;
-        margin-top:10px;
-        font-size:1.5rem;
-      ">
-        Te quiero muchísimo. 💗
-      </span>
+      Te quiero muchísimo. 💗
     </span>
-    `;
+  </span>
+  `;
 
-    crearCorazones(45);
+    for(
+      let i = 0;
+      i < 45;
+      i++
+    ) {
+
+      const corazon =
+        document.createElement("div");
+
+      corazon.className =
+        "corazon";
+
+      corazon.textContent =
+        Math.random() > .5
+          ? "💗"
+          : "💕";
+
+      corazon.style.left =
+        Math.random() * 100 + "vw";
+
+      corazon.style.animationDuration =
+        (3 + Math.random() * 3) + "s";
+
+      corazon.style.fontSize =
+        (15 + Math.random() * 20) + "px";
+
+      document.body
+        .appendChild(corazon);
+
+      setTimeout(() => {
+        corazon.remove();
+      },6000);
+
+    }
 
   }
 
-
   /* =========================
-     BOTÓN NO
+     DECIR NO
   ========================= */
-
-  let tamañoNo = 1;
 
   function decirNo() {
 
-    const botonNo =
-      document.getElementById("botonNo");
+    const escala =
+      parseFloat(
+        botonNo.dataset.escala || "1"
+      );
 
-    tamañoNo -= .15;
+    const nuevaEscala =
+      escala * .75;
 
-    if(tamañoNo <= .25) {
+    botonNo.dataset.escala =
+      nuevaEscala;
+
+    botonNo.style.transform =
+      `scale(${nuevaEscala})`;
+
+    if(
+      nuevaEscala < .2
+    ) {
 
       botonNo.style.display =
         "none";
 
-      return;
     }
 
-    botonNo.style.transform =
-      `scale(${tamañoNo})`;
-
-    botonNo.textContent =
-      "¿Segura? 🥺";
   }
-
 
   /* =========================
-     CORAZONES
+     MOSTRAR PRIMER GRUPO
   ========================= */
 
-  function crearCorazones(cantidad) {
-
-    for(
-      let i = 0;
-      i < cantidad;
-      i++
-    ) {
-
-      setTimeout(() => {
-
-        const corazon =
-          document.createElement("div");
-
-        corazon.className =
-          "corazon-flotante";
-
-        corazon.textContent =
-          [
-            "💗",
-            "💕",
-            "💖",
-            "💘",
-            "❤️",
-            "🌷",
-            "✨"
-          ][
-            Math.floor(
-              Math.random() * 7
-            )
-            ];
-
-        corazon.style.left =
-          Math.random() * 100 + "vw";
-
-        corazon.style.animationDuration =
-          (3 + Math.random() * 3) + "s";
-
-        document.body.appendChild(
-          corazon
-        );
-
-        setTimeout(() => {
-
-          corazon.remove();
-
-        },6000);
-
-      },i * 80);
-
-    }
-
-  }
+  mostrarRazones();
 
 </script>
 
