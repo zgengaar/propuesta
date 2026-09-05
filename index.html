@@ -258,34 +258,9 @@
       transform: translateY(-8px);
     }
 
-    /* Texto del sobre */
-
-    .sobre::before {
-      content: "Para ti, con cariño ♡";
-      position: absolute;
-      left: 50%;
-      bottom: 24px;
-      transform: translateX(-50%);
-
-      z-index: 8;
-
-      width: 100%;
-      text-align: center;
-
-      font-family: 'Cormorant Garamond',serif;
-      font-size: 20px;
-      font-weight: 600;
-
-      color: rgba(255,248,251,.9);
-
-      letter-spacing: .5px;
-
-      pointer-events: none;
-
-      text-shadow: 0 2px 5px rgba(120,30,70,.25);
-    }
-
-    /* Base */
+    /* =========================
+       BASE DEL SOBRE
+    ========================= */
 
     .sobre-base {
       position: absolute;
@@ -331,83 +306,6 @@
       border-left: 170px solid transparent;
       border-right: 170px solid transparent;
       border-bottom: 130px solid rgba(255,255,255,.10);
-    }
-
-    /* =========================
-       CARTA
-    ========================= */
-
-    .carta-sobre {
-      position: absolute;
-
-      left: 50%;
-      top: 25px;
-
-      width: 78%;
-      height: 165px;
-
-      transform:
-        translateX(-50%)
-        translateY(25px);
-
-      z-index: 4;
-
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-
-      padding-top: 22px;
-
-      border-radius: 8px;
-
-      background:
-        linear-gradient(
-          145deg,
-          #fff9fb,
-          #ffeaf1
-        );
-
-      border: 1px solid rgba(184,59,109,.15);
-
-      box-shadow:
-        0 8px 18px rgba(90,20,50,.18),
-        inset 0 0 15px rgba(255,193,216,.3);
-
-      color: var(--rosa-oscuro);
-
-      font-family: 'Cormorant Garamond',serif;
-      font-size: 24px;
-      font-weight: 700;
-
-      transition:
-        transform .9s cubic-bezier(.68,-.55,.27,1.55),
-        z-index 0s .25s;
-    }
-
-    .carta-sobre::before {
-      content: "♡";
-      position: absolute;
-      top: 8px;
-      left: 12px;
-      color: var(--rosa-claro);
-      font-size: 16px;
-    }
-
-    .carta-sobre::after {
-      content: "✦";
-      position: absolute;
-      bottom: 8px;
-      right: 12px;
-      color: var(--dorado);
-      font-size: 15px;
-    }
-
-    .sobre.abierto .carta-sobre {
-      transform:
-        translateX(-50%)
-        translateY(-105px);
-
-      z-index: 6;
     }
 
     /* =========================
@@ -665,11 +563,15 @@
       }
     }
 
+    /* Corazón / sello original */
+
     .corazon-sobre {
       display: none;
     }
 
-    /* Mensaje */
+    /* =========================
+       MENSAJE
+    ========================= */
 
     .mensaje-sobre {
       position: absolute;
@@ -698,6 +600,8 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* Brillo del sobre */
+
     .sobre::after {
       content: "✦";
       position: absolute;
@@ -724,226 +628,6 @@
         transform: scale(1.2) rotate(20deg);
         opacity: 1;
       }
-    }
-
-    /* =========================
-       VENTANA DE PLANES
-    ========================= */
-
-    .ventana-planes {
-      position: fixed;
-      inset: 0;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 25px;
-
-      background: rgba(30,7,20,.72);
-
-      backdrop-filter: blur(8px);
-
-      opacity: 0;
-      visibility: hidden;
-
-      z-index: 500;
-
-      transition:
-        opacity .4s ease,
-        visibility .4s ease;
-    }
-
-    .ventana-planes.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .contenido-planes {
-      position: relative;
-
-      width: min(720px, 94vw);
-      max-height: 85vh;
-
-      overflow-y: auto;
-
-      padding: 45px 35px 35px;
-
-      border-radius: 28px;
-
-      background:
-        linear-gradient(
-          145deg,
-          #fff8fb,
-          #ffe2ec
-        );
-
-      border: 2px solid rgba(255,193,216,.8);
-
-      box-shadow:
-        0 30px 80px rgba(0,0,0,.5),
-        0 0 45px rgba(245,139,179,.25);
-
-      color: #6d3650;
-
-      transform:
-        translateY(30px)
-        scale(.92);
-
-      transition:
-        transform .5s cubic-bezier(.68,-.55,.27,1.55);
-    }
-
-    .ventana-planes.visible .contenido-planes {
-      transform:
-        translateY(0)
-        scale(1);
-    }
-
-    .cerrar-planes {
-      position: absolute;
-
-      top: 15px;
-      right: 18px;
-
-      width: 38px;
-      height: 38px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 50%;
-
-      background: rgba(232,93,145,.15);
-
-      border: 1px solid rgba(232,93,145,.25);
-
-      color: var(--rosa-oscuro);
-
-      font-size: 20px;
-      font-weight: bold;
-
-      cursor: pointer;
-
-      transition: .25s ease;
-    }
-
-    .cerrar-planes:hover {
-      background: var(--rosa-fuerte);
-      color: white;
-
-      transform:
-        rotate(90deg)
-        scale(1.08);
-    }
-
-    .titulo-planes {
-      font-family: 'Playfair Display',serif;
-
-      color: var(--rosa-oscuro);
-
-      font-size: clamp(1.8rem,5vw,2.7rem);
-
-      text-align: center;
-
-      margin-bottom: 10px;
-    }
-
-    .subtitulo-planes {
-      text-align: center;
-
-      color: #8d526a;
-
-      margin-bottom: 28px;
-
-      line-height: 1.6;
-    }
-
-    .lista-planes {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2,minmax(0,1fr));
-
-      gap: 15px;
-    }
-
-    .plan {
-      position: relative;
-
-      padding: 22px 18px;
-
-      min-height: 125px;
-
-      display: flex;
-      flex-direction: column;
-
-      align-items: center;
-      justify-content: center;
-
-      text-align: center;
-
-      border-radius: 18px;
-
-      background:
-        linear-gradient(
-          145deg,
-          #fff,
-          #ffeaf1
-        );
-
-      border: 1px solid rgba(232,93,145,.18);
-
-      box-shadow:
-        0 8px 20px rgba(120,30,70,.12);
-
-      transition: .3s ease;
-    }
-
-    .plan:hover {
-      transform: translateY(-5px);
-
-      box-shadow:
-        0 13px 25px rgba(120,30,70,.18);
-    }
-
-    .plan .emoji-plan {
-      font-size: 30px;
-      margin-bottom: 8px;
-    }
-
-    .plan strong {
-      display: block;
-
-      color: var(--rosa-oscuro);
-
-      font-family: 'Playfair Display',serif;
-
-      font-size: 1.15rem;
-
-      margin-bottom: 5px;
-    }
-
-    .plan span {
-      color: #704056;
-
-      font-size: .92rem;
-
-      line-height: 1.5;
-    }
-
-    .frase-planes {
-      margin-top: 25px;
-
-      text-align: center;
-
-      color: var(--rosa-oscuro);
-
-      font-family: 'Cormorant Garamond',serif;
-
-      font-size: 1.35rem;
-      font-weight: 600;
     }
 
     /* =========================
@@ -1027,7 +711,7 @@
       display: grid;
 
       grid-template-columns:
-    repeat(5,minmax(0,1fr));
+        repeat(5,minmax(0,1fr));
 
       gap: 18px;
     }
@@ -1410,17 +1094,19 @@
     ========================= */
 
     @media(max-width:1000px) {
+
       .razones-grid {
         grid-template-columns:
-      repeat(3,minmax(0,1fr));
+          repeat(3,minmax(0,1fr));
       }
+
     }
 
     @media(max-width:650px) {
 
       .razones-grid {
         grid-template-columns:
-      repeat(2,minmax(0,1fr));
+          repeat(2,minmax(0,1fr));
 
         gap: 12px;
       }
@@ -1452,17 +1138,6 @@
           scale(.4);
       }
 
-      .carta-sobre {
-        width: 76%;
-      }
-
-      .lista-planes {
-        grid-template-columns: 1fr;
-      }
-
-      .contenido-planes {
-        padding: 45px 20px 25px;
-      }
     }
 
     @media(max-width:430px) {
@@ -1495,12 +1170,8 @@
           scale(.35);
       }
 
-      .carta-sobre {
-        height: 145px;
-        padding-top: 18px;
-        font-size: 21px;
-      }
     }
+
   </style>
 </head>
 
@@ -1522,6 +1193,7 @@
 
 </div>
 
+
 <!-- =========================
      INICIO
 ========================= -->
@@ -1542,25 +1214,38 @@
 
       <div class="sobre-base"></div>
 
-      <div class="carta-sobre">
-        <span>Para ti 💗</span>
-      </div>
-
       <div class="cinta-vertical"></div>
       <div class="cinta-horizontal"></div>
 
       <div class="sobre-tapa"></div>
 
       <div class="lazo">
+
         <span class="lazo-izq"></span>
+
         <span class="lazo-der"></span>
-        <span class="lazo-centro">💗</span>
+
+        <span class="lazo-centro">
+          💗
+        </span>
+
       </div>
 
-      <span class="decoracion-sobre decoracion-1">✦</span>
-      <span class="decoracion-sobre decoracion-2">✦</span>
-      <span class="decoracion-sobre decoracion-3">♡</span>
-      <span class="decoracion-sobre decoracion-4">✦</span>
+      <span class="decoracion-sobre decoracion-1">
+        ✦
+      </span>
+
+      <span class="decoracion-sobre decoracion-2">
+        ✦
+      </span>
+
+      <span class="decoracion-sobre decoracion-3">
+        ♡
+      </span>
+
+      <span class="decoracion-sobre decoracion-4">
+        ✦
+      </span>
 
       <div class="corazon-sobre">
         💗
@@ -1568,19 +1253,22 @@
 
     </div>
 
+
     <div
       class="mensaje-sobre"
       id="mensajeSobre"
     >
-      El sobre se abrirá... 💌
+      El sobre se abrió... 💌
     </div>
 
   </div>
+
 
   <p class="subtitulo">
     Hay algo que llevo un tiempo queriendo preguntarte,
     pero antes quiero mostrarte algunas cosas. 💕
   </p>
+
 
   <button
     class="boton"
@@ -1591,136 +1279,6 @@
   </button>
 
 </section>
-
-
-<!-- =========================
-     VENTANA DE PLANES
-========================= -->
-
-<div
-  class="ventana-planes"
-  id="ventanaPlanes"
->
-
-  <div class="contenido-planes">
-
-    <button
-      class="cerrar-planes"
-      onclick="cerrarVentanaPlanes()"
-      aria-label="Cerrar"
-    >
-      ✕
-    </button>
-
-    <h2 class="titulo-planes">
-      ✨ Nuestros planes a futuro ✨
-    </h2>
-
-    <p class="subtitulo-planes">
-      Porque no solo quiero compartir contigo los momentos de ahora,
-      también me gustaría vivir muchos más contigo. 💗
-    </p>
-
-    <div class="lista-planes">
-
-      <div class="plan">
-        <div class="emoji-plan">🌅</div>
-
-        <strong>Ver un amanecer juntos</strong>
-
-        <span>
-          Quedarnos despiertos hablando y esperar juntos
-          a que salga el sol.
-        </span>
-      </div>
-
-      <div class="plan">
-        <div class="emoji-plan">🎬</div>
-
-        <strong>Maratones de películas</strong>
-
-        <span>
-          Elegir una película, preparar algo rico
-          y pasar horas juntos.
-        </span>
-      </div>
-
-      <div class="plan">
-        <div class="emoji-plan">🌷</div>
-
-        <strong>Salir a conocer lugares</strong>
-
-        <span>
-          Descubrir lugares nuevos y crear recuerdos
-          que después podamos recordar.
-        </span>
-      </div>
-
-      <div class="plan">
-        <div class="emoji-plan">📸</div>
-
-        <strong>Llenar un álbum de recuerdos</strong>
-
-        <span>
-          Guardar fotos de todas esas pequeñas
-          aventuras que vivamos.
-        </span>
-      </div>
-
-      <div class="plan">
-        <div class="emoji-plan">🍕</div>
-
-        <strong>Comer juntos hasta tarde</strong>
-
-        <span>
-          Buscar nuestro lugar favorito para comer
-          y terminar hablando durante horas.
-        </span>
-      </div>
-
-      <div class="plan">
-        <div class="emoji-plan">🎡</div>
-
-        <strong>Vivir aventuras juntos</strong>
-
-        <span>
-          Hacer cosas nuevas aunque sean pequeñas,
-          siempre teniendo a alguien al lado.
-        </span>
-      </div>
-
-      <div class="plan">
-        <div class="emoji-plan">🌌</div>
-
-        <strong>Mirar las estrellas</strong>
-
-        <span>
-          Encontrar un lugar tranquilo y simplemente
-          quedarnos juntos mirando el cielo.
-        </span>
-      </div>
-
-      <div class="plan">
-        <div class="emoji-plan">🏠</div>
-
-        <strong>Construir algo bonito</strong>
-
-        <span>
-          Seguir creciendo juntos y ver hasta dónde
-          puede llegar nuestra historia.
-        </span>
-      </div>
-
-    </div>
-
-    <p class="frase-planes">
-      "Y quién sabe... quizás algún día podamos tachar
-      todos estos planes juntos." 💕
-    </p>
-
-  </div>
-
-</div>
 
 
 <!-- =========================
@@ -1736,9 +1294,11 @@
     💗 ¿Por qué tú?
   </h2>
 
+
   <p class="descripcion">
     Podría darte mil razones... pero decidí empezar solamente con cinco.
   </p>
+
 
   <div class="contenedor-razones">
 
@@ -1748,6 +1308,7 @@
     ></div>
 
   </div>
+
 
   <div
     class="controles-carrusel"
@@ -1762,12 +1323,14 @@
       ←
     </button>
 
+
     <span
       class="contador"
       id="contador"
     >
       1 / 6
     </span>
+
 
     <button
       class="flecha"
@@ -1779,12 +1342,14 @@
 
   </div>
 
+
   <p
     class="texto-carrusel"
     id="textoCarrusel"
   >
     Puedes volver a las primeras razones usando la flecha izquierda. 💗
   </p>
+
 
   <button
     class="boton"
@@ -1810,9 +1375,11 @@
     Después de todo esto... creo que ya es momento de preguntártelo.
   </p>
 
+
   <h2>
     ¿Puedo ser tu novio? 💗
   </h2>
+
 
   <div class="botones-final">
 
@@ -1823,6 +1390,7 @@
       💗 Sí, quiero
     </button>
 
+
     <button
       class="no"
       id="botonNo"
@@ -1832,6 +1400,7 @@
     </button>
 
   </div>
+
 
   <div
     class="respuesta"
@@ -1845,8 +1414,9 @@
 
   let sobreAbierto = false;
 
+
   /* =========================
-     SOBRE + VENTANA
+     SOBRE
   ========================= */
 
   function abrirSobre() {
@@ -1860,136 +1430,71 @@
     const boton =
       document.getElementById("botonAbrir");
 
-    const ventana =
-      document.getElementById("ventanaPlanes");
 
-    if(!sobreAbierto) {
+    sobreAbierto = !sobreAbierto;
 
-      sobreAbierto = true;
+
+    if (sobreAbierto) {
 
       sobre.classList.add("abierto");
 
       mensaje.textContent =
-        "Un pequeño vistazo a nuestro futuro... 💗";
+        "Ahora sí... 💌";
 
       boton.textContent =
-        "✨ Ver nuestros planes";
+        "✨ Ir a las razones";
 
-      /*
-       * Esperamos a que el sobre se abra
-       * antes de mostrar la ventana.
-       */
-
-      setTimeout(() => {
-
-        ventana.classList.add("visible");
-
-      },650);
-
-    }
-
-  }
-
-
-  /* =========================
-     CERRAR VENTANA
-  ========================= */
-
-  function cerrarVentanaPlanes() {
-
-    const sobre =
-      document.getElementById("sobre");
-
-    const ventana =
-      document.getElementById("ventanaPlanes");
-
-    const mensaje =
-      document.getElementById("mensajeSobre");
-
-    const boton =
-      document.getElementById("botonAbrir");
-
-    ventana.classList.remove("visible");
-
-    /*
-     * Primero desaparece la ventana.
-     * Después se cierra el sobre.
-     */
-
-    setTimeout(() => {
+    } else {
 
       sobre.classList.remove("abierto");
 
-      sobreAbierto = false;
-
       mensaje.textContent =
-        "El sobre se abrirá... 💌";
+        "El sobre se abrió... 💌";
 
       boton.textContent =
         "💌 Abrir";
 
-    },400);
-
-  }
-
-
-  /* =========================
-     BOTÓN ABRIR
-  ========================= */
-
-  function abrirYContinuar() {
-
-    /*
-     * Si el sobre está cerrado,
-     * hacemos exactamente lo mismo
-     * que al tocar el sobre.
-     */
-
-    if(!sobreAbierto) {
-
-      abrirSobre();
-
-    } else {
-
-      /*
-       * Si la ventana ya está abierta,
-       * no hacemos nada.
-       */
-
-      const ventana =
-        document.getElementById("ventanaPlanes");
-
-      if(!ventana.classList.contains("visible")) {
-
-        ventana.classList.add("visible");
-
-      }
-
     }
 
   }
 
 
   /* =========================
-     CERRAR AL HACER CLIC FUERA
+     CONTINUAR
   ========================= */
 
-  document
-    .getElementById("ventanaPlanes")
-    .addEventListener(
-      "click",
-      function(event) {
+  function abrirYContinuar() {
 
-        if(
-          event.target === this
-        ) {
+    const sobre =
+      document.getElementById("sobre");
 
-          cerrarVentanaPlanes();
 
-        }
+    if (!sobreAbierto) {
 
-      }
-    );
+      abrirSobre();
+
+
+      setTimeout(() => {
+
+        document
+          .getElementById("razones")
+          .scrollIntoView({
+            behavior: "smooth"
+          });
+
+      },750);
+
+    } else {
+
+      document
+        .getElementById("razones")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+    }
+
+  }
 
 
   /* =========================
@@ -1999,57 +1504,101 @@
   const gruposRazones = [
 
     [
+
       "Porque contigo puedo ser completamente yo, sin tener que fingir ser alguien diferente.",
+
       "Porque incluso los momentos más simples terminan siendo especiales cuando estoy contigo.",
+
       "Porque tienes una forma muy tuya de hacer que un día normal termine siendo un día bonito.",
+
       "Porque tu sonrisa tiene un extraño poder para mejorarme el día. 💗",
+
       "Porque cuando pienso en las personas con las que quiero compartir más momentos, apareces tú."
+
     ],
 
+
     [
+
       "Porque contigo puedo hablar durante horas y aun así sentir que el tiempo pasó demasiado rápido.",
+
       "Porque tienes una manera especial de hacerme sentir acompañado incluso cuando no dices nada.",
+
       "Porque cada recuerdo contigo termina teniendo un lugar especial en mi cabeza.",
+
       "Porque me encanta descubrir poco a poco cada detalle de tu forma de ser.",
+
       "Porque haces que tenga ganas de crear muchos más recuerdos contigo. 💕"
+
     ],
 
+
     [
+
       "Porque me gusta la tranquilidad que siento cuando estoy contigo.",
+
       "Porque hasta una conversación cualquiera puede convertirse en uno de mis momentos favoritos.",
+
       "Porque me haces sonreír incluso cuando no estoy teniendo precisamente el mejor día.",
+
       "Porque siento que todavía nos quedan muchísimas cosas por vivir y descubrir juntos.",
+
       "Porque entre tantas personas, de alguna manera terminaste siendo tú la persona que quiero tener cerca. 💗"
+
     ],
 
+
     [
+
       "Porque admiro la forma en que ves y entiendes las cosas, incluso cuando tu manera de pensarlas es diferente a la mía.",
+
       "Porque hay pequeños detalles tuyos que quizás tú ni siquiera notas, pero que para mí tienen algo especial.",
+
       "Porque tienes la capacidad de sorprenderme sin siquiera intentarlo.",
+
       "Porque confío en ti lo suficiente como para contarte cosas que no le contaría fácilmente a cualquiera.",
+
       "Porque muchas conversaciones que empiezan como una tontería terminan convirtiéndose en recuerdos que me acompañan durante todo el día."
+
     ],
 
+
     [
+
       "Porque tu manera de expresarte consigue que hasta las palabras más simples se sientan especiales.",
+
       "Porque poco a poco te fuiste convirtiendo en una parte importante de mis pensamientos sin que siquiera me diera cuenta.",
+
       "Porque hay cosas que antes parecían insignificantes y ahora significan algo simplemente porque me recuerdan a ti.",
+
       "Porque tenemos pequeñas cosas que solo nosotros entendemos y que terminan siendo como un pequeño secreto entre los dos.",
+
       "Porque no necesito que pase algo extraordinario para sentir que estar contigo hizo que el momento valiera la pena."
+
     ],
 
+
     [
+
       "Porque me inspiras a querer mejorar como persona, no porque me lo pidas, sino porque quiero ser alguien de quien puedas sentirte orgullosa.",
+
       "Porque me gusta imaginar todas las historias que todavía no hemos vivido y pensar que algún día podremos recordarlas juntos.",
+
       "Porque incluso después de dejar de hablar contigo, de alguna manera sigues dejando una pequeña huella en mi día.",
+
       "Porque algunos momentos que he vivido contigo ya están entre mis recuerdos favoritos.",
+
       "Porque si pudiera volver atrás y repetir todos los momentos que nos llevaron hasta aquí, elegiría cada uno de ellos otra vez."
+
     ]
 
   ];
 
+
   let grupoActual = 0;
+
   let carruselActivado = false;
+
 
   const razonesGrid =
     document.getElementById("razonesGrid");
@@ -2073,36 +1622,44 @@
 
     razonesGrid.innerHTML = "";
 
+
     const grupo =
       gruposRazones[grupoActual];
+
 
     grupo.forEach((texto,indice) => {
 
       const tarjeta =
         document.createElement("div");
 
+
       tarjeta.className =
         "razon";
+
 
       const numero =
         (grupoActual * 5) +
         indice +
         1;
 
+
       tarjeta.innerHTML =
         `<span>
-        <strong>${numero}.</strong>
-        ${texto}
-      </span>`;
+          <strong>${numero}.</strong>
+          ${texto}
+        </span>`;
+
 
       razonesGrid.appendChild(tarjeta);
 
     });
 
+
     contador.textContent =
       `${grupoActual + 1} / ${gruposRazones.length}`;
 
   }
+
 
   mostrarGrupo(0);
 
@@ -2112,20 +1669,29 @@
     if(carruselActivado)
       return;
 
+
     carruselActivado = true;
 
-    cambiarGrupo(1,"derecha");
+
+    cambiarGrupo(
+      1,
+      "derecha"
+    );
+
 
     controlesCarrusel
       .classList
       .add("visible");
 
+
     textoCarrusel
       .classList
       .add("visible");
 
+
     botonMasRazones.style.display =
       "none";
+
   }
 
 
@@ -2134,17 +1700,22 @@
     let siguiente =
       grupoActual + 1;
 
+
     if(
       siguiente >=
       gruposRazones.length
     ) {
+
       siguiente = 0;
+
     }
+
 
     cambiarGrupo(
       siguiente,
       "derecha"
     );
+
   }
 
 
@@ -2153,15 +1724,20 @@
     let anterior =
       grupoActual - 1;
 
+
     if(anterior < 0) {
+
       anterior =
         gruposRazones.length - 1;
+
     }
+
 
     cambiarGrupo(
       anterior,
       "izquierda"
     );
+
   }
 
 
@@ -2176,9 +1752,11 @@
     )
       return;
 
+
     razonesGrid
       .classList
       .add("animando");
+
 
     if(
       direccion === "derecha"
@@ -2196,11 +1774,13 @@
 
     }
 
+
     setTimeout(() => {
 
       mostrarGrupo(nuevoGrupo);
 
     },300);
+
 
     setTimeout(() => {
 
@@ -2224,30 +1804,42 @@
     const respuesta =
       document.getElementById("respuesta");
 
+
     respuesta.innerHTML =
       `
-    Sabía que dirías que sí... 💗🥹
-    <br>
-    <span style="
-      font-family:'Cormorant Garamond',serif;
-      font-size:1.35rem;
-      font-weight:600;
-    ">
-      Y ahora empieza oficialmente
-      una nueva parte de nuestra historia. 💕
+      Sabía que dirías que sí... 💗🥹
+
       <br>
-      Gracias por elegirme. Prometo cuidar
-      cada momento que vivamos juntos. 🌷
-      <br>
+
       <span style="
-        display:inline-block;
-        margin-top:10px;
-        font-size:1.5rem;
+        font-family:'Cormorant Garamond',serif;
+        font-size:1.35rem;
+        font-weight:600;
       ">
-        Te quiero muchísimo. 💗
+
+        Y ahora empieza oficialmente
+        una nueva parte de nuestra historia. 💕
+
+        <br>
+
+        Gracias por elegirme. Prometo cuidar
+        cada momento que vivamos juntos. 🌷
+
+        <br>
+
+        <span style="
+          display:inline-block;
+          margin-top:10px;
+          font-size:1.5rem;
+        ">
+
+          Te quiero muchísimo. 💗
+
+        </span>
+
       </span>
-    </span>
-    `;
+      `;
+
 
     crearCorazones(45);
 
@@ -2260,12 +1852,15 @@
 
   let tamañoNo = 1;
 
+
   function decirNo() {
 
     const botonNo =
       document.getElementById("botonNo");
 
+
     tamañoNo -= .15;
+
 
     if(tamañoNo <= .25) {
 
@@ -2273,13 +1868,17 @@
         "none";
 
       return;
+
     }
+
 
     botonNo.style.transform =
       `scale(${tamañoNo})`;
 
+
     botonNo.textContent =
       "¿Segura? 🥺";
+
   }
 
 
@@ -2300,8 +1899,10 @@
         const corazon =
           document.createElement("div");
 
+
         corazon.className =
           "corazon-flotante";
+
 
         corazon.textContent =
           [
@@ -2318,15 +1919,19 @@
             )
             ];
 
+
         corazon.style.left =
           Math.random() * 100 + "vw";
+
 
         corazon.style.animationDuration =
           (3 + Math.random() * 3) + "s";
 
+
         document.body.appendChild(
           corazon
         );
+
 
         setTimeout(() => {
 
